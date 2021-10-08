@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="font-awesome.min.css" />
+        <title>Loan</title>
+    </head>
+
+    <body>
+        <nav>
+            <i class="fa fa-bars" aria-hidden="true"></i>
+            <h1>Pocket Account</h1>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </nav>
+        <div id="menu1" class="menu">
+            <ol>
+                <li>Dashboard</li>
+                <li>Land</li>
+                <ul class="sub">
+                    <li>Land Payment</li>
+                    <li>Land Details</li>
+                </ul>
+                <li>Loan</li>
+                <ul class="sub">
+                    <li>Debtor</li>
+                    <li>New Debtor</li>
+                </ul>
+                <li>Invest</li>
+                <ul class="sub">
+                    <li>Lender</li>
+                    <li>New Lender</li>
+                </ul>
+            </ol>
+        </div>
+        <main>
+            <div class="tablecontainer">
+                <h2>Loan Status</h2>
+
+                <table>
+                    <tr>
+                        <th>Depter ID</th>
+                        <th>Date</th>
+                        <th>Name & Description</th>
+                        <th>Credit</th>
+                        <th>Deposit</th>
+                        <th>Credit Balance</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">R0001</td>
+                        <td>02-02-2021</td>
+                        <td>Raju</td>
+                        <td>500000</td>
+                        <td>0</td>
+                        <td>500000</td>
+                        <td>Due</td>
+                    </tr>
+                    <tr>
+                        <!-- <td>R0001</td> -->
+                        <td>03-02-2021</td>
+                        <td>Raju</td>
+                        <td>500000</td>
+                        <td>250000</td>
+                        <td>250000</td>
+                        <td>Due</td>
+                    </tr>
+                    <tr>
+                        <!-- <td>R0001</td> -->
+                        <td>04-02-2021</td>
+                        <td>Raju</td>
+                        <td>500000</td>
+                        <td>250000</td>
+                        <td>0</td>
+                        <td>Paid</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="restablecontainer">
+                <div class="tblrow">
+                    R0001 | Raju | Paid <br>
+                    Total Balance: 5000000 <br>
+                    Credit: 0, Deposit: 100000
+                </div>
+                <div class="tblrow">
+                    R0001 | Raju | Paid <br>
+                    Total Balance: 5000000 <br>
+                    Credit: 0, Deposit: 100000
+                </div>
+                <div class="tblrow">
+                    R0001 | Raju | Paid <br>
+                    Total Balance: 5000000 <br>
+                    Credit: 0, Deposit: 100000
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
