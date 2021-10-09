@@ -1,0 +1,32 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Loan
+{% endblock %}
+
+{% block body %}
+<main>       
+    <div class="tablecontainer">
+        <h2>All Debtors</h2>
+
+        <table>
+            <tr>
+                <th>Debtor ID</th>
+                <th>Name</th>
+                <th>Phone</th>                                
+                <th>Balance</th>
+                <th>Status</th>
+            </tr>
+            {% for debtor in debtors %}
+                <tr>
+                    <td>{{ debtor.id }}</td>
+                    <td>{{ debtor.debtorName }}</td>
+                    <td>{{ debtor.phone }}</td>
+                    <td>500000</td>                                      
+                    <td>Due</td>
+                </tr>            
+            {% endfor %}
+        </table>
+    </div>
+</main>
+{% endblock %}

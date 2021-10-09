@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
+from django.contrib.auth.decorators import login_required
 from .models import *
 
 # Create your views here.
@@ -10,8 +11,30 @@ def index(request):
     else:
         return redirect("login")
 
+@login_required(login_url='login')
 def loan(request):
+
     return render(request, "app/loan.html")
+
+@login_required(login_url='login')
+def debtor(request):
+    debtors = Debtor.objects.filter(lender_id=request.user.id)    
+    return render(request, "app/debtor.html",{
+        "debtors": debtors,
+    }) 
+
+@login_required(login_url='login')
+def newdebtor(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        phone = request.POST['phone']
+        address = request.POST['address']
+
+        new_debtor = Debtor.objects.create(debtorName=name, phone=phone, address=address, lender=request.user.id)
+        new_debtor.save()
+        return redirect("debtor")
+    else:
+        return render(request, "app/newdebtor.html")
 
 def credit(request):
     if request.method == 'POST':

@@ -1,14 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>loan Status</title>
-</head>
-<body>
-    table
-    <a href="{% url 'credit' %}">Loan Form</a>
-    <a href="{% url 'deposit' %}">Deposit Form</a>
-</body>
-</html>
+{% extends "app/layout.html" %}
+
+{% block title %}
+Loan
+{% endblock %}
+
+{% block body %}
+<main>       
+    <div class="tablecontainer">
+        <h2>Loan Status</h2>
+
+        <table>
+            <tr>
+                <th>Debtor ID</th>
+                <th>Date</th>
+                <th>Name & Description</th>
+                <th>Credit</th>
+                <th>Deposit</th>
+                <th>Credit Balance</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>R0001</td>
+                <td>02-02-2021</td>
+                <td>Raju</td>
+                <td>500000</td>
+                <td>0</td>
+                <td>500000</td>
+                <td>Due</td>
+            </tr>
+            <tr>
+                <td>R0001</td>
+                <td>03-02-2021</td>
+                <td>Raju</td>
+                <td>500000</td>
+                <td>250000</td>
+                <td>250000</td>
+                <td>Due</td>
+            </tr>
+            <tr>
+                <td>R0001</td>
+                <td>04-02-2021</td>
+                <td>Raju</td>
+                <td>500000</td>
+                <td>250000</td>
+                <td>0</td>
+                <td>Paid</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="restablecontainer">
+        <div class="tblrow">
+            R0001 | Raju | Paid <br />
+            Total Balance: 5000000 <br />
+            Credit: 0, Deposit: 100000
+        </div>
+        <div class="tblrow">
+            R0001 | Raju | Paid <br />
+            Total Balance: 5000000 <br />
+            Credit: 0, Deposit: 100000
+        </div>
+        <div class="tblrow">
+            R0001 | Raju | Paid <br />
+            Total Balance: 5000000 <br />
+            Credit: 0, Deposit: 100000
+        </div>
+    </div>
+</main>
+{% endblock %}
