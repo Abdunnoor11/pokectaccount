@@ -159,6 +159,29 @@ th {
     display: none;
 }
 
+/* Debtor Profile page */
+.profile{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 35px 0 0 10px;
+}
+.profile img{ 
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 0 50px;
+}
+
+.mainprofile{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (max-width: 700px) {
     nav {
         padding: 10px 25px;
@@ -207,5 +230,6 @@ th {
         border-radius: 15px;
         margin: 20px 0;
         padding: 20px;
+        min-width: 240px;
     }
 }

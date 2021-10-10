@@ -18,10 +18,10 @@ def loan(request):
 
 @login_required(login_url='login')
 def debtor(request):
-    debtors = Debtor.objects.filter(lender_id=request.user.id)    
+    debtors = Debtor.objects.filter(lender_id=request.user.id)        
     return render(request, "app/debtor.html",{
         "debtors": debtors,
-    }) 
+    })
 
 @login_required(login_url='login')
 def newdebtor(request):
@@ -30,11 +30,19 @@ def newdebtor(request):
         phone = request.POST['phone']
         address = request.POST['address']
 
-        new_debtor = Debtor.objects.create(debtorName=name, phone=phone, address=address, lender=request.user.id)
+        new_debtor = Debtor.objects.create(debtorName=name, phone=phone, address=address, lender=request.user)
         new_debtor.save()
         return redirect("debtor")
     else:
         return render(request, "app/newdebtor.html")
+
+# @login_required(login_url='login')
+def debtorprofile(request, id):
+    profile = Debtor.objects.get(id=id)
+
+    return render(request, "app/debtorprofile.html",{
+        "profile":profile,
+    })
 
 def credit(request):
     if request.method == 'POST':

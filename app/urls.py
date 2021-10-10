@@ -10,7 +10,8 @@ urlpatterns = [
 
     path('loan/', views.loan, name='loan'),    
     path('newdebtor/', views.newdebtor, name='newdebtor'),    
-    path('debtor/', views.debtor, name='debtor'),    
+    path('debtor/', views.debtor, name='debtor'),
+    path('debtorprofile/<int:id>', views.debtorprofile, name='debtorprofile'),
 
     path('credit/', views.credit, name='credit'),
     path('deposit/', views.deposit, name='deposit'),

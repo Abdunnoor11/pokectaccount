@@ -19,14 +19,23 @@ Loan
             </tr>
             {% for debtor in debtors %}
                 <tr>
-                    <td>{{ debtor.id }}</td>
-                    <td>{{ debtor.debtorName }}</td>
+                    <td>{{ debtor }}</td>
+                    <td> <a style="color: black;" href="{% url 'debtorprofile' debtor.id %}"> {{ debtor.debtorName }}</a> </td>
                     <td>{{ debtor.phone }}</td>
                     <td>500000</td>                                      
-                    <td>Due</td>
+                    <a href=""><td>Due</td></a>                    
                 </tr>            
             {% endfor %}
         </table>
+    </div>
+    <div class="restablecontainer">
+        {% for debtor in debtors %}
+            <div class="tblrow">
+                {{ debtor }} | <a style="color: black;" href="{% url 'debtorprofile' debtor.id %}"> {{ debtor.debtorName }}</a> | Paid <br />
+                {{ debtor.phone }} <br />
+            </div>
+        {% endfor %}
+
     </div>
 </main>
 {% endblock %}
