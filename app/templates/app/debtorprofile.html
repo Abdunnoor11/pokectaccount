@@ -135,16 +135,29 @@ Profile
         <h2>Loan Status</h2>
 
         <table>            
-            <tr>
-                <th>Depter ID</th>
+            <tr>                
                 <th>Date</th>
                 <th>Name & Description</th>
-                <th>Credit</th>
+                <th>Loan</th>
                 <th>Deposit</th>
                 <th>Credit Balance</th>
                 <th>Status</th>
             </tr>           
-
+            {% for account in accounts %}
+              <tr>
+                <td>{{ account.date }}</td>
+                <td>{{ account.description }}</td>
+                <td>{{ account.loan }}</td>
+                <td>{{ account.deposit }}</td>
+                <td>{{ account.balance }}</td>
+                {% if account.status %}
+                  <td>Paid</td>                  
+                {% else %}  
+                <td>Due</td>
+                {% endif %}
+                  
+              </tr>
+            {% endfor %}
         </table>
     </div>
 
@@ -152,7 +165,7 @@ Profile
         <div class="tblrow">
             R0001 | Raju | Paid <br />
             Total Balance: 5000000 <br />
-            Credit: 0, Deposit: 100000
+            Loan: 0, Deposit: 100000
         </div>
 
     </div>
@@ -163,11 +176,14 @@ Profile
       <div class="modal-body">
         <span class="close">&times;</span>
         <h3>Loan</h3>
-        <form action="">
+        <form action="{% url 'accounts' profile.id 'loan' %}" method="post">
+          {% csrf_token %}
             <label for="description">Description</label>
-            <input type="text"><br>
+            <input type="text" name="description"><br>
             <label for="amount">Amount</label>
-            <input type="number"><br>
+            <input type="number" name="loan"><br>
+            <label for="date">Date</label>
+            <input type="date" name="date" ><br>
             <input type="submit" value="submit">
         </form>        
       </div>
@@ -179,11 +195,14 @@ Profile
       <div class="modal-body">
         <span class="close">&times;</span>
         <h3>Deposit</h3>
-        <form action="">
+        <form action="{% url 'accounts' profile.id 'deposit' %}" method="post">
+          {% csrf_token %}
             <label for="description">Description</label>
-            <input type="text"><br>
+            <input type="text" name="description"><br>
             <label for="amount">Amount</label>
-            <input type="number"><br>
+            <input type="number" name="deposit"><br>
+            <label for="date">Date</label>
+            <input type="date" name="date" ><br>
             <input type="submit" value="submit">
         </form>
       </div>

@@ -39,35 +39,38 @@ def newdebtor(request):
 # @login_required(login_url='login')
 def debtorprofile(request, id):
     profile = Debtor.objects.get(id=id)
-
+    account = Account.objects.filter(debtor=profile)
+    # print(account[0].balance)
     return render(request, "app/debtorprofile.html",{
-        "profile":profile,
+        "profile": profile,
+        "accounts": account,
     })
 
-def credit(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        credit = request.POST['credit']
+def accounts(request, id, string):
+    profile = Debtor.objects.get(id=id)
+    account = Account.objects.filter(debtor=profile).last()
+    print(account.balance)
 
-        new_credit = Credit.objects.create(nameDescription = name, credit = credit)
-        new_credit.save()
-        return redirect("loan")
+    if request.method == 'POST':
+        if string == 'loan':            
+            loan = request.POST['loan']            
+            balance = int(loan) + account.balance
+            deposit = 0
+        else:            
+            loan = 0
+            deposit = request.POST['deposit']            
+            balance = account.balance - int(deposit)
+        
+        description = request.POST['description']
+        date = request.POST['date']
+        
+        ac = Account.objects.create(debtor=profile, description=description, loan=loan, deposit=deposit, balance = balance, date=date)
+        ac.save()        
+        
+        return redirect("debtorprofile", id)
     else:
         return render(request, "app/loanform.html")
 
-def deposit(request):
-    if request.method == 'POST':        
-        creditid = request.POST['creditid']
-        deposit = request.POST['deposit']
-        print(creditid, deposit)
-        # new_deposit = deposit.objects.create(nameDescription = creditid, credit = credit)
-        # new_credit.save()
-        return redirect("deposit")
-    else:
-        allcredit = Credit.objects.all()        
-        return render(request, "app/depositform.html",{
-            "allcredit": allcredit,
-        })
 
 def login(request):
     if request.method == 'POST':
