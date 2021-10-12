@@ -39,7 +39,8 @@ def newdebtor(request):
 # @login_required(login_url='login')
 def debtorprofile(request, id):
     profile = Debtor.objects.get(id=id)
-    account = Account.objects.filter(debtor=profile)
+    account = Account.objects.filter(debtor=profile).order_by('-date')
+
     # print(account[0].balance)
     return render(request, "app/debtorprofile.html",{
         "profile": profile,
@@ -65,6 +66,7 @@ def accounts(request, id, string):
         date = request.POST['date']
         
         ac = Account.objects.create(debtor=profile, description=description, loan=loan, deposit=deposit, balance = balance, date=date)
+        ac.status = True if balance == 0 else False        
         ac.save()        
         
         return redirect("debtorprofile", id)

@@ -1,4 +1,6 @@
 {% extends "app/layout.html" %} 
+<!-- {% load static %} -->
+
 {% block title %} 
 Profile 
 {% endblock %} 
@@ -100,7 +102,7 @@ Profile
 <main>
     <div class="profile">
         <div class="mainprofile">
-            <img src="avatar.jpg" alt="Avatar" class="avatar" />
+            <img src="{% static 'app/img/avatar.png' %}" alt="Avatar" class="avatar" />
             <div class="userprofile">
                 <h4>{{ profile }}</h4>
                 <h2>{{ profile.debtorName }}</h2>
