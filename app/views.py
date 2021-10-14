@@ -13,9 +13,10 @@ def index(request):
 
 @login_required(login_url='login')
 def loan(request):
-    profile = Debtor.objects.get(lender=request.user.id)
-    accounts = Account.objects.filter(debtor=profile).order_by('-date')
-    print(accounts)
+    profile = Debtor.objects.filter(lender=request.user.id).all()    
+    accounts = Account.objects.filter(debtor__in=profile).order_by('-date')
+
+    
     return render(request, "app/loan.html",{
         "accounts":accounts,
     })
@@ -43,7 +44,7 @@ def newdebtor(request):
 @login_required(login_url='login')
 def debtorprofile(request, id):
     profile = Debtor.objects.get(id=id)
-    account = Account.objects.filter(debtor=profile).order_by('-date')
+    account = Account.objects.filter(debtor=profile).order_by('date')
 
     # print(account[0].balance)
     return render(request, "app/debtorprofile.html",{
