@@ -13,8 +13,12 @@ def index(request):
 
 @login_required(login_url='login')
 def loan(request):
-
-    return render(request, "app/loan.html")
+    profile = Debtor.objects.get(lender=request.user.id)
+    accounts = Account.objects.filter(debtor=profile).order_by('-date')
+    print(accounts)
+    return render(request, "app/loan.html",{
+        "accounts":accounts,
+    })
 
 @login_required(login_url='login')
 def debtor(request):
@@ -36,7 +40,7 @@ def newdebtor(request):
     else:
         return render(request, "app/newdebtor.html")
 
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def debtorprofile(request, id):
     profile = Debtor.objects.get(id=id)
     account = Account.objects.filter(debtor=profile).order_by('-date')
@@ -47,20 +51,25 @@ def debtorprofile(request, id):
         "accounts": account,
     })
 
+@login_required(login_url='login')
 def accounts(request, id, string):
     profile = Debtor.objects.get(id=id)
     account = Account.objects.filter(debtor=profile).last()
-    print(account.balance)
+
+    if account == None:
+        balance = 0
+    else:
+        balance = account.balance 
 
     if request.method == 'POST':
         if string == 'loan':            
             loan = request.POST['loan']            
-            balance = int(loan) + account.balance
+            balance = int(loan) + balance
             deposit = 0
         else:            
             loan = 0
             deposit = request.POST['deposit']            
-            balance = account.balance - int(deposit)
+            balance = balance - int(deposit)
         
         description = request.POST['description']
         date = request.POST['date']

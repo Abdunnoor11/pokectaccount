@@ -14,57 +14,37 @@ Loan
                 <th>Debtor ID</th>
                 <th>Date</th>
                 <th>Name & Description</th>
-                <th>Credit</th>
+                <th>Loan</th>
                 <th>Deposit</th>
                 <th>Credit Balance</th>
                 <th>Status</th>
             </tr>
+            {% for account in accounts %}
             <tr>
-                <td>R0001</td>
-                <td>02-02-2021</td>
-                <td>Raju</td>
-                <td>500000</td>
-                <td>0</td>
-                <td>500000</td>
+                <td>{{ account.debtor }}</td>
+                <td>{{ account.date }}</td>
+                <td>{{ account.description }}</td>
+                <td>{{ account.loan }}</td>                
+                <td>{{ account.deposit }}</td>                                      
+                <td>{{ account.balance }}</td>                                      
+                {% if account.status %}
+                  <td>Paid</td>                  
+                {% else %}  
                 <td>Due</td>
+                {% endif %}                                     
             </tr>
-            <tr>
-                <td>R0001</td>
-                <td>03-02-2021</td>
-                <td>Raju</td>
-                <td>500000</td>
-                <td>250000</td>
-                <td>250000</td>
-                <td>Due</td>
-            </tr>
-            <tr>
-                <td>R0001</td>
-                <td>04-02-2021</td>
-                <td>Raju</td>
-                <td>500000</td>
-                <td>250000</td>
-                <td>0</td>
-                <td>Paid</td>
-            </tr>
+            {% endfor %}
         </table>
     </div>
 
     <div class="restablecontainer">
+        {% for account in accounts %}
         <div class="tblrow">
-            R0001 | Raju | Paid <br />
-            Total Balance: 5000000 <br />
-            Credit: 0, Deposit: 100000
+            {{ account.debtor }} | {{ account.description }} | {% if account.status %} Paid  {% else %} Due {% endif %}<br />
+            Balance: {{ account.balance }} <br />
+            Loan: {{ account.loan }}, Deposit: {{ account.deposit }}
         </div>
-        <div class="tblrow">
-            R0001 | Raju | Paid <br />
-            Total Balance: 5000000 <br />
-            Credit: 0, Deposit: 100000
-        </div>
-        <div class="tblrow">
-            R0001 | Raju | Paid <br />
-            Total Balance: 5000000 <br />
-            Credit: 0, Deposit: 100000
-        </div>
+        {% endfor %}
     </div>
 </main>
 {% endblock %}
