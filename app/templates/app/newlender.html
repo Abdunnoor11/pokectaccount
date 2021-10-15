@@ -1,0 +1,18 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+New Lender
+{% endblock %}
+
+{% block body %}
+<main>    
+    <form class="login" action="{% url 'newlender' %}" method="POST">
+        {% csrf_token %}
+        <h3>New Lender</h3>
+        <input type="text" name="name" id="" placeholder="Lender Name"><br>
+        <input type="text" name="phone" id="" placeholder="Phone"><br>
+        <input type="text" name="address" id="" placeholder="Address"><br>                
+        <input type="submit" value="Create">
+    </form>
+</main>
+{% endblock %}

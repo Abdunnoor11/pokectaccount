@@ -84,6 +84,79 @@ def accounts(request, id, string):
         return render(request, "app/loanform.html")
 
 
+
+@login_required(login_url='login')
+def invest(request):
+    profile = Lender.objects.filter(investor=request.user.id).all()    
+    accounts = Invest.objects.filter(lender__in=profile).order_by('-date')
+
+    
+    return render(request, "app/invest.html",{
+        "accounts":accounts,
+    })
+
+@login_required(login_url='login')
+def newlender(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        phone = request.POST['phone']
+        address = request.POST['address']
+
+        new_lender = Lender.objects.create(lenderName=name, phone=phone, address=address, investor=request.user)
+        new_lender.save()
+        return redirect("debtor")
+    else:
+        return render(request, "app/newlender.html")
+
+@login_required(login_url='login')
+def lender(request):
+    lenders = Lender.objects.filter(investor_id=request.user.id)        
+    return render(request, "app/lender.html",{
+        "lenders": lenders,
+    })
+
+@login_required(login_url='login')
+def lenderprofile(request, id):
+    profile = Lender.objects.get(id=id)
+    account = Invest.objects.filter(lender=profile).order_by('date')
+
+    # print(account[0].balance)
+    return render(request, "app/lenderprofile.html",{
+        "profile": profile,
+        "accounts": account,
+    })
+
+@login_required(login_url='login')
+def lenderaccounts(request, id, string):
+    profile = Lender.objects.get(id=id)
+    account = Invest.objects.filter(lender=profile).last()
+
+    if account == None:
+        balance = 0
+    else:
+        balance = account.balance 
+
+    if request.method == 'POST':
+        if string == 'loan':            
+            loan = request.POST['loan']            
+            balance = int(loan) + balance
+            deposit = 0
+        else:            
+            loan = 0
+            deposit = request.POST['deposit']            
+            balance = balance - int(deposit)
+        
+        description = request.POST['description']
+        date = request.POST['date']
+        
+        ac = Invest.objects.create(lender=profile, description=description, invest=loan, retern=deposit, balance = balance, date=date)
+        ac.status = True if balance == 0 else False        
+        ac.save()        
+        
+        return redirect("lenderprofile", id)
+    else:
+        return render(request, "app/loanform.html")
+
 def login(request):
     if request.method == 'POST':
         name = request.POST['name']

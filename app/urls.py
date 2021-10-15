@@ -13,5 +13,11 @@ urlpatterns = [
     path('debtor/', views.debtor, name='debtor'),
     path('debtorprofile/<int:id>', views.debtorprofile, name='debtorprofile'),
 
+    path('invest/', views.invest, name='invest'),    
+    path('newlender/', views.newlender, name='newlender'),    
+    path('lender/', views.lender, name='lender'),
+    path('lenderprofile/<int:id>', views.lenderprofile, name='lenderprofile'),
+
     path('accounts/<int:id>/<str:string>', views.accounts, name='accounts'),    
+    path('lenderaccounts/<int:id>/<str:string>', views.lenderaccounts, name='lenderaccounts'),    
 ]

@@ -1,0 +1,41 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Lenders
+{% endblock %}
+
+{% block body %}
+<main>       
+    <div class="tablecontainer">
+        <h2>All Lenders</h2>
+
+        <table>
+            <tr>
+                <th>lender ID</th>
+                <th>Name</th>
+                <th>Phone</th>                                
+                <th>Balance</th>
+                <th>Status</th>
+            </tr>
+            {% for lender in lenders %}
+                <tr>
+                    <td>{{ lender }}</td>
+                    <td> <a style="color: black;" href="{% url 'lenderprofile' lender.id %}"> {{ lender.lenderName }}</a> </td>
+                    <td>{{ lender.phone }}</td>
+                    <td>500000</td>                                      
+                    <a href=""><td>Due</td></a>                    
+                </tr>            
+            {% endfor %}
+        </table>
+    </div>
+    <div class="restablecontainer">
+        {% for lender in lenders %}
+            <div class="tblrow">
+                {{ lender }} | <a style="color: black;" href="{% url 'lenderprofile' lender.id %}"> {{ lender.lenderName }}</a> | Paid <br />
+                {{ lender.phone }} <br />
+            </div>
+        {% endfor %}
+
+    </div>
+</main>
+{% endblock %}

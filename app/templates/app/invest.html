@@ -1,0 +1,50 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Invest
+{% endblock %}
+
+{% block body %}
+<main>       
+    <div class="tablecontainer">
+        <h2>Invest Status</h2>
+
+        <table>
+            <tr>
+                <th>Lender ID</th>
+                <th>Date</th>
+                <th>Name & Description</th>
+                <th>Invest</th>
+                <th>Return</th>
+                <th>Credit Balance</th>
+                <th>Status</th>
+            </tr>
+            {% for account in accounts %}
+            <tr>
+                <td>{{ account.lender }}</td>
+                <td>{{ account.date }}</td>
+                <td>{{ account.description }}</td>
+                <td>{{ account.invest }}</td>                
+                <td>{{ account.retern }}</td>                                      
+                <td>{{ account.balance }}</td>                                      
+                {% if account.status %}
+                  <td>Paid</td>                  
+                {% else %}  
+                <td>Due</td>
+                {% endif %}                                     
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="restablecontainer">
+        {% for account in accounts %}
+        <div class="tblrow">
+            {{ account.lender }} | {{ account.description }} | {% if account.status %} Paid  {% else %} Due {% endif %}<br />
+            Balance: {{ account.balance }} <br />
+            Loan: {{ account.invest }}, Deposit: {{ account.retern }}
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

@@ -105,7 +105,7 @@ Profile
             <img src="{% static 'app/img/avatar.png' %}" alt="Avatar" class="avatar" />
             <div class="userprofile">
                 <h4>{{ profile }}</h4>
-                <h2>{{ profile.debtorName }}</h2>
+                <h2>{{ profile.lenderName }}</h2>
                 <p>{{ profile.phone }}</p>
                 <p>{{ profile.address }}</p>
                 <p></p>
@@ -128,8 +128,8 @@ Profile
             </table>
         </div>
         <div class="buttons">
-            <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Loan</button>
-            <button type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">Deposit</button>
+            <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Invest</button>
+            <button type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">Return</button>
         </div>
     </div>
 
@@ -140,17 +140,17 @@ Profile
             <tr>                
                 <th>Date</th>
                 <th>Name & Description</th>
-                <th>Loan</th>
-                <th>Deposit</th>
-                <th>Credit Balance</th>
+                <th>Invest</th>
+                <th>Return</th>
+                <th>Balance</th>
                 <th>Status</th>
             </tr>           
             {% for account in accounts %}
               <tr>
                 <td>{{ account.date }}</td>
                 <td>{{ account.description }}</td>
-                <td>{{ account.loan }}</td>
-                <td>{{ account.deposit }}</td>
+                <td>{{ account.invest }}</td>
+                <td>{{ account.retern }}</td>
                 <td>{{ account.balance }}</td>
                 {% if account.status %}
                   <td>Paid</td>                  
@@ -178,8 +178,8 @@ Profile
     <div class="modal-content">
       <div class="modal-body">
         <span class="close">&times;</span>
-        <h3>Loan</h3>
-        <form action="{% url 'accounts' profile.id 'loan' %}" method="post">
+        <h3>Invest</h3>
+        <form action="{% url 'lenderaccounts' profile.id 'loan' %}" method="post">
           {% csrf_token %}
             <label for="description">Description</label>
             <input type="text" name="description"><br>
@@ -197,8 +197,8 @@ Profile
     <div class="modal-content">
       <div class="modal-body">
         <span class="close">&times;</span>
-        <h3>Deposit</h3>
-        <form action="{% url 'accounts' profile.id 'deposit' %}" method="post">
+        <h3>Return</h3>
+        <form action="{% url 'lenderaccounts' profile.id 'deposit' %}" method="post">
           {% csrf_token %}
             <label for="description">Description</label>
             <input type="text" name="description"><br>

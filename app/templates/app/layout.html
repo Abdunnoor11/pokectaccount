@@ -27,9 +27,9 @@
                 <a href="{% url 'loan' %}">Loan</a>                     
                          <a class="sub" href="{% url 'debtor' %}">Debtor</a>
                          <a class="sub" href="{% url 'newdebtor' %}">New Debtor</a>                                      
-                <a href="">Invest</a>                 
-                     <a class="sub" href="">Lender</a>
-                     <a class="sub" href="">New Lender</a>                             
+                <a href="{% url 'invest' %}">Invest</a>                 
+                     <a class="sub" href="{% url 'lender' %}">Lender</a>
+                     <a class="sub" href="{% url 'newlender' %}">New Lender</a>                             
         </div>  
         {% block body %}{% endblock %}
     </body>
