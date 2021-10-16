@@ -1,0 +1,45 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Land Details
+{% endblock %}
+
+{% block body %}
+<main>       
+    <div class="tablecontainer">
+        <h2>Land Details</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Status</th>                
+            </tr>
+            <!-- {% for account in accounts %} -->
+            <tr>
+                <td>{{ account.debtor }}</td>
+                <td>{{ account.date }}</td>
+                <td>{{ account.description }}</td>
+                <td>{{ account.loan }}</td>                                                   
+                {% if account.status %}
+                  <td>Paid</td>                  
+                {% else %}  
+                <td>Due</td>
+                {% endif %}                                     
+            </tr>
+            <!-- {% endfor %} -->
+        </table>
+    </div>
+
+    <div class="restablecontainer">
+        <!-- {% for account in accounts %} -->
+        <div class="tblrow">
+            {{ account.debtor }} | {{ account.description }} | {% if account.status %} Paid  {% else %} Due {% endif %}<br />
+            Balance: {{ account.balance }} <br />
+            Loan: {{ account.loan }}, Deposit: {{ account.deposit }}
+        </div>
+        <!-- {% endfor %} -->
+    </div>
+</main>
+{% endblock %}

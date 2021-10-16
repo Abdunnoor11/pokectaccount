@@ -21,9 +21,9 @@
         <div class="menu" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>            
                 <a href="{% url 'index' %}">Dashboard</a>
-                <a href="">Land</a>                     
-                         <a class="sub" href="">Land Payment</a>
-                         <a class="sub" href="">Land Details</a>                                  
+                <a href="">Land Record</a>                     
+                         <a class="sub" href="{% url 'land' %}">Land Details</a>                                                                           
+                         <a class="sub" href="{% url 'newlandowner' %}">New Land Owner</a>                                                                           
                 <a href="{% url 'loan' %}">Loan</a>                     
                          <a class="sub" href="{% url 'debtor' %}">Debtor</a>
                          <a class="sub" href="{% url 'newdebtor' %}">New Debtor</a>                                      

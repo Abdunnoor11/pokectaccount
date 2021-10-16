@@ -157,6 +157,9 @@ def lenderaccounts(request, id, string):
     else:
         return render(request, "app/loanform.html")
 
+def land(request):
+    return render(request, "app/landdetails.html")
+
 def login(request):
     if request.method == 'POST':
         name = request.POST['name']
