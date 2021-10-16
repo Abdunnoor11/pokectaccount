@@ -16,19 +16,18 @@ Land Details
                 <th>Phone</th>
                 <th>Status</th>                
             </tr>
-            <!-- {% for account in accounts %} -->
+            {% for landowner in landowners %}
             <tr>
-                <td>{{ account.debtor }}</td>
-                <td>{{ account.date }}</td>
-                <td>{{ account.description }}</td>
-                <td>{{ account.loan }}</td>                                                   
-                {% if account.status %}
+                <td>{{ landowner }}</td>
+                <td>{{ landowner.Landownername }}</td>
+                <td>{{ landowner.phone }}</td>                                                                
+                {% if landowner.status %}
                   <td>Paid</td>                  
                 {% else %}  
                 <td>Due</td>
                 {% endif %}                                     
             </tr>
-            <!-- {% endfor %} -->
+            {% endfor %}
         </table>
     </div>
 

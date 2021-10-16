@@ -19,7 +19,8 @@ urlpatterns = [
     path('lenderprofile/<int:id>', views.lenderprofile, name='lenderprofile'),
 
     path('land/', views.land, name='land'),
-    
+    path('newlandowner/', views.newlandowner, name='newlandowner'),
+
     path('accounts/<int:id>/<str:string>', views.accounts, name='accounts'),    
     path('lenderaccounts/<int:id>/<str:string>', views.lenderaccounts, name='lenderaccounts'),    
 ]

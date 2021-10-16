@@ -157,8 +157,28 @@ def lenderaccounts(request, id, string):
     else:
         return render(request, "app/loanform.html")
 
+@login_required(login_url='login')
 def land(request):
-    return render(request, "app/landdetails.html")
+    landowners = Landowner.objects.filter(landbuyer_id=request.user.id)
+    print("this", landowners)
+
+    return render(request, "app/landdetails.html",{
+        "landowners": landowners,
+    })
+
+@login_required(login_url='login')
+def newlandowner(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        phone = request.POST['phone']
+
+        new_Landowner = Landowner.objects.create(Landownername=name, phone=phone, landbuyer=request.user)
+        new_Landowner.save()
+
+        return redirect("land")
+    else:
+        return render(request, "app/newlandowner.html")
+    
 
 def login(request):
     if request.method == 'POST':
