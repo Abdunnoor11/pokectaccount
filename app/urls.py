@@ -21,6 +21,7 @@ urlpatterns = [
     path('land/', views.land, name='land'),
     path('newlandowner/', views.newlandowner, name='newlandowner'),
     path('landownerprofile/<int:id>', views.landownerprofile, name='landownerprofile'),
+    path('newland/<int:id>', views.newland, name='newland'),
 
     path('accounts/<int:id>/<str:string>', views.accounts, name='accounts'),    
     path('lenderaccounts/<int:id>/<str:string>', views.lenderaccounts, name='lenderaccounts'),    

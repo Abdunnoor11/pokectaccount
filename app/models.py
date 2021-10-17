@@ -54,9 +54,9 @@ class Landowner(models.Model):
 class Land(models.Model):
     landowner = models.ForeignKey(Landowner, on_delete=models.SET_NULL, blank=True, null=True)
     landQTY = models.IntegerField(default=0, null=True, blank=True)
-    rsdag = models.TextField(blank=True, null= True)
+    rsdag = models.CharField(max_length=50)
     perDprice = models.IntegerField(default=0, null=True, blank=True)
-    mouja = models.TextField(blank=True, null= True)
+    mouja = models.CharField(max_length=50)
 
 class Advance(models.Model)    :
     land = models.ForeignKey(Land, on_delete=models.SET_NULL, blank=True, null=True)

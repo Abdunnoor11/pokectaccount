@@ -167,6 +167,19 @@ def land(request):
     })
 
 @login_required(login_url='login')
+def newland(request, id):
+    if request.method == "POST":
+        mouja = request.POST['mouja']
+        rsdag = request.POST['rsdag']
+        landQTY = request.POST['landQTY']
+        perDprice = request.POST['perDprice']
+
+        newland = Land.objects.create(landowner_id=id, mouja=mouja, rsdag=rsdag, landQTY=landQTY, perDprice=perDprice)
+        newland.save()
+
+    return redirect("landownerprofile", id)
+
+@login_required(login_url='login')
 def newlandowner(request):
     if request.method == "POST":
         name = request.POST['name']
