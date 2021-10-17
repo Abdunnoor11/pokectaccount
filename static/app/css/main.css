@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Serif;
+}
+body {
+    background-color: #f5eded;
+    max-width: 1400px;
+    margin: auto;
+}
+nav {
+    background-color: #212121;
+    color: white;
+    display: flex;
+
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+.fa {
+    height: 0px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.login {
+    background-color: #d9cab3;
+    box-shadow: 0px 0px 25px 0.1px #2c2b2a;
+    margin: 15%;
+    padding: 2% 3%;
+    text-align: center;
+    border-radius: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.login:hover {
+    border: 2px solid transparent;
+}
+.login h3 {
+    font-size: 35px;
+    margin-bottom: 10%;
+}
+
+.login input[type="text"],
+[type="password"] {
+    margin: 5px 0px 0px 0px;
+    border: 2px solid #6d9886;
+    border-radius: 25px;
+    padding: 5px 15px;
+    font-size: 20px;
+}
+
+.login input[type="submit"] {
+    padding: 5% 9%;
+    margin: 10% 0 0 0;
+    font-size: 20px;
+    border: none;
+    box-shadow: 0px 0px 50px 7px #e2d4c0;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu {
+    position: fixed;
+    z-index: 1;
+    background-color: #111;
+    color: #ffff;
+    padding: 5%;
+    overflow-x: hidden;
+    display: none;
+    margin-top: 5%;
+}
+
+.sub {
+    margin-left: 25px;
+}
+ul {
+    margin-left: 5%;
+}
+
+.menu a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #ffffff;
+    display: block;
+}
+
+.menu a:hover {
+    color: #d3d3d3;
+}
+
+.menu .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.section {
+    /* background-color: #6d9886; */
+    margin: 20px;
+    padding: 15px;
+    min-width: 250px;
+    text-align: center;
+}
+
+.subsection {
+    background-color: #e2d4c0;
+    box-shadow: 0 0 10px 0px #111;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 25px;
+}
+
+.tablecontainer {
+    text-align: center;
+    margin: 10%;
+    width: 100%;
+}
+
+.tablecontainer h2 {
+    margin: 25px;
+}
+
+.tablecontainer table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+th {
+    background-color: #757575;
+    color: white;
+}
+
+.restablecontainer {
+    display: none;
+}
+
+/* Debtor Profile page */
+.profile{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 35px 0 0 10px;
+}
+.profile img{ 
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 0 50px;
+}
+
+.mainprofile{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+    nav {
+        padding: 10px 25px;
+    }
+    .login {
+        text-align: center;
+        margin: 35% 10%;
+        font-size: 5px;
+    }
+    .login h3 {
+        font-size: 25px;
+    }
+
+    .menu {
+        width: 100%;
+        height: 100%;
+        margin-top: 0%;
+        /* padding: 5%; */
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+
+    ol {
+        margin: 15% 0 0 25%;
+    }
+
+    .menu .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 0px;
+    }
+
+    .tablecontainer {
+        display: none;
+    }
+
+    .restablecontainer {
+        display: block;
+        width: 80%;
+    }
+
+    .tblrow {
+        background-color: rgb(255, 244, 225);
+        border-radius: 15px;
+        margin: 20px 0;
+        padding: 20px;
+        min-width: 240px;
+    }
+}

@@ -18,8 +18,8 @@ Land Details
             </tr>
             {% for landowner in landowners %}
             <tr>
-                <td>{{ landowner }}</td>
-                <td>{{ landowner.Landownername }}</td>
+                <td>{{ landowner }}</td>                
+                <td> <a style="color: black;" href="{% url 'landownerprofile' landowner.id %}"> {{ landowner.Landownername }}</a> </td>
                 <td>{{ landowner.phone }}</td>                                                                
                 {% if landowner.status %}
                   <td>Paid</td>                  

@@ -178,7 +178,24 @@ def newlandowner(request):
         return redirect("land")
     else:
         return render(request, "app/newlandowner.html")
+ 
+
+@login_required(login_url='login')
+def landownerprofile(request, id):
+    profile = Landowner.objects.get(id=id)
+    print(profile)
+    account = Land.objects.filter(landowner=profile)
+
+    # print(account[0].balance)
+    return render(request, "app/landownerprofile.html",{
+        "profile": profile,
+        "accounts": account,
+    })
+
+@login_required(login_url='login')
+def advance(request, id):
     
+    return redirect("landownerprofile", id)
 
 def login(request):
     if request.method == 'POST':

@@ -20,7 +20,9 @@ urlpatterns = [
 
     path('land/', views.land, name='land'),
     path('newlandowner/', views.newlandowner, name='newlandowner'),
+    path('landownerprofile/<int:id>', views.landownerprofile, name='landownerprofile'),
 
     path('accounts/<int:id>/<str:string>', views.accounts, name='accounts'),    
     path('lenderaccounts/<int:id>/<str:string>', views.lenderaccounts, name='lenderaccounts'),    
+    path('advance/<int:id>/', views.advance, name='advance'),    
 ]
