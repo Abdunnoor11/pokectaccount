@@ -173,6 +173,22 @@ th {
     justify-content: center;
 }
 
+.landcard{
+    background-color: rgb(255, 228, 228);
+    box-shadow: 0 0 20px 1px rgb(165, 165, 165);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;    
+    margin: 10%;
+    width: 100%;
+    padding: 5px;
+}
+
+.card{
+    padding: 10px;
+}
+
 @media (max-width: 700px) {
     nav {
         padding: 10px 25px;
