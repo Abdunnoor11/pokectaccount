@@ -195,19 +195,31 @@ def newlandowner(request):
 
 @login_required(login_url='login')
 def landownerprofile(request, id):
-    profile = Landowner.objects.get(id=id)
-    print(profile)
-    account = Land.objects.filter(landowner=profile)
+    profile = Landowner.objects.get(id=id)    
+    lands = Land.objects.filter(landowner=profile)
+    
+    landdetails = {}
+    for land in lands:
+        advance = Advance.objects.filter(land=land)
+        landdetails[land] = advance
 
-    # print(account[0].balance)
     return render(request, "app/landownerprofile.html",{
         "profile": profile,
-        "accounts": account,
+        "landdetails": landdetails,
     })
 
 @login_required(login_url='login')
-def advance(request, id):
-    
+def advance(request, id, landid):
+    print(id, landid)
+    if request.method == 'POST':
+         advance = request.POST['advance']
+         description = request.POST['description']
+         date = request.POST['date']
+
+    # lands = Land.objects.get(landowner=landid)
+    advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=date)
+    advance.save()
+
     return redirect("landownerprofile", id)
 
 def login(request):

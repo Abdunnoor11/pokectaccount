@@ -58,6 +58,9 @@ class Land(models.Model):
     perDprice = models.IntegerField(default=0, null=True, blank=True)
     mouja = models.CharField(max_length=50)
 
+    def totalprice(self):
+        return self.perDprice * self.landQTY
+    
 class Advance(models.Model)    :
     land = models.ForeignKey(Land, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)

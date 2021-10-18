@@ -1,108 +1,114 @@
-{% extends "app/layout.html" %} 
+{% extends "app/layout.html" %}
 <!-- {% load static %} -->
 
-{% block title %} 
-Profile 
-{% endblock %} 
-
-{% block head %}
+{% block title %} Profile {% endblock %} {% block head %}
 <style>
     body {
-      font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
     }
+
+    .tablecontainer th, td{
+                text-align: center;
+            }
 
     /* The Modal (background) */
     .modal {
-      display: none;
-      /* Hidden by default */
-      position: fixed;
-      /* Stay in place */
-      z-index: 1;
-      /* Sit on top */
-      padding-top: 100px;
-      /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      overflow: auto;
-      /* Enable scroll if needed */
-      background-color: rgb(0, 0, 0);
-      /* Fallback color */
-      background-color: rgba(0, 0, 0, 0.4);
-      /* Black w/ opacity */
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
     }
 
     /* Modal Content */
     .modal-content {
-      position: relative;
-      background-color: #fefefe;
-      margin: auto;
-      padding: 0;
-      border: 1px solid #888;
-      width: 30%;
-      text-align: center;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      -webkit-animation-name: animatetop;
-      -webkit-animation-duration: 0.4s;
-      animation-name: animatetop;
-      animation-duration: 0.4s;
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 30%;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
     }
 
     /* Add Animation */
     @-webkit-keyframes animatetop {
-      from {
-        top: -300px;
-        opacity: 0;
-      }
+        from {
+            top: -300px;
+            opacity: 0;
+        }
 
-      to {
-        top: 0;
-        opacity: 1;
-      }
+        to {
+            top: 0;
+            opacity: 1;
+        }
     }
 
     @keyframes animatetop {
-      from {
-        top: -300px;
-        opacity: 0;
-      }
+        from {
+            top: -300px;
+            opacity: 0;
+        }
 
-      to {
-        top: 0;
-        opacity: 1;
-      }
+        to {
+            top: 0;
+            opacity: 1;
+        }
     }
 
     /* The Close Button */
     .close {
-      color: rgb(0, 0, 0);
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
+        color: rgb(0, 0, 0);
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
     }
 
     .modal-body {
-      padding: 30px 16px;
+        padding: 30px 16px;
     }
 
     @media (max-width: 700px) {
-      .modal-content{
-        width: 100%;
-      }
-    }
-  </style>
-{% endblock %}
+        .modal-content {
+            width: 100%;
+        }
 
-{% block body %}
+        .tablecontainer {
+        display: block;
+    }
+    }
+</style>
+{% endblock %} {% block body %}
 <main>
     <div class="profile">
         <div class="mainprofile">
-            <img src="{% static 'app/img/avatar.png' %}" alt="Avatar" class="avatar" />
+            <img
+                src="{% static 'app/img/avatar.png' %}"
+                alt="Avatar"
+                class="avatar"
+            />
             <div class="userprofile">
                 <h4>{{ profile }}</h4>
                 <h2>{{ profile.Landownername }}</h2>
@@ -128,74 +134,72 @@ Profile
             </table>
         </div>
         <div class="buttons">
-            <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">New Land</button>            
+            <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">
+                New Land
+            </button>
         </div>
     </div>
 
-    <div class="tablecontainer" style="margin: 0 0">
-        <h2>Loan Status</h2>
+    {% for landdetail,v in landdetails.items %}
+      <div class="landcard">
+          <div class="card">Mouja: {{ landdetail.mouja }}</div>
+          <div class="card">R/S Dag: {{ landdetail.rsdag }}</div>
+          <div class="card">Land QTY: {{ landdetail.landQTY }} </div>          
+          <div class="card">Per Decimal Price: {{ landdetail.perDprice }} </div>
+          <div class="card">Total Amount: {{ landdetail.totalprice }} </div>          
+          <div class="card">Due: 200</div>
+          <div class="tablecontainer" style="margin: 0 0; text-align: center">
+              <table>
+                  <tr>
+                      <th>Date</th>
+                      <th>Description</th>
+                      <th>Advance</th>
+                  </tr>
+                  {% for advance in v %}
+                    <tr>
+                        <td>{{ advance.date }}</td>
+                        <td>{{ advance.description }}</td>
+                        <td>{{ advance.advance }}</td>                        
+                    </tr>
+                  {% endfor %}
 
-        <table>            
-            <tr>                
-                <th>Date</th>
-                <th>Name & Description</th>
-                <th>Loan</th>
-                <th>Deposit</th>
-                <th>Credit Balance</th>
-                <th>Status</th>
-            </tr>           
-            {% for account in accounts %}
-              <tr>
-                <td>{{ account.date }}</td>
-                <td>{{ account.description }}</td>
-                <td>{{ account.loan }}</td>
-                <td>{{ account.deposit }}</td>
-                <td>{{ account.balance }}</td>
-                {% if account.status %}
-                  <td>Paid</td>                  
-                {% else %}  
-                <td>Due</td>
-                {% endif %}
-                  
-              </tr>
-            {% endfor %}
-        </table>
-    </div>
+              </table>
+              <form action="{% url 'advance' profile.id landdetail.id %}" method="POST">
+                  {% csrf_token %}
+                  <input type="text" placeholder="Description" name="description"/>
+                  <input type="number" placeholder="Amount" name="advance"/>
+                  <input type="date" placeholder="Amount" name="date"/><br />
+                  <input type="submit" value="Advance" />
+              </form>
+          </div>
+      </div>
+    {% endfor %}
 
-    <div class="restablecontainer">
-      {% for account in accounts %}
-        <div class="tblrow">
-            R0001 | {{ account.description }} | {% if account.status %} Paid  {% else %} Due {% endif %}<br />
-            Balance: {{ account.balance }} <br />
-            Loan: {{ account.loan }}, Deposit: {{ account.deposit }}
-        </div>
-      {% endfor %}
-    </div>
+
 </main>
 <div id="Loan" class="modal">
-    
     <div class="modal-content">
-      <div class="modal-body">
-        <span class="close">&times;</span>
-        <h3>New Land</h3>
-        <form action="{% url 'newland' profile.id %}" method="post">
-          {% csrf_token %}
-            <label for="mouja">Mouja</label>
-            <input type="text" name="mouja"><br>
-            <label for="rsdag">R/S Dag</label>
-            <input type="text" name="rsdag"><br>
-            <label for="landQTY">Land QTY</label>
-            <input type="number" name="landQTY"><br>
-            <label for="perDprice">Per Decimal Price</label>
-            <input type="number" name="perDprice"><br>
+        <div class="modal-body">
+            <span class="close">&times;</span>
+            <h3>New Land</h3>
+            <form action="{% url 'newland' profile.id %}" method="post">
+                {% csrf_token %}
+                <label for="mouja">Mouja</label>
+                <input type="text" name="mouja" /><br />
+                <label for="rsdag">R/S Dag</label>
+                <input type="text" name="rsdag" /><br />
+                <label for="landQTY">Land QTY</label>
+                <input type="number" name="landQTY" /><br />
+                <label for="perDprice">Per Decimal Price</label>
+                <input type="number" name="perDprice" /><br />
 
-            <input type="submit" value="submit">
-        </form>        
-      </div>
+                <input type="submit" value="submit" />
+            </form>
+        </div>
     </div>
-  </div>
+</div>
 
-  <script>
+<script>
     function ModalFunc(btn) {
         if (btn.id == "loanbtn") {
             var modal = document.getElementById("Loan");
@@ -222,4 +226,3 @@ Profile
     }
 </script>
 {% endblock %}
-
