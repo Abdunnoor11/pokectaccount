@@ -7,8 +7,7 @@ Log In
 {% block body %}
 <main>
     <form class="login" action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        <img src="avatar.png" class="avatar">
+        {% csrf_token %}        
         <h3>Log In</h3>
         <input type="text" name="name" placeholder="Enter Username"><br>
         <input type="password" name="password" placeholder="Enter Password"><br>

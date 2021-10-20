@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="res.css" />
         <link rel="stylesheet" href="css/font-awesome.min.css" />
         <title>Debtor Profile</title>
         <style>
@@ -140,51 +141,50 @@
         <main>
             <div class="profile">
                 <div class="mainprofile">
-                    <img src="avater.jpg" alt="Avatar" class="avatar" />
+                    <img src="avater.jpg" alt="Avatar" class="avatar" />                    
                     <div class="userprofile">
                         <h4>R0001</h4>
                         <h2>Imam Ahasan</h2>
                         <p>+880 14852480444</p>
-                        <p>asf ad fssd fas sd uttara 1230 Dhaka</p>
+                        <p>House#11, Road#16, Sector#4 Uttara Model Town, Uttara 1230, Dhaka</p>
                         <p></p>
                     </div>
                 </div>
                 <div class="totaldebitdeposit">
                     <table id="totalid">
                         <tr>
-                            <td>
-                                <h3>Total Debit:</h3>
+                            <td class="lalign">
+                                <h4>Total Debit:</h4>
                             </td>
-                            <td class="amount">
-                                <h3>$32423432</h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3>Total Deposit:</h3>
-                            </td>
-                            <td class="amount">
-                                <h3>$32423432</h3>
+                            <td class="ralign">
+                                <h4>$32423432</h4>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <h3>Due:</h3>
+                            <td class="lalign">
+                                <h4>Total Deposit:</h4>
                             </td>
-                            <td class="amount">
-                                <h3>$35343</h3>
+                            <td class="ralign">
+                                <h4>$32423432</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lalign">
+                                <h4>Due:</h4>
+                            </td>
+                            <td class="ralign">
+                                <h4>$35343</h4>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div class="buttons">
-                    <button
-                        type="button"
+                    <button type="button"
                         onclick="ModalFunc(loanbtn)"
                         id="loanbtn"
                     >
                         Loan
-                    </button>
+                    </button><br>
                     <button
                         type="button"
                         onclick="ModalFunc(depositbtn)"
@@ -194,6 +194,7 @@
                     </button>
                 </div>
             </div>
+            
 
             <!-- <div class="landcard">
                 <div class="card">Mouja: tolna</div>

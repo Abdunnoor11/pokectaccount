@@ -44,12 +44,24 @@ def newdebtor(request):
 @login_required(login_url='login')
 def debtorprofile(request, id):
     profile = Debtor.objects.get(id=id)
-    account = Account.objects.filter(debtor=profile).order_by('date')
+    accounts = Account.objects.filter(debtor=profile).order_by('date')
+    print(accounts[0].loan)
+    total_loan = 0
+    total_depost = 0
+    b = 0
 
-    # print(account[0].balance)
+    for account in accounts:
+        total_loan = total_loan + account.loan
+        total_depost = total_depost + account.deposit
+
+    b = total_loan - total_depost
+    
     return render(request, "app/debtorprofile.html",{
         "profile": profile,
-        "accounts": account,
+        "accounts": accounts,
+        "total_loan": total_loan,
+        "total_deposit": total_depost,
+        "Due": b,      
     })
 
 @login_required(login_url='login')
@@ -104,7 +116,7 @@ def newlender(request):
 
         new_lender = Lender.objects.create(lenderName=name, phone=phone, address=address, investor=request.user)
         new_lender.save()
-        return redirect("debtor")
+        return redirect("lender")
     else:
         return render(request, "app/newlender.html")
 

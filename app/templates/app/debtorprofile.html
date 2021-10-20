@@ -114,16 +114,16 @@ Profile
         <div class="totaldebitdeposit">
             <table id="totalid">
                 <tr>
-                    <td><h3>Total Loan:</h3></td>
-                    <td class="amount"><h3>$32423432</h3></td>
+                    <td><h4 class="lalign">Total Loan:</h4></td>
+                    <td class="ralign"><h4>{{ total_loan }}</h4></td>
                 </tr>
                 <tr>
-                    <td><h3>Total Deposit:</h3></td>
-                    <td class="amount"><h3>$32423432</h3></td>
+                    <td><h4 class="lalign">Total Deposit:</h4></td>
+                    <td class="ralign"><h4> {{ total_deposit }} </h4></td>
                 </tr>
                 <tr>
-                    <td><h3>Due:</h3></td>
-                    <td class="amount"><h3>$35343</h3></td>
+                    <td><h4 class="lalign">Balance:</h4></td>
+                    <td class="ralign"><h4>{{ Due }}</h4></td>
                 </tr>
             </table>
         </div>
@@ -140,9 +140,9 @@ Profile
             <tr>                
                 <th>Date</th>
                 <th>Name & Description</th>
-                <th>Loan</th>
-                <th>Deposit</th>
-                <th>Credit Balance</th>
+                <th class="ralign">Loan</th>
+                <th class="ralign">Deposit</th>
+                <th class="ralign">Balance</th>
                 <th>Status</th>
             </tr>           
             {% for account in accounts %}
@@ -178,7 +178,7 @@ Profile
     <div class="modal-content">
       <div class="modal-body">
         <span class="close">&times;</span>
-        <h3>Loan</h3>
+        <h4>Loan</h4>
         <form action="{% url 'accounts' profile.id 'loan' %}" method="post">
           {% csrf_token %}
             <label for="description">Description</label>
@@ -197,7 +197,7 @@ Profile
     <div class="modal-content">
       <div class="modal-body">
         <span class="close">&times;</span>
-        <h3>Deposit</h3>
+        <h4>Deposit</h4>
         <form action="{% url 'accounts' profile.id 'deposit' %}" method="post">
           {% csrf_token %}
             <label for="description">Description</label>

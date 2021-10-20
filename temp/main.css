@@ -13,10 +13,8 @@ html {
 body {
   max-width: 1400px;
   margin: auto;
-  /* background-color: #fbdf67; */
   background-image: url(back.jpg);
   background-size: cover;
-  /* background-image: #FBDF67, #5BCCF6); */
   font-family: Poppins, Sans-Serif;
   height: 100%;
 }
@@ -55,11 +53,10 @@ main {
 }
 
 /* log in box css */
-
 .login {
   background-color: #000000b7;
   color: white;
-  box-shadow: 0px 0px 25px 1px #c4c4c4;
+  box-shadow: 0px 0px 25px 1px #000000;
   margin: 14%;
   text-align: center;
   border-radius: 5px;
@@ -104,6 +101,9 @@ a {
 
 .login input[type="submit"]:hover {
   background-color: #5bccf6;
+}
+
+.login input[type="submit"]:focus {
   transform: rotate(360deg);
 }
 
@@ -200,113 +200,63 @@ th {
 /* Debtor Profile page */
 .profile {
   background-color: #0000009c;
-  color: #fff;
+  color: #f1f1f1;  
   display: flex;
-  width: 70%;
-  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  margin: 35px 0 100px 10px;
-  border-radius: 0 70px 70px 0;
+  margin: 35px 0;
 }
 
 .mainprofile {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  margin-right: 1%;
-
 }
 
 .mainprofile img {
-  width: 150px;
-  height: 150px;    
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
-  object-fit: cover;  
-  transform: translateX(-75px);  
+  object-fit: cover;
+  transform: translateX(-50%);
 }
 
-.totaldebitdeposit{
-  margin-right: 1%;
+.userprofile {
+  padding: 25px;
 }
 
-.totaldebitdeposit td, tr:nth-child(even) {
+.totaldebitdeposit {
+  padding: 25px;
+}
+
+.totaldebitdeposit td,
+tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.24);
 }
 
-.buttons{
-  margin-right: 3%;
+.lalign {
+  text-align: left;
 }
 
-.buttons button{ 
+.ralign {
+  text-align: right;
+}
+
+.buttons {
+  padding: 25px;
+}
+
+.buttons button {
   background-color: #ffef0f;
+  width: 100%;
   padding: 5px 15px;
+  justify-content: center;
   border-radius: 25px;
   border: none;
   margin: 5px;
-  /* color: #5bccf6; */
 }
 
-@media (max-width: 700px) {
-  nav {
-    padding: 10px 25px;
-  }
-  .login {
-    /* text-align: center; */
-    margin: 20% 15%;
-    /* font-size: 5px; */
-  }
-  .login h3 {
-    /* font-size: 25px; */
-  }
-
-  .login input[type="text"],
-  [type="password"] {
-    margin: 25px 20px;
-    padding: 5px 15px;
-    border: none;
-    background-color: #d1d1d100;
-    color: white;
-    font-size: 15px;
-    border-bottom: 2px solid #5bccf6;
-  }
-
-  .menu {
-    width: 100%;
-    height: 100%;
-    margin-top: 0%;
-    /* padding: 5%; */
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
-
-  ol {
-    margin: 15% 0 0 25%;
-  }
-
-  .menu .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 0px;
-  }
-
-  .tablecontainer {
-    display: none;
-  }
-
-  .restablecontainer {
-    display: block;
-    width: 80%;
-  }
-
-  .tblrow {
-    background-color: rgb(255, 244, 225);
-    border-radius: 15px;
-    margin: 20px 0;
-    padding: 20px;
-    min-width: 240px;
-  }
+.buttons button:hover {
+  background-color: #5bccf6;
+  cursor: pointer;
+  transition: 0.5s;
 }
