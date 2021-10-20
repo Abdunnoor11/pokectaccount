@@ -112,20 +112,20 @@ Profile
             </div>
         </div>
         <div class="totaldebitdeposit">
-            <table id="totalid">
-                <tr>
-                    <td><h3>Total Loan:</h3></td>
-                    <td class="amount"><h3>$32423432</h3></td>
-                </tr>
-                <tr>
-                    <td><h3>Total Deposit:</h3></td>
-                    <td class="amount"><h3>$32423432</h3></td>
-                </tr>
-                <tr>
-                    <td><h3>Due:</h3></td>
-                    <td class="amount"><h3>$35343</h3></td>
-                </tr>
-            </table>
+          <table id="totalid">
+            <tr>
+                <td><h4 class="lalign">Total Invest:</h4></td>
+                <td class="ralign"><h4>{{ total_invest|floatformat:2 }}</h4></td>
+            </tr>
+            <tr>
+                <td><h4 class="lalign">Total Return:</h4></td>
+                <td class="ralign"><h4> {{ total_return|floatformat:2 }} </h4></td>
+            </tr>
+            <tr>
+                <td><h4 class="lalign">Balance:</h4></td>
+                <td class="ralign"><h4>{{ Due|floatformat:2 }}</h4></td>
+            </tr>
+        </table>
         </div>
         <div class="buttons">
             <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Invest</button>
@@ -135,23 +135,23 @@ Profile
 
     <div class="tablecontainer" style="margin: 0 0">
         <h2>Loan Status</h2>
-
+        
         <table>            
             <tr>                
                 <th>Date</th>
                 <th>Name & Description</th>
-                <th>Invest</th>
-                <th>Return</th>
-                <th>Balance</th>
+                <th class="ralign">Invest</th>
+                <th class="ralign">Return</th>
+                <th class="ralign">Balance</th>
                 <th>Status</th>
             </tr>           
             {% for account in accounts %}
               <tr>
                 <td>{{ account.date }}</td>
                 <td>{{ account.description }}</td>
-                <td>{{ account.invest }}</td>
-                <td>{{ account.retern }}</td>
-                <td>{{ account.balance }}</td>
+                <td class="ralign">{{ account.invest|floatformat:2  }}</td>
+                <td class="ralign">{{ account.retern|floatformat:2 }}</td>
+                <td class="ralign">{{ account.balance|floatformat:2 }}</td>
                 {% if account.status %}
                   <td>Paid</td>                  
                 {% else %}  

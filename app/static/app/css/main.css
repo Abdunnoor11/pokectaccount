@@ -13,6 +13,7 @@ html {
 body {
   max-width: 1400px;
   margin: auto;
+  /* background-color: #ffef0f; */
   background-image: url("/static/app/img/back.jpg");
   background-size: cover;
   font-family: Poppins, Sans-Serif;
@@ -103,14 +104,16 @@ a {
 
 
 .menu {
+  height: 100%;
+  width: 0;
   position: fixed;
   z-index: 1;
+  top: 0;
+  left: 0;
   background-color: #111;
-  color: #ffff;
-  padding: 5%;
   overflow-x: hidden;
-  display: none;
-  margin-top: 5%;
+  transition: 0.5s;
+  padding-top: 60px;      
 }
 
 .sub {
@@ -121,7 +124,8 @@ ul {
 }
 
 .menu a {
-  padding: 8px 8px 8px 8px;
+  visibility: visible;  
+  padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 20px;
   color: #ffffff;
@@ -155,7 +159,7 @@ ul {
   margin: 25px;
 }
 
-.tablecontainer {
+.tablecontainer {  
   text-align: center;
   margin: 10%;
   width: 80%;
@@ -168,6 +172,7 @@ ul {
 .tablecontainer table {
   border-collapse: collapse;
   width: 100%;
+  background-color: #ffffffb4;;
 }
 
 th,
@@ -198,7 +203,7 @@ th {
   flex-wrap: wrap;
   align-items: center;
   margin: 35px 0;
-  width: 80%;
+  max-width: 80%;
 
 }
 

@@ -23,7 +23,8 @@ def loan(request):
 
 @login_required(login_url='login')
 def debtor(request):
-    debtors = Debtor.objects.filter(lender_id=request.user.id)        
+    debtors = Debtor.objects.filter(lender_id=request.user.id)    
+
     return render(request, "app/debtor.html",{
         "debtors": debtors,
     })
@@ -44,8 +45,18 @@ def newdebtor(request):
 @login_required(login_url='login')
 def debtorprofile(request, id):
     profile = Debtor.objects.get(id=id)
-    accounts = Account.objects.filter(debtor=profile).order_by('date')
-    print(accounts[0].loan)
+    accounts = Account.objects.filter(debtor=profile).order_by('date')    
+    
+    total_loan, total_depost, b = total_count_debtor(accounts)
+    return render(request, "app/debtorprofile.html",{
+        "profile": profile,
+        "accounts": accounts,
+        "total_loan": total_loan,
+        "total_deposit": total_depost,
+        "Due": b,      
+    })
+
+def total_count_debtor(accounts):
     total_loan = 0
     total_depost = 0
     b = 0
@@ -55,14 +66,7 @@ def debtorprofile(request, id):
         total_depost = total_depost + account.deposit
 
     b = total_loan - total_depost
-    
-    return render(request, "app/debtorprofile.html",{
-        "profile": profile,
-        "accounts": accounts,
-        "total_loan": total_loan,
-        "total_deposit": total_depost,
-        "Due": b,      
-    })
+    return total_loan, total_depost, b
 
 @login_required(login_url='login')
 def accounts(request, id, string):
@@ -130,12 +134,25 @@ def lender(request):
 @login_required(login_url='login')
 def lenderprofile(request, id):
     profile = Lender.objects.get(id=id)
-    account = Invest.objects.filter(lender=profile).order_by('date')
+    accounts = Invest.objects.filter(lender=profile).order_by('date')
 
-    # print(account[0].balance)
+    print(accounts)
+    total_invest = 0
+    total_return = 0
+    b = 0
+
+    for account in accounts:
+        total_invest = total_invest + account.invest
+        total_return = total_return + account.retern
+
+    b = total_invest - total_return
+
     return render(request, "app/lenderprofile.html",{
         "profile": profile,
-        "accounts": account,
+        "accounts": accounts,
+        "total_return": total_return,
+        "total_invest": total_invest,
+        "Due": b,
     })
 
 @login_required(login_url='login')

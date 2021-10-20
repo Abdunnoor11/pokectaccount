@@ -115,15 +115,15 @@ Profile
             <table id="totalid">
                 <tr>
                     <td><h4 class="lalign">Total Loan:</h4></td>
-                    <td class="ralign"><h4>{{ total_loan }}</h4></td>
+                    <td class="ralign"><h4>{{ total_loan|floatformat:2 }}</h4></td>
                 </tr>
                 <tr>
                     <td><h4 class="lalign">Total Deposit:</h4></td>
-                    <td class="ralign"><h4> {{ total_deposit }} </h4></td>
+                    <td class="ralign"><h4> {{ total_deposit|floatformat:2 }} </h4></td>
                 </tr>
                 <tr>
                     <td><h4 class="lalign">Balance:</h4></td>
-                    <td class="ralign"><h4>{{ Due }}</h4></td>
+                    <td class="ralign"><h4>{{ Due|floatformat:2 }}</h4></td>
                 </tr>
             </table>
         </div>
@@ -149,9 +149,9 @@ Profile
               <tr>
                 <td>{{ account.date }}</td>
                 <td>{{ account.description }}</td>
-                <td>{{ account.loan }}</td>
-                <td>{{ account.deposit }}</td>
-                <td>{{ account.balance }}</td>
+                <td>{{ account.loan|floatformat:2 }}</td>
+                <td>{{ account.deposit|floatformat:2 }}</td>
+                <td>{{ account.balance|floatformat:2 }}</td>
                 {% if account.status %}
                   <td>Paid</td>                  
                 {% else %}  
