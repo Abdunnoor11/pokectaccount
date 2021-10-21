@@ -14,9 +14,9 @@ Loan
                 <th>Debtor ID</th>
                 <th>Date</th>
                 <th>Name & Description</th>
-                <th>Loan</th>
-                <th>Deposit</th>
-                <th>Credit Balance</th>
+                <th class="ralign">Loan</th>
+                <th class="ralign">Deposit</th>
+                <th class="ralign">Credit Balance</th>
                 <th>Status</th>
             </tr>
             {% for account in accounts %}
@@ -24,9 +24,9 @@ Loan
                 <td>{{ account.debtor }}</td>
                 <td>{{ account.date }}</td>
                 <td>{{ account.description }}</td>
-                <td>{{ account.loan }}</td>                
-                <td>{{ account.deposit }}</td>                                      
-                <td>{{ account.balance }}</td>                                      
+                <td class="ralign">{{ account.loan }}</td>                
+                <td class="ralign">{{ account.deposit }}</td>                                      
+                <td class="ralign">{{ account.balance }}</td>                                      
                 {% if account.status %}
                   <td>Paid</td>                  
                 {% else %}  

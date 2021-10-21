@@ -149,9 +149,9 @@ Profile
               <tr>
                 <td>{{ account.date }}</td>
                 <td>{{ account.description }}</td>
-                <td>{{ account.loan|floatformat:2 }}</td>
-                <td>{{ account.deposit|floatformat:2 }}</td>
-                <td>{{ account.balance|floatformat:2 }}</td>
+                <td class="ralign">{{ account.loan|floatformat:2 }}</td>
+                <td class="ralign">{{ account.deposit|floatformat:2 }}</td>
+                <td class="ralign">{{ account.balance|floatformat:2 }}</td>
                 {% if account.status %}
                   <td>Paid</td>                  
                 {% else %}  

@@ -22,7 +22,7 @@ Loan
                     <td>{{ debtor }}</td>
                     <td> <a style="color: black;" href="{% url 'debtorprofile' debtor.id %}"> {{ debtor.debtorName }}</a> </td>
                     <td>{{ debtor.phone }}</td>
-                    <td>{{ balance.0 }}</td>                                      
+                    <td class="ralign">{{ balance.0|floatformat:2 }}</td>                                      
                     <a href=""><td>{{ balance.1 }}</td></a>                    
                 </tr>            
             {% endfor %}

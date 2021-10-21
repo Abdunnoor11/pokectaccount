@@ -270,22 +270,37 @@ def landownerprofile(request, id):
 
     return render(request, "app/landownerprofile.html",{
         "profile": profile,
-        "landdetails": landdetails,
+        "landdetails": lands,
     })
 
 @login_required(login_url='login')
-def advance(request, id, landid):
-    print(id, landid)
+def advance(request, id, landid):    
+
     if request.method == 'POST':
          advance = request.POST['advance']
          description = request.POST['description']
          date = request.POST['date']
-
-    # lands = Land.objects.get(landowner=landid)
+    
     advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=date)
     advance.save()
 
+
     return redirect("landownerprofile", id)
+
+
+@login_required(login_url='login')
+def advancepage(request, id, landid):    
+
+    if request.method == 'POST':
+         advance = request.POST['advance']
+         description = request.POST['description']
+         date = request.POST['date']
+    
+    advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=date)
+    advance.save()
+
+
+    return render(request, "app/advancepage.html")
 
 def login(request):
     if request.method == 'POST':

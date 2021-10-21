@@ -120,16 +120,16 @@
         <div class="totaldebitdeposit">
             <table id="totalid">
                 <tr>
-                    <td class="lalign"><h3>Total Loan:</h3></td>
-                    <td class="ralign"><h3>$32423432</h3></td>
+                    <td><h3>Total Loan:</h3></td>
+                    <td class="amount"><h3>$32423432</h3></td>
                 </tr>
                 <tr>
-                    <td class="lalign"><h3>Total Deposit:</h3></td>
-                    <td class="ralign"><h3>$32423432</h3></td>
+                    <td><h3>Total Deposit:</h3></td>
+                    <td class="amount"><h3>$32423432</h3></td>
                 </tr>
                 <tr>
-                    <td class="lalign"><h3>Due:</h3></td>
-                    <td class="ralign"><h3>$35343</h3></td>
+                    <td><h3>Due:</h3></td>
+                    <td class="amount"><h3>$35343</h3></td>
                 </tr>
             </table>
         </div>
@@ -140,34 +140,41 @@
         </div>
     </div>
 
-    <div class="tablecontainer" style="margin: 0 0; color:black">
-        <h2>Land Status</h2>
+        {% for landdetail,v in landdetails.items %}
+      <div class="landcard">
+          <div class="card">Mouja: {{ landdetail.mouja }}</div>
+          <div class="card">R/S Dag: {{ landdetail.rsdag }}</div>
+          <div class="card">Land QTY: {{ landdetail.landQTY }} </div>          
+          <div class="card">Per Decimal Price: {{ landdetail.perDprice }} </div>
+          <div class="card">Total Amount: {{ landdetail.totalprice }} </div>          
+          <div class="card">Due: 200</div>
+          <div class="tablecontainer" style="margin: 0 0; text-align: center">
+              <table>
+                  <tr>
+                      <th>Date</th>
+                      <th>Description</th>
+                      <th>Advance</th>
+                  </tr>
+                  {% for advance in v %}
+                    <tr>
+                        <td>{{ advance.date }}</td>
+                        <td>{{ advance.description }}</td>
+                        <td>{{ advance.advance }}</td>                        
+                    </tr>
+                  {% endfor %}
 
-        <table>            
-            <tr>                
-                <th>Mouja</th>
-                <th>R/S Dag</th>
-                <th>Land QTY</th>
-                <th>Per Decimal Price</th>
-                <th>Total Amount</th>
-                <th>Due</th>
-            </tr>           
-            {% for landdetail in landdetails %}
-              <tr>
-                <td>{{ landdetail.mouja }}</td>
-                <td><a style="color:black" href="{% url 'advancepage' profile.id landdetail.id %}">{{ landdetail.rsdag }}</a></td>
-                <td>{{ landdetail.landQTY }}</td>
-                <td class="ralign">{{ landdetail.perDprice }}</td>
-                <td class="ralign">{{ landdetail.totalprice }}</td>
-                {% if account.status %}
-                  <td>Paid</td>
-                {% else %}  
-                <td>Due</td>
-                {% endif %}                  
-              </tr>
-              {% endfor %}            
-        </table>
-    </div>
+              </table>
+              <form action="{% url 'advance' profile.id landdetail.id %}" method="POST">
+                  {% csrf_token %}
+                  <input type="text" placeholder="Description" name="description"/>
+                  <input type="number" placeholder="Amount" name="advance"/>
+                  <input type="date" placeholder="Amount" name="date"/><br />
+                  <input type="submit" value="Advance" />
+              </form>
+          </div>
+      </div>
+    {% endfor %}
+
 
 </main>
 <div id="Loan" class="modal">
