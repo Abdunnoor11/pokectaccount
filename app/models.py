@@ -61,7 +61,7 @@ class Land(models.Model):
     def totalprice(self):
         return self.perDprice * self.landQTY
     
-class Advance(models.Model)    :
+class Advance(models.Model):
     land = models.ForeignKey(Land, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True, null= True)

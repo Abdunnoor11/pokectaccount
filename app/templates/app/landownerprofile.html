@@ -145,25 +145,23 @@
 
         <table>            
             <tr>                
-                <th>Mouja</th>
-                <th>R/S Dag</th>
-                <th>Land QTY</th>
-                <th>Per Decimal Price</th>
-                <th>Total Amount</th>
-                <th>Due</th>
+                <th class="lalign">Mouja</th>
+                <th class="lalign">R/S Dag</th>
+                <th class="ralign">Land QTY</th>
+                <th class="ralign">P. D. Price</th>
+                <th class="ralign">Total Amount</th>
+                <th class="ralign">Advance</th>
+                <th class="ralign">Balance</th>                                
             </tr>           
-            {% for landdetail in landdetails %}
+            {% for landdetail, advance in landdetails.items %}
               <tr>
-                <td>{{ landdetail.mouja }}</td>
-                <td><a style="color:black" href="{% url 'advancepage' profile.id landdetail.id %}">{{ landdetail.rsdag }}</a></td>
-                <td>{{ landdetail.landQTY }}</td>
+                <td class="lalign">{{ landdetail.mouja }}</td>
+                <td class="lalign"><a style="color:black" href="{% url 'advancepage' profile.id landdetail.id %}">{{ landdetail.rsdag }}</a></td>
+                <td class="ralign">{{ landdetail.landQTY }}</td>
                 <td class="ralign">{{ landdetail.perDprice }}</td>
                 <td class="ralign">{{ landdetail.totalprice }}</td>
-                {% if account.status %}
-                  <td>Paid</td>
-                {% else %}  
-                <td>Due</td>
-                {% endif %}                  
+                <td class="ralign">{{ advance.0 }}</td>
+                <td class="ralign">{{ advance.1 }}</td>                  
               </tr>
               {% endfor %}            
         </table>

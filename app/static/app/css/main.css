@@ -162,7 +162,7 @@ ul {
 .tablecontainer {  
   text-align: center;
   margin: 10%;
-  width: 80%;
+  width: 80%;  
 }
 
 .tablecontainer h2 {
@@ -172,7 +172,7 @@ ul {
 .tablecontainer table {
   border-collapse: collapse;
   width: 100%;
-  background-color: #ffffffb4;
+  background-color: #dfdfdf;
 }
 
 th,
@@ -245,6 +245,7 @@ tr:nth-child(even) {
   padding: 25px;
 }
 
+.ad,
 .buttons button {
   background-color: #ffef0f;
   width: 100%;
@@ -263,11 +264,6 @@ tr:nth-child(even) {
   transition: 0.5s;
 }
 
-/* .land{
- overflow-y: scroll;
- height: 250px;
-} */
-
 .landcard {
   background-color: rgb(255, 228, 228);
   box-shadow: 0 0 20px 1px rgb(165, 165, 165);
@@ -277,7 +273,7 @@ tr:nth-child(even) {
   flex-wrap: wrap;
   text-align: center;
   margin: 5% 0 0 0;
-  width: 80%;
+  width: 100%;
   padding: 5px;  
 }
 
@@ -294,8 +290,7 @@ tr:nth-child(even) {
   }
 
   .login input[type="text"],
-  [type="password"] {
-    margin: 25px 20px;
+  [type="password"] {    
     padding: 5px 15px;
     border: none;
     background-color: #d1d1d100;

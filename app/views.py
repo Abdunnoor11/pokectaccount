@@ -262,16 +262,16 @@ def landownerprofile(request, id):
 
     for land in lands:
         advance = Advance.objects.filter(land=land)
-        
-        print(land.rsdag)
-        landdetails[land] = advance
+        total = sum([a.advance for a in advance])
+        balacnce = land.totalprice() - total
+        landdetails[land] = total, balacnce
     
-
 
     return render(request, "app/landownerprofile.html",{
         "profile": profile,
-        "landdetails": lands,
+        "landdetails": landdetails,
     })
+
 
 @login_required(login_url='login')
 def advance(request, id, landid):    
@@ -291,16 +291,21 @@ def advance(request, id, landid):
 @login_required(login_url='login')
 def advancepage(request, id, landid):    
 
-    if request.method == 'POST':
-         advance = request.POST['advance']
-         description = request.POST['description']
-         date = request.POST['date']
+    land = Land.objects.get(id=landid)      
     
-    advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=date)
-    advance.save()
+    advance = Advance.objects.filter(land=land)
+    total = sum([a.advance for a in advance])
+    balacnce = land.totalprice() - total       
+    
+    advances = Advance.objects.filter(land_id=landid)       
 
 
-    return render(request, "app/advancepage.html")
+    return render(request, "app/advancepage.html",{
+        "land":land,        
+        "total":total,
+        "balacnce":balacnce,
+        "advances": advances,
+    })
 
 def login(request):
     if request.method == 'POST':
