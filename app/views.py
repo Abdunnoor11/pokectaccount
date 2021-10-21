@@ -228,9 +228,14 @@ def landownerprofile(request, id):
     lands = Land.objects.filter(landowner=profile)
     
     landdetails = {}
+
     for land in lands:
         advance = Advance.objects.filter(land=land)
+        
+        print(land.rsdag)
         landdetails[land] = advance
+    
+
 
     return render(request, "app/landownerprofile.html",{
         "profile": profile,

@@ -267,12 +267,14 @@ tr:nth-child(even) {
   background-color: rgb(255, 228, 228);
   box-shadow: 0 0 20px 1px rgb(165, 165, 165);
   display: flex;
+  height: 700px;
   justify-content: space-between;
   flex-wrap: wrap;
   text-align: center;
   margin: 5% 0 0 0;
   width: 80%;
   padding: 5px;
+  overflow-y: scroll;
 }
 
 .card {
@@ -298,8 +300,7 @@ tr:nth-child(even) {
     border-bottom: 2px solid #5bccf6;
   }
 
-  .menu {
-    width: 100%;
+  .menu {    
     height: 100%;
     margin-top: 0%;
     overflow-x: hidden;
