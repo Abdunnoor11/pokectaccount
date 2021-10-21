@@ -17,13 +17,13 @@ Lenders
                 <th>Balance</th>
                 <th>Status</th>
             </tr>
-            {% for lender in lenders %}
+            {% for lender, balance in lenders.items %}
                 <tr>
                     <td>{{ lender }}</td>
                     <td> <a style="color: black;" href="{% url 'lenderprofile' lender.id %}"> {{ lender.lenderName }}</a> </td>
                     <td>{{ lender.phone }}</td>
-                    <td>500000</td>                                      
-                    <a href=""><td>Due</td></a>                    
+                    <td>{{ balance.0 }}</td>                                      
+                    <a href=""><td>{{ balance.1 }}</td></a>                    
                 </tr>            
             {% endfor %}
         </table>

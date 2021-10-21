@@ -23,10 +23,23 @@ def loan(request):
 
 @login_required(login_url='login')
 def debtor(request):
-    debtors = Debtor.objects.filter(lender_id=request.user.id)    
+    debtors = Debtor.objects.filter(lender_id=request.user.id)
+
+    d = {}
+    for debtor in debtors:
+        accounts = Account.objects.filter(debtor=debtor)
+        a, b, c = total_count_debtor(accounts)
+        if c == 0:
+            status = "paid"
+        elif c > 0:
+            status = "Due"
+        else:
+            status = "None"  
+
+        d[debtor] = c, status
 
     return render(request, "app/debtor.html",{
-        "debtors": debtors,
+        "debtors": d,        
     })
 
 @login_required(login_url='login')
@@ -126,9 +139,23 @@ def newlender(request):
 
 @login_required(login_url='login')
 def lender(request):
-    lenders = Lender.objects.filter(investor_id=request.user.id)        
+    lenders = Lender.objects.filter(investor_id=request.user.id) 
+
+    d = {}
+    for lender in lenders:
+        accounts = Invest.objects.filter(lender=lender)
+        a, b, c = total_count_lender(accounts)
+        if c == 0:
+            status = "paid"
+        elif c > 0:
+            status = "Due"
+        else:
+            status = "None"  
+
+        d[lender] = c, status  
+
     return render(request, "app/lender.html",{
-        "lenders": lenders,
+        "lenders": d,
     })
 
 @login_required(login_url='login')
@@ -136,7 +163,17 @@ def lenderprofile(request, id):
     profile = Lender.objects.get(id=id)
     accounts = Invest.objects.filter(lender=profile).order_by('date')
 
-    print(accounts)
+    total_invest, total_return, b = total_count_lender(accounts)
+
+    return render(request, "app/lenderprofile.html",{
+        "profile": profile,
+        "accounts": accounts,
+        "total_return": total_return,
+        "total_invest": total_invest,
+        "Due": b,
+    })
+
+def total_count_lender(accounts):
     total_invest = 0
     total_return = 0
     b = 0
@@ -147,13 +184,7 @@ def lenderprofile(request, id):
 
     b = total_invest - total_return
 
-    return render(request, "app/lenderprofile.html",{
-        "profile": profile,
-        "accounts": accounts,
-        "total_return": total_return,
-        "total_invest": total_invest,
-        "Due": b,
-    })
+    return total_invest, total_return, b
 
 @login_required(login_url='login')
 def lenderaccounts(request, id, string):
