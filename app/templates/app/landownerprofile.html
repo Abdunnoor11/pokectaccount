@@ -3,15 +3,13 @@
 
 {% block title %} Profile {% endblock %} {% block head %}
 <style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .tablecontainer th, td{
-        text-align: center;        
-    }
-
     /* The Modal (background) */
+    .landcontainer{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        /* flex-shrink: 1; */
+    }
     .modal {
         display: none;
         /* Hidden by default */
@@ -44,8 +42,7 @@
         border: 1px solid #888;
         width: 30%;
         text-align: center;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         -webkit-animation-name: animatetop;
         -webkit-animation-duration: 0.4s;
         animation-name: animatetop;
@@ -95,20 +92,16 @@
             width: 100%;
         }
 
-        .tablecontainer {
-        display: block;
-    }
+        .tablecontainer{
+            display: block;
+        }
     }
 </style>
 {% endblock %} {% block body %}
 <main>
     <div class="profile">
         <div class="mainprofile">
-            <img
-                src="{% static 'app/img/avatar.png' %}"
-                alt="Avatar"
-                class="avatar"
-            />
+            <img src="{% static 'app/img/avatar.png' %}" alt="Avatar" class="avatar" />
             <div class="userprofile">
                 <h4>{{ profile }}</h4>
                 <h2>{{ profile.Landownername }}</h2>
@@ -117,22 +110,34 @@
                 <p></p>
             </div>
         </div>
-        <div class="totaldebitdeposit">
+        <!-- <div class="totaldebitdeposit">
             <table id="totalid">
                 <tr>
-                    <td class="lalign"><h3>Total Loan:</h3></td>
-                    <td class="ralign"><h3>$32423432</h3></td>
+                    <div class="lalign">
+                        <h3>Total Loan:</h3>
+                    </div>
+                    <div class="ralign">
+                        <h3>$32423432</h3>
+                    </div>
                 </tr>
                 <tr>
-                    <td class="lalign"><h3>Total Deposit:</h3></td>
-                    <td class="ralign"><h3>$32423432</h3></td>
+                    <div class="lalign">
+                        <h3>Total Deposit:</h3>
+                    </div>
+                    <div class="ralign">
+                        <h3>$32423432</h3>
+                    </div>
                 </tr>
                 <tr>
-                    <td class="lalign"><h3>Due:</h3></td>
-                    <td class="ralign"><h3>$35343</h3></td>
+                    <div class="lalign">
+                        <h3>Due:</h3>
+                    </div>
+                    <div class="ralign">
+                        <h3>$35343</h3>
+                    </div>
                 </tr>
             </table>
-        </div>
+        </div> -->
         <div class="buttons">
             <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">
                 New Land
@@ -140,33 +145,25 @@
         </div>
     </div>
 
-    <div class="tablecontainer" style="margin: 0 0; color:black">
+    <div class="tablecontainer" style="margin: 0 0; color: black">
         <h2>Land Status</h2>
-
-        <table>            
-            <tr>                
-                <th class="lalign">Mouja</th>
-                <th class="lalign">R/S Dag</th>
-                <th class="ralign">Land QTY</th>
-                <th class="ralign">P. D. Price</th>
-                <th class="ralign">Total Amount</th>
-                <th class="ralign">Advance</th>
-                <th class="ralign">Balance</th>                                
-            </tr>           
-            {% for landdetail, advance in landdetails.items %}
-              <tr>
-                <td class="lalign">{{ landdetail.mouja }}</td>
-                <td class="lalign"><a style="color:black" href="{% url 'advancepage' profile.id landdetail.id %}">{{ landdetail.rsdag }}</a></td>
-                <td class="ralign">{{ landdetail.landQTY }}</td>
-                <td class="ralign">{{ landdetail.perDprice }}</td>
-                <td class="ralign">{{ landdetail.totalprice }}</td>
-                <td class="ralign">{{ advance.0 }}</td>
-                <td class="ralign">{{ advance.1 }}</td>                  
-              </tr>
-              {% endfor %}            
-        </table>
+    <div class="landcontainer">
+        {% for landdetail, advance in landdetails.items %}
+            <a style="color: black" href="{% url 'advancepage' profile.id landdetail.id %}"> 
+                <div class="landcard">
+                    <div class="card">Mouja: {{ landdetail.mouja }}</div>
+                    <div class="card">R/S Dag: {{landdetail.rsdag }}</div>
+                    <div class="card">Land Qty:{{ landdetail.landQTY }}</div>
+                    <div class="card">P.D. Price{{ landdetail.perDprice }}</div>
+                    <div class="card">Total Price:{{ landdetail.totalprice }}</div>
+                    <div class="card">Advance:{{ advance.0 }}</div>
+                    <div class="card">Blalance:{{ advance.1 }}</div>
+                </div>
+            </a>
+            {% endfor %}
     </div>
-
+        
+    </div>
 </main>
 <div id="Loan" class="modal">
     <div class="modal-content">
