@@ -11,80 +11,7 @@ Profile
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* The Modal (background) */
-    .modal {
-      display: none;
-      /* Hidden by default */
-      position: fixed;
-      /* Stay in place */
-      z-index: 1;
-      /* Sit on top */
-      padding-top: 100px;
-      /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      overflow: auto;
-      /* Enable scroll if needed */
-      background-color: rgb(0, 0, 0);
-      /* Fallback color */
-      background-color: rgba(0, 0, 0, 0.4);
-      /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .modal-content {
-      position: relative;
-      background-color: #fefefe;
-      margin: auto;
-      padding: 0;
-      border: 1px solid #888;
-      width: 30%;
-      text-align: center;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-        0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      -webkit-animation-name: animatetop;
-      -webkit-animation-duration: 0.4s;
-      animation-name: animatetop;
-      animation-duration: 0.4s;
-    }
-
-    /* Add Animation */
-    @-webkit-keyframes animatetop {
-      from {
-        top: -300px;
-        opacity: 0;
-      }
-
-      to {
-        top: 0;
-        opacity: 1;
-      }
-    }
-
-    @keyframes animatetop {
-      from {
-        top: -300px;
-        opacity: 0;
-      }
-
-      to {
-        top: 0;
-        opacity: 1;
-      }
-    }
-
-    /* The Close Button */
-    .close {
-      color: rgb(0, 0, 0);
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    
 
     .modal-body {
       padding: 30px 16px;
@@ -177,16 +104,13 @@ Profile
     
     <div class="modal-content">
       <div class="modal-body">
-        <span class="close">&times;</span>
+        <span class="close"></span>
         <h4>Loan</h4>
         <form action="{% url 'accounts' profile.id 'loan' %}" method="post">
-          {% csrf_token %}
-            <label for="description">Description</label>
-            <input type="text" name="description"><br>
-            <label for="amount">Amount</label>
-            <input type="number" name="loan"><br>
-            <label for="date">Date</label>
+          {% csrf_token %}            
             <input type="date" name="date" ><br>
+            <input type="text" name="description" placeholder="Description"><br>            
+            <input type="number" name="loan" placeholder="Loan Amount"><br>                        
             <input type="submit" value="submit">
         </form>        
       </div>
@@ -196,16 +120,13 @@ Profile
   <div id="Deposit" class="modal">
     <div class="modal-content">
       <div class="modal-body">
-        <span class="close">&times;</span>
+        <span class="close"></span>
         <h4>Deposit</h4>
         <form action="{% url 'accounts' profile.id 'deposit' %}" method="post">
-          {% csrf_token %}
-            <label for="description">Description</label>
-            <input type="text" name="description"><br>
-            <label for="amount">Amount</label>
-            <input type="number" name="deposit"><br>
-            <label for="date">Date</label>
-            <input type="date" name="date" ><br>
+          {% csrf_token %}            
+            <input type="date" name="date"><br>
+            <input type="text" name="description" placeholder="Description"><br>            
+            <input type="number" name="deposit" placeholder="Deposit Amount"><br>                        
             <input type="submit" value="submit">
         </form>
       </div>

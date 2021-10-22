@@ -12,11 +12,10 @@ html {
 
 body {
   max-width: 1400px;
-  margin: auto;    
+  margin: auto;
   background-color: #fffcd7;
   /* font-family: Arial, Helvetica, sans-serif; */
   height: 100%;
-  
 }
 
 nav {
@@ -28,6 +27,11 @@ nav {
   align-items: baseline;
   justify-content: space-between;
   padding: 10px 50px;
+}
+
+.n {
+  text-align: right;
+  
 }
 
 .had {
@@ -101,7 +105,6 @@ a {
   transform: rotate(360deg);
 }
 
-
 .menu {
   height: 100%;
   width: 0;
@@ -112,7 +115,7 @@ a {
   background-color: #111;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;      
+  padding-top: 60px;
 }
 
 .sub {
@@ -123,7 +126,7 @@ ul {
 }
 
 .menu a {
-  visibility: visible;  
+  visibility: visible;
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 20px;
@@ -158,14 +161,14 @@ ul {
   margin: 25px;
 }
 
-.tablecontainer {  
+.tablecontainer {
   text-align: center;
   margin: 10%;
-  width: 80%;  
+  width: 80%;
 }
 
 .tablecontainer h2 {
-  margin: 25px;  
+  margin: 25px;
 }
 
 .tablecontainer table {
@@ -176,7 +179,7 @@ ul {
 
 th,
 td {
-text-align: center;
+  text-align: center;
   padding: 8px;
   border: 1px solid #777777;
 }
@@ -203,7 +206,6 @@ th {
   align-items: center;
   margin: 35px 0;
   max-width: 80%;
-
 }
 
 .mainprofile {
@@ -224,7 +226,7 @@ th {
 }
 
 .totaldebitdeposit {
-  padding: 25px;  
+  padding: 25px;
 }
 
 .totaldebitdeposit td,
@@ -244,7 +246,7 @@ tr:nth-child(even) {
   padding: 25px;
 }
 
-.ad{  
+.ad {
   background-color: #ffef0f;
   width: 20%;
   padding: 5px 15px;
@@ -259,7 +261,6 @@ tr:nth-child(even) {
 }
 
 .buttons button {
-  
   width: 100%;
   padding: 5px 15px;
   justify-content: center;
@@ -286,7 +287,7 @@ tr:nth-child(even) {
   text-align: center;
   margin: 10px;
   width: 250px;
-  padding: 5px;  
+  padding: 5px;
 }
 
 .card {
@@ -295,13 +296,9 @@ tr:nth-child(even) {
 
 .modal {
   display: none;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
+  padding-top: 10%;
   left: 0;
   top: 0;
   width: 100%;
@@ -309,11 +306,7 @@ tr:nth-child(even) {
   height: 100%;
   /* Full height */
   overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.664);
 }
 
 /* Modal Content */
@@ -323,48 +316,65 @@ tr:nth-child(even) {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 30%;
+  width: 20%;
   text-align: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-      0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
 
+.modal-body form input[type="text"],
+[type="number"],
+[type="date"] {
+  width: 80%;
+  margin: 20px 0;
+  padding: 5px 15px;
+  border: none;
+  background-color: #d1d1d100;
+  outline: none;
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  border-bottom: 2px solid #5bccf6;
+}
+
+.modal-body form input[type="submit"] {
+  padding: 3% 15%;
+  margin: 10% 0 10% 0;
+  font-size: 15px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #000000;
+  color: white;
+  transition: width 2s, height 2s, transform 1s;
+}
+
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
-      top: -300px;
-      opacity: 0;
+    top: -300px;
+    opacity: 0;
   }
 
   to {
-      top: 0;
-      opacity: 1;
+    top: 0;
+    opacity: 1;
   }
 }
 
 @keyframes animatetop {
   from {
-      top: -300px;
-      opacity: 0;
+    top: -300px;
+    opacity: 0;
   }
 
   to {
-      top: 0;
-      opacity: 1;
+    top: 0;
+    opacity: 1;
   }
-}
-
-/* The Close Button */
-.close {
-  color: rgb(0, 0, 0);
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 .modal-body {
@@ -373,14 +383,14 @@ tr:nth-child(even) {
 
 @media (max-width: 700px) {
   nav {
-    padding: 10px 25px;
+    padding: 10px 15px;
   }
   .login {
     margin: 50% 15%;
   }
 
   .login input[type="text"],
-  [type="password"] {    
+  [type="password"] {
     padding: 5px 15px;
     border: none;
     background-color: #d1d1d100;
@@ -389,7 +399,7 @@ tr:nth-child(even) {
     border-bottom: 2px solid #5bccf6;
   }
 
-  .menu {    
+  .menu {
     height: 100%;
     margin-top: 0%;
     overflow-x: hidden;

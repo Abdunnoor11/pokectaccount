@@ -1,202 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="main.css" />
-        <link rel="stylesheet" href="res.css" />
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
-        <title>Debtor Profile</title>
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-            }
-            
-            .tablecontainer th, td{
-                text-align: center;
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="res.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <title>Debtor Profile</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .tablecontainer th,
+        td {
+            text-align: center;
+        }
+
+        .advanceform {
+            display: block;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 10%;
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.664);
+
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 20%;
+            text-align: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s;
+        }
+
+        .modal-body form input[type="text"],
+        [type="number"] {
+            margin: 20px 0;
+            padding: 5px 15px;
+            border: none;
+            background-color: #d1d1d100;
+            outline: none;
+            color: rgb(0, 0, 0);
+            font-size: 15px;
+            border-bottom: 2px solid #5bccf6;
+        }
+
+        .modal-body form input[type="submit"] {
+            padding: 3% 15%;
+            margin: 10% 0 10% 0;
+            font-size: 15px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #000000;
+            color: white;
+            transition: width 2s, height 2s, transform 1s;
+        }
+
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0;
             }
 
-            .advanceform{
+            to {
+                top: 0;
+                opacity: 1;
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0;
+            }
+
+            to {
+                top: 0;
+                opacity: 1;
+            }
+        }
+
+        .modal-body {
+            padding: 30px 16px;
+        }
+
+        @media (max-width: 700px) {
+            .modal-content {
+                width: 95%;
+            }
+
+            .modal {
+                padding-top: 60%;
+            }
+
+            .tablecontainer {
                 display: block;
             }
+        }
+    </style>
+</head>
 
-            /* The Modal (background) */
-            .modal {
-                display: none;
-                /* Hidden by default */
-                position: fixed;
-                /* Stay in place */
-                z-index: 1;
-                /* Sit on top */
-                padding-top: 100px;
-                /* Location of the box */
-                left: 0;
-                top: 0;
-                width: 100%;
-                /* Full width */
-                height: 100%;
-                /* Full height */
-                overflow: auto;
-                /* Enable scroll if needed */
-                background-color: rgb(0, 0, 0);
-                /* Fallback color */
-                background-color: rgba(0, 0, 0, 0.4);
-                /* Black w/ opacity */
-            }
-
-            /* Modal Content */
-            .modal-content {
-                position: relative;
-                background-color: #fefefe;
-                margin: auto;
-                padding: 0;
-                border: 1px solid #888;
-                width: 30%;
-                text-align: center;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
-                    0 6px 20px 0 rgba(0, 0, 0, 0.19);
-                -webkit-animation-name: animatetop;
-                -webkit-animation-duration: 0.4s;
-                animation-name: animatetop;
-                animation-duration: 0.4s;
-            }
-
-            /* Add Animation */
-            @-webkit-keyframes animatetop {
-                from {
-                    top: -300px;
-                    opacity: 0;
-                }
-
-                to {
-                    top: 0;
-                    opacity: 1;
-                }
-            }
-
-            @keyframes animatetop {
-                from {
-                    top: -300px;
-                    opacity: 0;
-                }
-
-                to {
-                    top: 0;
-                    opacity: 1;
-                }
-            }
-
-            /* The Close Button */
-            .close {
-                color: rgb(0, 0, 0);
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-                cursor: pointer;
-            }
-
-            .modal-body {
-                padding: 30px 16px;
-            }
-
-            @media (max-width: 700px) {
-                .modal-content {
-                    width: 100%;
-                }
-
-                .tablecontainer{
-                    display: block;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <nav>
-            <i class="fa fa-bars" aria-hidden="true"></i>
-            <h1>Pocket Account</h1>
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-        </nav>
-        <div id="menu1" class="menu">
-            <ol>
-                <li>Dashboard</li>
-                <li>Land</li>
-                <ul class="sub">
-                    <li>Land Payment</li>
-                    <li>Land Details</li>
-                </ul>
-                <li>Loan</li>
-                <ul class="sub">
-                    <li>Debtor</li>
-                    <li>New Debtor</li>
-                </ul>
-                <li>Invest</li>
-                <ul class="sub">
-                    <li>Lender</li>
-                    <li>New Lender</li>
-                </ul>
-            </ol>
-        </div>
-        <main>
-            <div class="profile">
-                <div class="mainprofile">
-                    <img src="avater.jpg" alt="Avatar" class="avatar" />                    
-                    <div class="userprofile">
-                        <h4>R0001</h4>
-                        <h2>Imam Ahasan</h2>
-                        <p>+880 14852480444</p>
-                        <p>House#11, Road#16, Sector#4 Uttara Model Town, Uttara 1230, Dhaka</p>
-                        <p></p>
-                    </div>
-                </div>
-                <div class="totaldebitdeposit">
-                    <table id="totalid">
-                        <tr>
-                            <td class="lalign">
-                                <h4>Total Debit:</h4>
-                            </td>
-                            <td class="ralign">
-                                <h4>$32423432</h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="lalign">
-                                <h4>Total Deposit:</h4>
-                            </td>
-                            <td class="ralign">
-                                <h4>$32423432</h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="lalign">
-                                <h4>Due:</h4>
-                            </td>
-                            <td class="ralign">
-                                <h4>$35343</h4>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="buttons">
-                    <button type="button"
-                        onclick="ModalFunc(loanbtn)"
-                        id="loanbtn"
-                    >
-                        Loan
-                    </button><br>
-                    <button
-                        type="button"
-                        onclick="ModalFunc(depositbtn)"
-                        id="depositbtn"
-                    >
-                        Deposit
-                    </button>
+<body>
+    <nav>
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <h1>Pocket Account</h1>
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </nav>
+    <div id="menu1" class="menu">
+        <ol>
+            <li>Dashboard</li>
+            <li>Land</li>
+            <ul class="sub">
+                <li>Land Payment</li>
+                <li>Land Details</li>
+            </ul>
+            <li>Loan</li>
+            <ul class="sub">
+                <li>Debtor</li>
+                <li>New Debtor</li>
+            </ul>
+            <li>Invest</li>
+            <ul class="sub">
+                <li>Lender</li>
+                <li>New Lender</li>
+            </ul>
+        </ol>
+    </div>
+    <main>
+        <div class="profile">
+            <div class="mainprofile">
+                <img src="avater.jpg" alt="Avatar" class="avatar" />
+                <div class="userprofile">
+                    <h4>R0001</h4>
+                    <h2>Imam Ahasan</h2>
+                    <p>+880 14852480444</p>
+                    <p>House#11, Road#16, Sector#4 Uttara Model Town, Uttara 1230, Dhaka</p>
+                    <p></p>
                 </div>
             </div>
-            
+            <div class="totaldebitdeposit">
+                <table id="totalid">
+                    <tr>
+                        <td class="lalign">
+                            <h4>Total Debit:</h4>
+                        </td>
+                        <td class="ralign">
+                            <h4>$32423432</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lalign">
+                            <h4>Total Deposit:</h4>
+                        </td>
+                        <td class="ralign">
+                            <h4>$32423432</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="lalign">
+                            <h4>Due:</h4>
+                        </td>
+                        <td class="ralign">
+                            <h4>$35343</h4>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="buttons">
+                <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">
+                    Loan
+                </button><br>
+                <button type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">
+                    Deposit
+                </button>
+            </div>
+        </div>
 
-            <!-- <div class="landcard">
+
+        <!-- <div class="landcard">
                 <div class="card">Mouja: tolna</div>
                 <div class="card">R/S Dag: 1234</div>
                 <div class="card">Land QTY: 5d</div>
@@ -285,63 +294,61 @@
                     Credit: 0, Deposit: 100000
                 </div>
             </div> -->
-        </main>
-        <div id="Loan" class="modal">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <span class="close">&times;</span>
-                    <h3>Loan</h3>
-                    <form action="">
-                        <label for="description">Description</label>
-                        <input type="text" /><br />
-                        <label for="amount">Amount</label>
-                        <input type="number" /><br />
-                        <input type="submit" value="submit" />
-                    </form>
-                </div>
+    </main>
+    <div id="Loan" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2>Loan</h2>
+                <form action="">
+                    <input type="text" placeholder="Description" /><br />
+                    <input type="number" placeholder="Amounts" /><br />
+                    <input type="submit" value="submit" />
+                </form>
             </div>
         </div>
+    </div>
 
-        <div id="Deposit" class="modal">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <span class="close">&times;</span>
-                    <h3>Deposit</h3>
-                    <form action="">
-                        <label for="description">Description</label>
-                        <input type="text" /><br />
-                        <label for="amount">Amount</label>
-                        <input type="number" /><br />
-                        <input type="submit" value="submit" />
-                    </form>
-                </div>
+    <div id="Deposit" class="modal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <span class="close">&times;</span>
+                <h3>Deposit</h3>
+                <form action="">
+                    <label for="description">Description</label>
+                    <input type="text" /><br />
+                    <label for="amount">Amount</label>
+                    <input type="number" /><br />
+                    <input type="submit" value="submit" />
+                </form>
             </div>
         </div>
-    </body> -->
-    <script>
-        function ModalFunc(btn) {
-            if (btn.id == "loanbtn") {
-                var modal = document.getElementById("Loan");
-                var span = document.getElementsByClassName("close")[0];
-            }
-            if (btn.id == "depositbtn") {
-                var modal = document.getElementById("Deposit");
-                var span = document.getElementsByClassName("close")[1];
-            }
-
-            modal.style.display = "block";
-
-            span.onclick = function () {
-                modal.style.display = "none";
-                console.log("close");
-            };
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            };
+    </div>
+</body> -->
+<script>
+    function ModalFunc(btn) {
+        if (btn.id == "loanbtn") {
+            var modal = document.getElementById("Loan");
+            var span = document.getElementsByClassName("close")[0];
         }
-    </script>
+        if (btn.id == "depositbtn") {
+            var modal = document.getElementById("Deposit");
+            var span = document.getElementsByClassName("close")[1];
+        }
+
+        modal.style.display = "block";
+
+        span.onclick = function () {
+            modal.style.display = "none";
+            console.log("close");
+        };
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    }
+</script>
+
 </html>
