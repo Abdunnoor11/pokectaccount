@@ -14,7 +14,7 @@ def index(request):
         total_due_loan = 0
 
         
-        total_loan, total_deposit, total_due = total_count_debtor(accounts)
+        total_loan, total_deposit, total_due_loan = total_count_debtor(accounts)
         
         # for invest
         accounts = Invest.objects.filter(lender_id = request.user.id)

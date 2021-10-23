@@ -13,7 +13,7 @@ html {
 body {
   max-width: 1400px;
   margin: auto;
-  background-color: #fffcd7;
+  background-color: #FFFDFC;
   /* font-family: Arial, Helvetica, sans-serif; */
   height: 100%;
 }
@@ -64,7 +64,7 @@ main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #fffcd7;
+  background-color: #FFFDFC;
 }
 
 .login {
