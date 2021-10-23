@@ -24,16 +24,29 @@ nav {
   display: flex;
   position: sticky;
   top: 0;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   padding: 10px 50px;
 }
 
 .n {
   text-align: right;
-  
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding: 10px 40px;
 }
 
+.n h4{
+  margin-right: 15px;
+}
+
+.n img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  
+}
 .had {
   font-weight: bolder;
   font-size: 20px;

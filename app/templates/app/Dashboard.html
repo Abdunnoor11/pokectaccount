@@ -7,6 +7,36 @@ Dashboard
 {% block body %}
 <main>       
     <div class="section">   
+        <h2>Loan</h2>
+        <div class="subsection">
+            <h3>{{ total_loan }}</h3>
+            Total Loan
+        </div>
+        <div class="subsection">
+            <h3>{{ total_deposit }}</h3>
+            Total Deposit
+        </div>
+        <div class="subsection">
+            <h3>{{ total_due }}</h3>
+            Balance   
+        </div>
+    </div>
+    <div class="section">   
+        <h2>Invest</h2>
+        <div class="subsection">
+            <h3>{{ total_invest }}</h3>
+            Total Invest    
+        </div>
+        <div class="subsection">
+            <h3>{{ total_return }}</h3>
+            Total Return   
+        </div>
+        <div class="subsection">
+            <h3>{{ total_due }}</h3>
+            Balance    
+        </div>         
+    </div>
+    <div class="section">   
         <h2>Land</h2>
         <div class="subsection">
             <h3>$5000000</h3>
@@ -16,24 +46,6 @@ Dashboard
             <h3>$5000000</h3>
             Land Due                
         </div>
-    </div>
-    <div class="section">   
-        <h2>Loan</h2>
-        <div class="subsection">
-            <h3>$5000000</h3>
-            Total Deposit Amount
-        </div>
-        <div class="subsection">
-            <h3>$5000000</h3>
-            Total loan Due    
-        </div>
-    </div>
-    <div class="section">   
-        <h2>Invest</h2>
-        <div class="subsection">
-            <h3>$5000000</h3>
-            Total invest
-        </div>            
     </div>
 </main>
 {% endblock %}

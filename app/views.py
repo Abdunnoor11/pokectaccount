@@ -7,7 +7,29 @@ from .models import *
 # Create your views here.
 def index(request):
     if request.user.is_authenticated:
-        return render(request, "app/Dashboard.html")
+        # for loan
+        accounts = Account.objects.filter(debtor_id = request.user.id)
+        total_loan = 0
+        total_deposit = 0
+        total_due = 0
+
+        
+        total_loan, total_deposit, total_due = total_count_debtor(accounts)
+        
+        # for invest
+        accounts = Invest.objects.filter(lender_id = request.user.id)
+        
+        total_invest, total_return, total_due = total_count_lender(accounts)
+
+        return render(request, "app/Dashboard.html",{
+            "total_loan": total_loan,
+            "total_deposit": total_deposit,
+            "total_due": total_due,
+            # invest
+            "total_invest": total_invest,
+            "total_return": total_return,
+            "total_due": total_due,
+        })
     else:
         return redirect("login")
 
@@ -16,7 +38,6 @@ def loan(request):
     profile = Debtor.objects.filter(lender=request.user.id).all()    
     accounts = Account.objects.filter(debtor__in=profile).order_by('-date')
 
-    
     return render(request, "app/loan.html",{
         "accounts":accounts,
     })
