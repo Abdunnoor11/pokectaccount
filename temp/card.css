@@ -1,0 +1,45 @@
+.section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.subsection {
+  width: 300px;
+  height: 100px;
+  color: white;
+  background: linear-gradient(112.68deg, rgba(81, 45, 109, 0.65) 8.93%, #512D6D 57.19%);
+  box-shadow: 0px 0px 25px 1px rgba(0, 112, 174, 0.25);
+  margin: 2%;
+  padding: 25px;
+  text-align: right;
+  border-radius: 10px;
+}
+
+.cardtitle {
+  font-size: 13px;
+}
+
+.cardbalance {
+  font-size: 23px;
+  font-weight: bolder;
+}
+
+.depodue {
+  margin: 25px 0;
+  text-align: left;
+}
+
+.deposit {
+  color: #99eb48;
+  font-size: 17px;
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.Due {
+  color: #ff3a2c;
+  font-size: 17px;
+  font-weight: bolder;
+  margin-left: 25px;
+}

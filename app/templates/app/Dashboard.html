@@ -7,45 +7,34 @@ Dashboard
 {% block body %}
 <main>       
     <div class="section">   
-        <h2>Loan</h2>
         <div class="subsection">
-            <h3>{{ total_loan }}</h3>
-            Total Loan
-        </div>
-        <div class="subsection">
-            <h3>{{ total_deposit }}</h3>
-            Total Deposit
-        </div>
-        <div class="subsection">
-            <h3>{{ total_due_loan }}</h3>
-            Balance   
-        </div>
-    </div>
-    <div class="section">   
-        <h2>Invest</h2>
-        <div class="subsection">
-            <h3>{{ total_invest }}</h3>
-            Total Invest    
-        </div>
-        <div class="subsection">
-            <h3>{{ total_return }}</h3>
-            Total Return   
-        </div>
-        <div class="subsection">
-            <h3>{{ total_due_invest }}</h3>
-            Balance    
-        </div>         
-    </div>
-    <div class="section">   
-        <h2>Land</h2>
-        <div class="subsection">
-            <h3>$5000000</h3>
-            Land Advacne                
-        </div>
-        <div class="subsection">
-            <h3>$5000000</h3>
-            Land Due                
-        </div>
+            <span class="cardtitle">Total Loan</span><br>
+            <span class="cardbalance">${{ total_loan|floatformat:2 }}</span> 
+            <div class="depodue">
+                <span class="deposit">+ ${{ total_deposit|floatformat:2 }}</span>
+                <span class="Due">- ${{ total_due_loan|floatformat:2 }}</span>
+            </div>
+        </div>  
+
+        <div class="subsection investsecton">
+            <span class="cardtitle">Total Invest</span><br>
+            <span class="cardbalance">${{ total_invest|floatformat:2 }}</span> 
+            <div class="depodue">
+                <span class="deposit">+ ${{ total_return|floatformat:2 }}</span>
+                <span class="Due">- ${{ total_due_invest|floatformat:2 }}</span>
+            </div>
+        </div>  
+
+        <div class="subsection landsection">
+            <span class="cardtitle">Total Land</span><br>
+            <span class="cardbalance">${{ total_invest|floatformat:2 }}</span> 
+            <div class="depodue">
+                <span class="deposit">+ ${{ total_return|floatformat:2 }}</span>
+                <span class="Due">- ${{ total_due_invest|floatformat:2 }}</span>
+            </div>
+        </div>  
+
+
     </div>
 </main>
 {% endblock %}
