@@ -26,8 +26,8 @@
     </nav>
     {% if user.is_authenticated %}
     <div class="n">
-        <h4>{{ user }}</h4> 
-        <img src="{% static 'app/img/avatar.png' %}" alt="">
+        <span class="cardtitle welcome">Welcome Back!</span></br>
+        <h4>{{ user }}</h4>         
     </div>
     {% endif %}
     <div class="menu" id="mySidenav">
