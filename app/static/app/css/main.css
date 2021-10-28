@@ -243,7 +243,7 @@ th {
 
 /* Debtor Profile page */
 .profile {
-  background-color: #0000009c;
+  background-color: #000000d2;
   color: #f1f1f1;
   display: flex;
   flex-wrap: wrap;
@@ -271,6 +271,11 @@ th {
 
 .totaldebitdeposit {
   padding: 25px;
+  border-collapse: collapse;
+}
+
+.totaldebitdeposit table{
+  border-collapse: collapse;
 }
 
 .totaldebitdeposit td,
@@ -313,6 +318,7 @@ tr:nth-child(even) {
   margin: 5px;
   font-weight: 800;
   font-size: 15px;
+  background-color: #ffef0f;
 }
 .ad:hover,
 .buttons button:hover {
