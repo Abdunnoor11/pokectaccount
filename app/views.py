@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .models import *
+import datetime
 
 # Create your views here.
 def index(request):
@@ -125,7 +126,14 @@ def accounts(request, id, string):
         description = request.POST['description']
         date = request.POST['date']
         
-        ac = Account.objects.create(debtor=profile, description=description, loan=loan, deposit=deposit, balance = balance, date=date)
+        if len(date) == 0:
+            d = datetime.datetime.now()   
+        else:
+            d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+
+        # print(d.date())
+
+        ac = Account.objects.create(debtor=profile, description=description, loan=loan, deposit=deposit, balance = balance, date=d)
         ac.status = True if balance == 0 else False        
         ac.save()        
         
@@ -229,8 +237,9 @@ def lenderaccounts(request, id, string):
         
         description = request.POST['description']
         date = request.POST['date']
-        
-        ac = Invest.objects.create(lender=profile, description=description, invest=loan, retern=deposit, balance = balance, date=date)
+        d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+
+        ac = Invest.objects.create(lender=profile, description=description, invest=loan, retern=deposit, balance = balance, date=d)
         ac.status = True if balance == 0 else False        
         ac.save()        
         
@@ -300,9 +309,10 @@ def advance(request, id, landid):
     if request.method == 'POST':
         advance = request.POST['amount']
         description = request.POST['description']
-        date = request.POST['date']        
+        date = request.POST['date'] 
+        d = datetime.datetime.strptime(date, "%Y-%m-%d").date()       
     
-    advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=date)
+    advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=d)
     advance.save()
 
 

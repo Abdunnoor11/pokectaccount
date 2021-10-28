@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import os
-
+import datetime
 
 class Debtor(models.Model):
     debtorName = models.CharField(max_length=50)
@@ -20,7 +20,7 @@ class Account(models.Model):
     loan = models.FloatField(default=0, null=True, blank=True)
     deposit = models.FloatField(default=0, null=True, blank=True)
     balance = models.FloatField(default=0, null=True, blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField( default=datetime.date.today, blank=True, null=True)
     status = models.BooleanField(default=None, null=True, blank=False)    
 
 class Lender(models.Model):
@@ -40,7 +40,7 @@ class Invest(models.Model):
     invest = models.FloatField(default=0, null=True, blank=True)
     retern = models.FloatField(default=0, null=True, blank=True)
     balance = models.FloatField(default=0, null=True, blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField( default=datetime.date.today)
     status = models.BooleanField(default=False, null=True, blank=False)        
 
 class Landowner(models.Model):    
@@ -64,6 +64,6 @@ class Land(models.Model):
     
 class Advance(models.Model):
     land = models.ForeignKey(Land, on_delete=models.SET_NULL, blank=True, null=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField( default=datetime.date.today)
     description = models.TextField(blank=True, null= True)
     advance = models.FloatField(default=0, null=True, blank=True)
