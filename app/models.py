@@ -21,7 +21,7 @@ class Account(models.Model):
     deposit = models.FloatField(default=0, null=True, blank=True)
     balance = models.FloatField(default=0, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    status = models.BooleanField(default=False, null=True, blank=False)    
+    status = models.BooleanField(default=None, null=True, blank=False)    
 
 class Lender(models.Model):
     lenderName = models.CharField(max_length=50)
@@ -48,6 +48,7 @@ class Landowner(models.Model):
     phone = models.CharField(max_length=15, blank=True, null= True)
     img = models.ImageField(upload_to='pics', null=True, blank=True)        
     landbuyer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    status = models.BooleanField(default=None, null=True, blank=False)        
     def __str__(self):
         return "LD00" + str(self.id)
 

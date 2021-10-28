@@ -29,11 +29,14 @@ Lenders
         </table>
     </div>
     <div class="restablecontainer">
-        {% for lender in lenders %}
+        {% for lender, balance in lenders.items %}
+        <a style="color: black;" href="{% url 'lenderprofile' lender.id %}"> 
             <div class="tblrow">
-                {{ lender }} | <a style="color: black;" href="{% url 'lenderprofile' lender.id %}"> {{ lender.lenderName }}</a> | Paid <br />
-                {{ lender.phone }} <br />
+                <h3>{{ lender }} | {{ lender.lenderName }}</h3>
+                <h5>{{ balance.0|floatformat:2 }}| {{ balance.1 }} <br> {{ lender.phone }}</h5> 
+                
             </div>
+        </a>
         {% endfor %}
 
     </div>

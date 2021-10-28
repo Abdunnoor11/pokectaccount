@@ -30,10 +30,12 @@ Loan
     </div>
     <div class="restablecontainer">
         {% for debtor in debtors %}
+        <a style="color: black;" href="{% url 'debtorprofile' debtor.id %}">
             <div class="tblrow">
-                {{ debtor }} | <a style="color: black;" href="{% url 'debtorprofile' debtor.id %}"> {{ debtor.debtorName }}</a> | Paid <br />
-                {{ debtor.phone }} <br />
+                <h3>{{ debtor }} |  {{ debtor.debtorName }}</h3>
+                <h5>{{ debtor.phone }}</h5>
             </div>
+        </a>
         {% endfor %}
 
     </div>

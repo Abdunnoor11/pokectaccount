@@ -5,7 +5,7 @@ Land Details
 {% endblock %}
 
 {% block body %}
-<main>       
+<main>
     <div class="tablecontainer">
         <h2>Land Details</h2>
 
@@ -14,31 +14,39 @@ Land Details
                 <th>ID</th>
                 <th>Name</th>
                 <th>Phone</th>
-                <th>Status</th>                
+                <th>Status</th>
             </tr>
             {% for landowner in landowners %}
             <tr>
-                <td>{{ landowner }}</td>                
-                <td> <a style="color: black;" href="{% url 'landownerprofile' landowner.id %}"> {{ landowner.Landownername }}</a> </td>
-                <td>{{ landowner.phone }}</td>                                                                
+                <td>{{ landowner }}</td>
+                <td> <a style="color: black;" href="{% url 'landownerprofile' landowner.id %}"> 
+                    {{ landowner.Landownername }}</a> </td>
+                <td>{{ landowner.phone }}</td>
                 {% if landowner.status %}
-                  <td>Paid</td>                  
-                {% else %}  
+                <td>Paid</td>
+                {% else %}
                 <td>Due</td>
-                {% endif %}                                     
+                {% endif %}
             </tr>
             {% endfor %}
         </table>
     </div>
 
     <div class="restablecontainer">
-        <!-- {% for account in accounts %} -->
-        <div class="tblrow">
-            {{ account.debtor }} | {{ account.description }} | {% if account.status %} Paid  {% else %} Due {% endif %}<br />
-            Balance: {{ account.balance }} <br />
-            Loan: {{ account.loan }}, Deposit: {{ account.deposit }}
-        </div>
-        <!-- {% endfor %} -->
+        {% for landowner in landowners %}
+        <a style="color: black;" href="{% url 'landownerprofile' landowner.id %}">
+            <div class="tblrow">
+                <h3>{{ landowner }} | {{ landowner.Landownername }} </h3>
+                <h5>{{ landowner.phone }} </br>
+                    {% if landowner.status %}
+                    <td>Paid</td>
+                    {% else %}
+                    <td>Due</td>
+                    {% endif %}
+                </h5>
+            </div>
+        </a>
+        {% endfor %}
     </div>
 </main>
 {% endblock %}

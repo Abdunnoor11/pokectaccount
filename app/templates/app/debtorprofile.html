@@ -11,8 +11,6 @@ Profile
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    
-
     .modal-body {
       padding: 30px 16px;
     }
@@ -93,9 +91,9 @@ Profile
     <div class="restablecontainer">
       {% for account in accounts %}
         <div class="tblrow">
-            R0001 | {{ account.description }} | {% if account.status %} Paid  {% else %} Due {% endif %}<br />
-            Balance: {{ account.balance }} <br />
-            Loan: {{ account.loan }}, Deposit: {{ account.deposit }}
+            <h3>{{ account.date }}</h3> {{ account.description }} | {% if account.status %} <td>Paid</td> {% else %} <td>Due</td> {% endif %}<br />
+            <h5>Balance: {{ account.balance|floatformat:2 }} <br />
+              Loan: {{ account.loan|floatformat:2 }}, Deposit: {{ account.deposit|floatformat:2 }}</h5>
         </div>
       {% endfor %}
     </div>
