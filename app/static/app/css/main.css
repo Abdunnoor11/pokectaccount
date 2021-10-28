@@ -517,7 +517,7 @@ tr:nth-child(even) {
 
   .tblrow {
     width: 265px;
-    height: 130px;
+    height: 140px;
     color: Black;
     background-color: #fcfcfc;
     box-shadow: 0px 0px 15px 1px rgba(71, 71, 71, 0.219);
