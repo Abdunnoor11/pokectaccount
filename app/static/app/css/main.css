@@ -228,15 +228,12 @@ th,
 td {
   text-align: center;
   padding: 8px;
-  border: 1px solid #777777;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+  border: 1px solid #d1d1d1;
+  background-color: #fcfcfc;
 }
 
 th {
-  background-color: #444444be;
+  background-color: #020f14;
   color: white;
 }
 
