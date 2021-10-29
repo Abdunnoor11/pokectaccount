@@ -24,6 +24,12 @@
        <a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
     {% endif %}
     </nav>
+    {% if messages %}
+        {% for message in messages %}
+                <div class="message_container" style="text-align: center; color: red;"><h3>{{ message }}</h3></div>
+        {% endfor %}
+    {% endif %}
+
     {% if user.is_authenticated %}
     <div class="n">
         <span class="cardtitle welcome">Welcome Back!</span></br>
@@ -58,8 +64,8 @@
         // document.getElementById("mySidenav").style.display = "none";
         document.getElementById("mySidenav").style.width = "0";
 
+    }    
 
-    }
 </script>
 
 </html>

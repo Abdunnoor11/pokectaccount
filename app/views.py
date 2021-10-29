@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from .models import *
 import datetime
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -116,22 +117,26 @@ def accounts(request, id, string):
     if request.method == 'POST':
         if string == 'loan':            
             loan = request.POST['loan']            
-            balance = int(loan) + balance
+            balance = float(loan) + balance
             deposit = 0
-        else:            
+        else:
             loan = 0
-            deposit = request.POST['deposit']            
-            balance = balance - int(deposit)
+            deposit = request.POST['deposit']
+            
+            if float(deposit) > balance:
+                messages.add_message(request, messages.WARNING, 'insufficient balance.')
+                return redirect("debtorprofile", id)
+
+            balance = balance - float(deposit)            
         
         description = request.POST['description']
         date = request.POST['date']
         
         if len(date) == 0:
-            d = datetime.datetime.now()   
+            d = datetime.datetime.now()
         else:
             d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
 
-        # print(d.date())
 
         ac = Account.objects.create(debtor=profile, description=description, loan=loan, deposit=deposit, balance = balance, date=d)
         ac.status = True if balance == 0 else False        
@@ -228,16 +233,25 @@ def lenderaccounts(request, id, string):
     if request.method == 'POST':
         if string == 'loan':            
             loan = request.POST['loan']            
-            balance = int(loan) + balance
+            balance = float(loan) + balance
             deposit = 0
         else:            
             loan = 0
-            deposit = request.POST['deposit']            
-            balance = balance - int(deposit)
+            deposit = request.POST['deposit']          
+            
+            if float(deposit) > balance:
+                messages.add_message(request, messages.WARNING, 'insufficient balance.')
+                return redirect("lenderprofile", id)
+
+            balance = balance - float(deposit)
         
         description = request.POST['description']
         date = request.POST['date']
-        d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+        
+        if len(date) == 0:
+            d = datetime.datetime.now()
+        else:
+            d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
 
         ac = Invest.objects.create(lender=profile, description=description, invest=loan, retern=deposit, balance = balance, date=d)
         ac.status = True if balance == 0 else False        
@@ -250,7 +264,7 @@ def lenderaccounts(request, id, string):
 @login_required(login_url='login')
 def land(request):
     landowners = Landowner.objects.filter(landbuyer_id=request.user.id)
-    print("this", landowners)
+    prfloat("this", landowners)
 
     return render(request, "app/landdetails.html",{
         "landowners": landowners,
@@ -345,7 +359,7 @@ def login(request):
         password = request.POST['password']
 
         user = auth.authenticate(username=name, password = password)
-        print(user)
+        prfloat(user)
         if user is not None:
             auth.login(request, user)
             return redirect('index')
