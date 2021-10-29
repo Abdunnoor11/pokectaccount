@@ -263,9 +263,8 @@ def lenderaccounts(request, id, string):
 
 @login_required(login_url='login')
 def land(request):
-    landowners = Landowner.objects.filter(landbuyer_id=request.user.id)
-    prfloat("this", landowners)
-
+    landowners = Landowner.objects.filter(landbuyer_id=request.user.id)    
+    
     return render(request, "app/landdetails.html",{
         "landowners": landowners,
     })
