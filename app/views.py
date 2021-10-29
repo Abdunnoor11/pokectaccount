@@ -358,13 +358,13 @@ def login(request):
         name = request.POST['name']
         password = request.POST['password']
 
-        user = auth.authenticate(username=name, password = password)
-        prfloat(user)
+        user = auth.authenticate(username=name, password = password)        
         if user is not None:
             auth.login(request, user)
             return redirect('index')
         else:
-            return redirect('login')
+            messages.add_message(request, messages.WARNING, 'User not found!!!')
+            return redirect('login')            
     else:
         return render(request, "app/login.html")
 
