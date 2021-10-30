@@ -321,16 +321,29 @@ def advance(request, id, landid):
 
     if request.method == 'POST':
         advance = request.POST['amount']
-        description = request.POST['description']
-        date = request.POST['date'] 
-        d = datetime.datetime.strptime(date, "%Y-%m-%d").date()       
+        description = request.POST['description']        
+        date = request.POST['date']
+            
+        if len(date) == 0:
+            d = datetime.datetime.now()
+        else:
+            d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+
+        land = Land.objects.get(id=landid)  
+        advances = Advance.objects.filter(land_id=landid)
+        total = sum([a.advance for a in advances])
+        balance = land.totalprice() - total
+
+        if balance >= float(advance):
+            advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=d)
+            advance.save()
+            return redirect('landownerprofile', id)
+        else:
+            messages.add_message(request, messages.WARNING, 'insufficient balance.')
+            return redirect('advancepage', id, landid)
+
+        
     
-    advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=d)
-    advance.save()
-
-
-    return redirect('advancepage', id, landid)
-
 
 @login_required(login_url='login')
 def advancepage(request, id, landid):    
@@ -339,7 +352,7 @@ def advancepage(request, id, landid):
     
     advance = Advance.objects.filter(land=land)
     total = sum([a.advance for a in advance])
-    balacnce = land.totalprice() - total       
+    balance = land.totalprice() - total       
     
     advances = Advance.objects.filter(land_id=landid)       
 
@@ -347,10 +360,17 @@ def advancepage(request, id, landid):
     return render(request, "app/advancepage.html",{
         "land":land,        
         "total":total,
-        "balacnce":balacnce,
+        "balacnce":balance,
         "advances": advances,
         "id":id,   
     })
+
+def landCencellation(request, id, landid):
+    land = Land.objects.get(id=landid)      
+    land.delete()
+    advance = Advance.objects.filter(land=land).delete()
+
+    return redirect('landownerprofile', id)
 
 def login(request):
     if request.method == 'POST':

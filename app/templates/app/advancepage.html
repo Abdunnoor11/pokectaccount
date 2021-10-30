@@ -37,9 +37,10 @@ Advance page
     <div class="profile">
         <div class="card">mouja: {{ land.mouja }}</div>
         <div class="card">R/S Dag: {{ land.rsdag }}</div>
-        <div class="card">Total Price: {{ land.totalprice }}</div>
-        <div class="card">Total Advance: {{ total }}</div>
-        <div class="card">Due: {{ balacnce }}</div>
+        <div class="card">Total Price: {{ land.totalprice|floatformat:2 }}</div>
+        <div class="card">Total Advance: {{ total|floatformat:2 }}</div>
+        <div class="card">Due: {{ balacnce|floatformat:2 }}</div>
+        <div class="card"><a href="{% url 'landCencellation' id land.id %}"><button style="padding: 5px;">Land Cancellation</button></a></div>
     </div>
     <div class="tablecontainer">
 
@@ -55,7 +56,7 @@ Advance page
             <tr>
                 <td>{{ a.date }}</td>
                 <td>{{ a.description }}</td>
-                <td>{{ a.advance }}</td>
+                <td>{{ a.advance|floatformat:2 }}</td>
             </tr>
             {% endfor %}
         </table>
@@ -78,7 +79,7 @@ Advance page
 
                 <label for="amount">Amount</label>
                 <input type="number" name="amount"><br>
-        
+
                 <label for="date">Date</label>
                 <input type="date" name="date"><br>
 
