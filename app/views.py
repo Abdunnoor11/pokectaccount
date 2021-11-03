@@ -83,17 +83,28 @@ def newdebtor(request):
 
 @login_required(login_url='login')
 def debtorprofile(request, id):
-    profile = Debtor.objects.get(id=id)
-    accounts = Account.objects.filter(debtor=profile).order_by('date')    
+    if request.method == "POST":
+        img = request.POST['img']
+
+        profile = Debtor.objects.get(id=id)
+        profile.img = img
+        profile.save()
+
+        return redirect("debtorprofile", id)
     
-    total_loan, total_depost, b = total_count_debtor(accounts)
-    return render(request, "app/debtorprofile.html",{
-        "profile": profile,
-        "accounts": accounts,
-        "total_loan": total_loan,
-        "total_deposit": total_depost,
-        "Due": b,      
-    })
+    else:
+        profile = Debtor.objects.get(id=id)
+        accounts = Account.objects.filter(debtor=profile).order_by('date')    
+        
+        total_loan, total_depost, b = total_count_debtor(accounts)
+
+        return render(request, "app/debtorprofile.html",{
+            "profile": profile,
+            "accounts": accounts,
+            "total_loan": total_loan,
+            "total_deposit": total_depost,
+            "Due": b,      
+        })
 
 def total_count_debtor(accounts):
     total_loan = 0
