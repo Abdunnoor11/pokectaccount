@@ -29,7 +29,7 @@ class Lender(models.Model):
     lenderName = models.CharField(max_length=50)
     phone = models.CharField(max_length=15, blank=True, null= True)
     address = models.TextField(blank=True, null= True)
-    img = models.ImageField(default='avatar.png', upload_to='pics')    
+    img = models.ImageField(default='avatar.png', upload_to='pics')
     investor = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     totalbalance = models.FloatField(default=0, null=True, blank=True)    
     
@@ -48,7 +48,7 @@ class Invest(models.Model):
 class Landowner(models.Model):    
     Landownername = models.CharField(max_length=50)
     phone = models.CharField(max_length=15, blank=True, null= True)
-    img = models.ImageField(default='avatar.png', upload_to='pics')    
+    img = models.ImageField(default='avatar.png', upload_to='pics')
     landbuyer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     status = models.BooleanField(default=None, null=True, blank=False)        
     def __str__(self):

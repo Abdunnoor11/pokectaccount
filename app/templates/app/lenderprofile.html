@@ -29,7 +29,18 @@ Profile
 <main>
     <div class="profile">
         <div class="mainprofile">
-            <img src="{% static 'app/img/avatar.png' %}" alt="Avatar" class="avatar" />
+
+          <div class="image-upload">
+            <form id="ImgForm" action="{% url 'lenderprofile' profile.id %}" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}          
+                  <label for="file-input">
+                      <img src="{{ profile.img.url }}" />
+                  </label>
+                
+                  <input style="display: none;" id="file-input" type="file" accept="image/*" name="img" onchange="uploadimage(this)"/>
+            </form>            
+          </div>
+            
             <div class="userprofile">
                 <h4>{{ profile }}</h4>
                 <h2>{{ profile.lenderName }}</h2>

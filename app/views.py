@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 import datetime
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def index(request):
@@ -23,6 +24,8 @@ def index(request):
         total_invest, total_return, total_due_invest = total_count_lender(invests)
 
         #  For Land
+
+
         
         return render(request, "app/Dashboard.html",{
             "total_loan": total_loan,
@@ -83,17 +86,17 @@ def newdebtor(request):
 
 @login_required(login_url='login')
 def debtorprofile(request, id):
-    if request.method == "POST":
-        img = request.POST['img']
+    if request.method == 'POST' and request.FILES['img']:
+        i = request.FILES['img']    
 
         profile = Debtor.objects.get(id=id)
-        profile.img = img
+        profile.img = i        
         profile.save()
 
         return redirect("debtorprofile", id)
     
     else:
-        profile = Debtor.objects.get(id=id)
+        profile = Debtor.objects.get(id=id)        
         accounts = Account.objects.filter(debtor=profile).order_by('date')    
         
         total_loan, total_depost, b = total_count_debtor(accounts)
@@ -208,18 +211,28 @@ def lender(request):
 
 @login_required(login_url='login')
 def lenderprofile(request, id):
-    profile = Lender.objects.get(id=id)
-    accounts = Invest.objects.filter(lender=profile).order_by('date')
+    if request.method == 'POST' and request.FILES['img']:
+        i = request.FILES['img']    
 
-    total_invest, total_return, b = total_count_lender(accounts)
+        profile = Lender.objects.get(id=id)
+        profile.img = i        
+        profile.save()
 
-    return render(request, "app/lenderprofile.html",{
-        "profile": profile,
-        "accounts": accounts,
-        "total_return": total_return,
-        "total_invest": total_invest,
-        "Due": b,
-    })
+        return redirect("lenderprofile", id)
+
+    else:
+        profile = Lender.objects.get(id=id)
+        accounts = Invest.objects.filter(lender=profile).order_by('date')
+
+        total_invest, total_return, b = total_count_lender(accounts)
+
+        return render(request, "app/lenderprofile.html",{
+            "profile": profile,
+            "accounts": accounts,
+            "total_return": total_return,
+            "total_invest": total_invest,
+            "Due": b,
+        })
 
 def total_count_lender(accounts):
     total_invest = 0
@@ -312,22 +325,32 @@ def newlandowner(request):
 
 @login_required(login_url='login')
 def landownerprofile(request, id):
-    profile = Landowner.objects.get(id=id)    
-    lands = Land.objects.filter(landowner=profile)
-    
-    landdetails = {}
+    if request.method == 'POST' and request.FILES['img']:
+        i = request.FILES['img']    
 
-    for land in lands:
-        advance = Advance.objects.filter(land=land)
-        total = sum([a.advance for a in advance])
-        balacnce = land.totalprice() - total
-        landdetails[land] = total, balacnce
-    
+        profile = Landowner.objects.get(id=id)
+        profile.img = i        
+        profile.save()
 
-    return render(request, "app/landownerprofile.html",{
-        "profile": profile,
-        "landdetails": landdetails,
-    })
+        return redirect("landownerprofile", id)
+    
+    else:        
+        profile = Landowner.objects.get(id=id)    
+        lands = Land.objects.filter(landowner=profile)
+        
+        landdetails = {}
+
+        for land in lands:
+            advance = Advance.objects.filter(land=land)
+            total = sum([a.advance for a in advance])
+            balacnce = land.totalprice() - total
+            landdetails[land] = total, balacnce
+        
+
+        return render(request, "app/landownerprofile.html",{
+            "profile": profile,
+            "landdetails": landdetails,
+        })
 
 
 @login_required(login_url='login')

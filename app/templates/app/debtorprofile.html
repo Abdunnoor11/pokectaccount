@@ -29,7 +29,7 @@ Profile
         <div class="mainprofile">
 
           <div class="image-upload">
-            <form id="ImgForm" action="{% url 'debtorprofile' profile.id %}" method="post">
+            <form id="ImgForm" action="{% url 'debtorprofile' profile.id %}" method="post" enctype="multipart/form-data">
                   {% csrf_token %}          
                   <label for="file-input">
                       <img src="{{ profile.img.url }}" />
@@ -143,9 +143,7 @@ Profile
   </div>
   <script>
 
-    function uploadimage(){
-      document.getElementById('ImgForm').submit();
-    }    
+        
 
     function ModalFunc(btn) {
         if (btn.id == "loanbtn") {

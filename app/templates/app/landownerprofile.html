@@ -80,7 +80,18 @@
         <div class="modal-body">
             <span class="close">&times;</span>
             <h3>New Land</h3>
-            <form action="{% url 'newland' profile.id %}" method="post">
+
+            <div class="image-upload">
+                <form id="ImgForm" action="{% url 'landownerprofile' profile.id %}" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}          
+                      <label for="file-input">
+                          <img src="{{ profile.img.url }}" />
+                      </label>
+                    
+                      <input style="display: none;" id="file-input" type="file" accept="image/*" name="img" onchange="uploadimage(this)"/>
+                </form>            
+              </div>
+            
                 {% csrf_token %}                
                 <input type="text" name="mouja" placeholder="Mouja"/><br />                
                 <input type="text" name="rsdag" placeholder="R/S Dag"/><br />                
