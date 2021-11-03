@@ -94,7 +94,7 @@ Profile
       <div class="tblrow">
         <h3>{{ account.date }}</h3> {{ account.description }} | {% if account.status %} <td>Paid</td> {% else %} <td>Due</td> {% endif %}<br />
         <h5>Balance: {{ account.balance|floatformat:2 }} <br />
-          Loan: {{ account.invest|floatformat:2 }}, Deposit: {{ account.retern|floatformat:2 }}</h5>
+          Invest: {{ account.invest|floatformat:2 }}, Return: {{ account.retern|floatformat:2 }}</h5>
     </div>
       {% endfor %}
     </div>

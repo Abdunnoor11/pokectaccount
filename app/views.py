@@ -18,12 +18,11 @@ def index(request):
         total_loan, total_deposit, total_due_loan = total_count_debtor(accounts)
         
         # for invest
-        accounts = Invest.objects.filter(lender_id = request.user.id)
+        invests = Invest.objects.filter(lender_id = request.user.id)
         
-        total_invest, total_return, total_due_invest = total_count_lender(accounts)
-        
-        #  For Land
+        total_invest, total_return, total_due_invest = total_count_lender(invests)
 
+        #  For Land
         
         return render(request, "app/Dashboard.html",{
             "total_loan": total_loan,

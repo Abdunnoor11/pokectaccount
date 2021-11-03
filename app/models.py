@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import os
 import datetime
 
+# loan
 class Debtor(models.Model):
     debtorName = models.CharField(max_length=50)
     phone = models.CharField(max_length=15, blank=True, null= True)
@@ -23,6 +24,7 @@ class Account(models.Model):
     date = models.DateField( default=datetime.date.today, blank=True, null=True)
     status = models.BooleanField(default=None, null=True, blank=False)
     
+# Invest
 class Lender(models.Model):
     lenderName = models.CharField(max_length=50)
     phone = models.CharField(max_length=15, blank=True, null= True)

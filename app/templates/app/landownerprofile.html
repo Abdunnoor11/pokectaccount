@@ -47,34 +47,7 @@
                 <p></p>
             </div>
         </div>
-        <!-- <div class="totaldebitdeposit">
-            <table id="totalid">
-                <tr>
-                    <div class="lalign">
-                        <h3>Total Loan:</h3>
-                    </div>
-                    <div class="ralign">
-                        <h3>$32423432</h3>
-                    </div>
-                </tr>
-                <tr>
-                    <div class="lalign">
-                        <h3>Total Deposit:</h3>
-                    </div>
-                    <div class="ralign">
-                        <h3>$32423432</h3>
-                    </div>
-                </tr>
-                <tr>
-                    <div class="lalign">
-                        <h3>Due:</h3>
-                    </div>
-                    <div class="ralign">
-                        <h3>$35343</h3>
-                    </div>
-                </tr>
-            </table>
-        </div> -->
+
         <div class="buttons">
             <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">
                 New Land
@@ -108,15 +81,11 @@
             <span class="close">&times;</span>
             <h3>New Land</h3>
             <form action="{% url 'newland' profile.id %}" method="post">
-                {% csrf_token %}
-                <label for="mouja">Mouja</label>
-                <input type="text" name="mouja" /><br />
-                <label for="rsdag">R/S Dag</label>
-                <input type="text" name="rsdag" /><br />
-                <label for="landQTY">Land QTY</label>
-                <input type="number" name="landQTY" /><br />
-                <label for="perDprice">Per Decimal Price</label>
-                <input type="number" name="perDprice" /><br />
+                {% csrf_token %}                
+                <input type="text" name="mouja" placeholder="Mouja"/><br />                
+                <input type="text" name="rsdag" placeholder="R/S Dag"/><br />                
+                <input type="number" name="landQTY" placeholder="Land QTY"/><br />                
+                <input type="number" name="perDprice" placeholder="Per Decimal Price"/><br />
 
                 <input type="submit" value="submit" />
             </form>
