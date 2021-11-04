@@ -120,7 +120,7 @@ Profile
           {% csrf_token %}            
             <input type="date" name="date"><br>
             <input type="text" name="description" placeholder="Description"><br>            
-            <input type="number" name="loan" placeholder="Invest Amount"><br>                        
+            <input type="number" step="0.001" name="loan" placeholder="Invest Amount"><br>                        
             <input type="submit" value="submit">
         </form>        
       </div>
@@ -136,7 +136,7 @@ Profile
           {% csrf_token %}            
             <input type="date" name="date" ><br>
             <input type="text" name="description" placeholder="Description"><br>            
-            <input type="number" name="deposit" placeholder="Return Amount"><br>                        
+            <input type="number" step="0.001"  name="deposit" placeholder="Return Amount"><br>                        
             <input type="submit" value="submit">
         </form>
       </div>
