@@ -2,325 +2,65 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-html {
-  background-color: white;
-  height: 100%;
+html,
+body {  
+  height: 100%;  
+  max-width: 700px;
+  margin: auto;    
+  
 }
 
-body {
-  max-width: 1400px;
-  margin: auto;
-  background-color: #fefeff;
-  font-family: Poppins, Sans-Serif;
-  height: 100%;
-}
-
-/* navber css */
-
-nav {
-  background-color: #020f14;
-  color: #f1f1f1;
-  display: flex;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0px;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 10px 50px;
-  z-index: 1;
-}
-
-footer {
-  background-color: #c4efff;
-  text-align: center;
-  padding: 2px 0;
-}
-
-h3 {
-  font-weight: 900;
-}
-
-.fa {
-  height: 0px;
-}
-
-main {
+main{  
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  margin: auto;
+  align-items: center;  
+  height: 100%;  
 }
 
-/* log in box css */
-.login {
-  background-color: #000000b7;
-  color: white;
-  box-shadow: 0px 0px 25px 1px #000000;
-  margin: 14%;
+.login{
+  /* background-color: red; */
+  width: 330px;
   text-align: center;
+  Color: #313030;  
+}
+
+.login h3{
+  font-weight: normal;
+  margin-bottom: 25px;
+  color: #7A7B85;
+  font-size: 14px;
+}
+
+.formContainer{
+  text-align: left;
+}
+
+.formContainer label{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;  
+  color: #302D45;
+}
+
+.formContainer input[type="text"], input[type="password"], input[type="submit"]{
+  width: 100%;
+  height: 40px;
+  margin: 5px 0 20px 0;
   border-radius: 5px;
-  transition: 2s;
+  border: 1px solid #E1E1E1;  
 }
 
-a {
-  text-decoration: none;
+.formContainer input[type="submit"]{
+  background-color:#313030; 
   color: white;
+  font-size: 20px;  
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
   cursor: pointer;
-}
-
-.login:hover {
-  border: 2px solid transparent;
-}
-.login h3 {
-  font-size: 25px;
-  margin: 10% 0;
-}
-
-.login input[type="text"],
-[type="password"] {
-  margin: 25px 35px;
-  padding: 5px 15px;
-  border: none;
-  background-color: #d1d1d100;
-  color: rgb(255, 255, 255);
-  font-size: 15px;
-  border-bottom: 2px solid #5bccf6;
-  outline: none;
-}
-
-.login input[type="submit"] {
-  padding: 3% 15%;
-  margin: 10% 0 10% 0;
-  font-size: 15px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: width 2s, height 2s, transform 1s;
-}
-
-.login input[type="submit"]:hover {
-  background-color: #5bccf6;
-}
-
-.login input[type="submit"]:focus {
-  transform: rotate(360deg);
-}
-
-/* log in css end */
-
-.menu {
-  position: fixed;
-  z-index: 1;
-  background-color: #111;
-  color: #ffff;
-  padding: 5%;
-  overflow-x: hidden;
-  display: none;
-  margin-top: 5%;
-}
-
-.sub {
-  margin-left: 25px;
-}
-ul {
-  margin-left: 5%;
-}
-
-.menu a {
-  padding: 8px 8px 8px 8px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #ffffff;
-  display: block;
-}
-
-.menu a:hover {
-  color: #d3d3d3;
-}
-
-.menu .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/* section css */
-.section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.subsection {
-  width: 300px;
-  height: 136px;
-  color: white;
-  background: linear-gradient(
-    112.68deg,
-    rgba(81, 45, 109, 0.65) -19.16%,
-    #512d6d 57.19%
-  );
-  box-shadow: 0px 0px 25px 1px rgba(0, 112, 174, 0.25);
-  margin: 2%;
-  padding: 25px;
-  text-align: right;
-  border-radius: 10px;
-}
-
-.investsecton {
-  background: linear-gradient(
-    308.11deg,
-    #0070ae -19.16%,
-    #00a3ff9c 103.46%
-  );
-}
-
-.landsection {
-  background: linear-gradient(
-    308.11deg,
-    #fd5e53 -19.16%,
-    #fd5e53 43.79%,
-    rgba(253, 94, 83, 0.44) 105.39%
-  );
-}
-
-.landsection .Due {
-  color: #f2ff42;
-  font-size: 17px;
-  font-weight: bolder;
-  margin-left: 25px;
-}
-
-.cardtitle {
-  font-size: 13px;
-}
-
-.cardbalance {
-  font-size: 23px;
-  font-weight: bolder;
-}
-
-.depodue {
-  margin: 25px 0;
-  text-align: left;
-}
-
-.deposit {
-  color: #99eb48;
-  font-size: 17px;
-  font-weight: bold;
-  margin-left: 25px;
-}
-
-.Due {
-  color: #ff3a2c;
-  font-size: 17px;
-  font-weight: bolder;
-  margin-left: 25px;
-}
-/* section css end */
-
-.tablecontainer {
-  text-align: center;
-  margin: 10%;
-  width: 100%;
-}
-
-.tablecontainer h2 {
-  margin: 25px;
-}
-
-.tablecontainer table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th,
-td {
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-th {
-  background-color: #757575;
-  color: white;
-}
-
-.restablecontainer {
-  display: none;
-}
-
-/* Debtor Profile page */
-.profile {
-  background-color: #0000009c;
-  color: #f1f1f1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 35px 0;
-}
-
-.mainprofile {
-  display: flex;
-  align-items: center;
-}
-
-.mainprofile img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  transform: translateX(-50%);
-}
-
-.userprofile {
-  padding: 25px;
-}
-
-.totaldebitdeposit {
-  padding: 25px;
-}
-
-.totaldebitdeposit td,
-tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.24);
-}
-
-.lalign {
-  text-align: left;
-}
-
-.ralign {
-  text-align: right;
-}
-
-.buttons {
-  padding: 25px;
-}
-
-.buttons button {
-  background-color: #ffef0f;
-  width: 100%;
-  padding: 5px 15px;
-  justify-content: center;
-  border-radius: 25px;
-  border: none;
-  margin: 5px;
-}
-
-.buttons button:hover {
-  background-color: #5bccf6;
-  cursor: pointer;
-  transition: 0.5s;
 }
