@@ -24,8 +24,14 @@ def index(request):
         total_invest, total_return, total_due_invest = total_count_lender(invests)
 
         #  For Land
-
-
+        Landowners = Landowner.objects.filter(landbuyer=request.user.id) 
+        
+        land = Land.objects.filter(landowner__id__in=Landowners.all())
+        total_land_price = sum([i.totalprice() for i in land])
+        
+        advanced = Advance.objects.filter(land__id__in = land.all())
+        total_advanced = sum([i.advance for i in advanced])
+        print(total_advanced)
         
         return render(request, "app/Dashboard.html",{
             "total_loan": total_loan,
@@ -36,7 +42,9 @@ def index(request):
             "total_return": total_return,
             "total_due_invest": total_due_invest,
             # Land
-
+            "total_land_price":total_land_price,
+            "total_advanced":total_advanced,
+            "total_due":total_land_price-total_advanced,
         })
     else:
         return redirect("login")
@@ -389,9 +397,7 @@ def advance(request, id, landid):
         else:
             messages.add_message(request, messages.WARNING, 'insufficient balance.')
             return redirect('advancepage', id, landid)
-
-        
-    
+            
 
 @login_required(login_url='login')
 def advancepage(request, id, landid):    

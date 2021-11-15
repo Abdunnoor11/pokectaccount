@@ -19,12 +19,10 @@ Land Details
 </header>
 <div class="list-cards">
     {% for landowner in landowners %}
-    <div class="card list">
+    <div class="card list" style="height: 145px;">
         <h5>ID: <span class="lightword">{{ landowner  }}</span></h5>
         <h5>Name: <span class="lightword">{{ landowner.Landownername }}</span></h5>                
-        <h5>Phone: <span class="lightword">{{ landowner.phone }}</span></h5>                
-        <h5>Balance: <span class="lightword">{{ balance.0|floatformat:2 }}</span></h5>
-        <h5>Status: <span class="lightword">{{ balance.1 }}</span></h5>  
+        <h5>Phone: <span class="lightword">{{ landowner.phone }}</span></h5>                                
         <div class="buttondiv"> 
             <a href="{% url 'landownerprofile' landowner.id %}"><button class="samebuttons">See Profile</button></a>
         </div> 

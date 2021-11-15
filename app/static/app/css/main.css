@@ -169,7 +169,7 @@ footer{
 }
 
 .menuCard{  
-  width: 159px;
+  width: 145px;
   height: 182px;
   /* margin: 20px 16px;   */
   padding: 12px;
@@ -198,7 +198,7 @@ footer{
 
 .samebuttons,
 .menuCard button{
-  width: 130px;
+  width: 120px;
   height: 36px;
   background: #313030;
   border-radius: 5px;

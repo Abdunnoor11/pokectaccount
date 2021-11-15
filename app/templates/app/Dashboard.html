@@ -14,7 +14,7 @@ Dashboard
 </header>
 
 <div class="dashcards">
-    
+
     <!-- Loan -->
 
     <div class="card">
@@ -64,6 +64,31 @@ Dashboard
         <div class="count-total">
             <h5>Total Invast Due</h5>
             <h3>&#2547; {{ total_due_invest|floatformat:2 }}</h3>
+        </div>
+    </div>
+
+    <!-- Land -->    
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Land Price</h5>
+            <h3>&#2547; {% if total_land_price %}{{ total_land_price|floatformat:2 }} {% else %} 0.00 {% endif %} </h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Land Advanced</h5>
+            <h3>&#2547; {{ total_advanced|floatformat:2 }}</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Land Due</h5>
+            <h3>&#2547; {{ total_due|floatformat:2 }}</h3>
         </div>
     </div>
 
