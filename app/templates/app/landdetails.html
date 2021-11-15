@@ -5,48 +5,31 @@ Land Details
 {% endblock %}
 
 {% block body %}
-<main>
-    <div class="tablecontainer">
-        <h2>Land Details</h2>
-
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Status</th>
-            </tr>
-            {% for landowner in landowners %}
-            <tr>
-                <td>{{ landowner }}</td>
-                <td> <a style="color: black;" href="{% url 'landownerprofile' landowner.id %}"> 
-                    {{ landowner.Landownername }}</a> </td>
-                <td>{{ landowner.phone }}</td>
-                {% if landowner.status %}
-                <td>Paid</td>
-                {% else %}
-                <td>Due</td>
-                {% endif %}
-            </tr>
-            {% endfor %}
-        </table>
+<header style="text-align: center;">
+    <h2>Land Details</h2>
+    <div class="name-logout">                
     </div>
-
-    <div class="restablecontainer">
-        {% for landowner in landowners %}
-        <a style="color: black;" href="{% url 'landownerprofile' landowner.id %}">
-            <div class="tblrow">
-                <h3>{{ landowner }} | {{ landowner.Landownername }} </h3>
-                <h5>{{ landowner.phone }} </br>
-                    {% if landowner.status %}
-                    <td>Paid</td>
-                    {% else %}
-                    <td>Due</td>
-                    {% endif %}
-                </h5>
-            </div>
-        </a>
-        {% endfor %}
+    <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    
+</header>
+<div class="list-cards">
+    {% for landowner in landowners %}
+    <div class="card list">
+        <h5>ID: <span class="lightword">{{ landowner  }}</span></h5>
+        <h5>Name: <span class="lightword">{{ landowner.Landownername }}</span></h5>                
+        <h5>Phone: <span class="lightword">{{ landowner.phone }}</span></h5>                
+        <h5>Balance: <span class="lightword">{{ balance.0|floatformat:2 }}</span></h5>
+        <h5>Status: <span class="lightword">{{ balance.1 }}</span></h5>  
+        <div class="buttondiv"> 
+            <a href="{% url 'landownerprofile' landowner.id %}"><button class="samebuttons">See Profile</button></a>
+        </div> 
     </div>
-</main>
+    {% endfor %}
+</div>
+
 {% endblock %}

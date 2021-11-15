@@ -8,11 +8,17 @@ New Deptor
 <main>    
     <form class="login" action="{% url 'newdebtor' %}" method="POST">
         {% csrf_token %}
-        <h3>New Debtor</h3>
-        <input type="text" name="name" id="" placeholder="Dabtor Name"><br>
-        <input type="text" name="phone" id="" placeholder="Phone"><br>
-        <input type="text" name="address" id="" placeholder="Address"><br>                
-        <input type="submit" value="Create">
+        <h2>New Debtor</h2>
+        <div class="formContainer">
+            <label for="">Dabtor Name<span style="color: red;">*</span></label><br>
+            <input type="text" name="name" ><br>
+            <label for="">Phone<span style="color: red;">*</span></label><br>
+            <input type="text" name="phone"><br>
+            <label for="">Address<span style="color: red;">*</span></label><br>
+            <input type="text" name="address"><br>                
+            <input type="submit" value="Create">
+        </div>
     </form>
 </main>
+
 {% endblock %}

@@ -1,0 +1,40 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Invest
+{% endblock %}
+
+{% block body %}
+<header>
+    <h2>Your Invests</h2>
+    <div class="name-logout">                
+    </div>
+</header>
+<div class="menuCards">
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            See your all invest status here.
+        </div>
+        <a href="{% url 'invest' %}"><button>Invest Book</button></a>
+
+    </div>
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            See your all lender details here.
+        </div>
+        <a href="{% url 'lender' %}"><button>Lenders</button></a>
+
+    </div>
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            Create your new lender.            
+        </div>
+        <a href="{% url 'newlender' %}"><button>New Lender</button></a>
+    </div>            
+    
+</div>
+
+{% endblock %}

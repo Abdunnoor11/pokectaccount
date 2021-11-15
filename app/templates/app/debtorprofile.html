@@ -6,145 +6,100 @@ Profile
 {% endblock %} 
 
 {% block head %}
-<style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-    }
 
-    .modal-body {
-      padding: 30px 16px;
-    }
-
-    @media (max-width: 700px) {
-      .modal-content{
-        width: 100%;
-      }
-    }
-  </style>
 {% endblock %}
 
 {% block body %}
-<main>
-    <div class="profile">
-        <div class="mainprofile">
+<header class="profile" style="text-align: center;">              
+  <div class="image-upload">
+    <form id="ImgForm" action="{% url 'debtorprofile' profile.id %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}          
+          <label for="file-input">
+              <img src="{{ profile.img.url }}" />
+          </label>
+        
+          <input style="display: none;" id="file-input" type="file" accept="image/*" name="img" onchange="uploadimage(this)"/>
+    </form>  
+  </div>
+  <div class="info">
+      <h5>Debtor ID: <span class="lightword">{{ profile }}</span></h5>
+      <h5>Name: <span class="lightword">{{ profile.debtorName }}</span></h5>                
+      <h5>Phone: <span class="lightword">{{ profile.phone }}</span></h5>  
+      <h5>Address: <span class="lightword">{{ profile.address }}</span></h5>  
+      <br>
+      <hr>
+      <br>
+      <h5>Total Loan: <span class="lightword">{{ total_loan|floatformat:2 }}</span></h5>  
+      <h5>Total Deposit: <span class="lightword">{{ total_deposit|floatformat:2 }}</span></h5>  
+      <h5>Balance: <span class="lightword">{{ Due|floatformat:2 }}</span></h5>  
+      <br>
+      <div class="buttondiv">                     
+          <button class="samebuttons" type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Loan</button>
+          <button class="samebuttons" type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">Deposit</button>
+      </div> 
+  </div>
+</header>
+<div class="list-cards">
+  {% for account in accounts %}
+  <div class="card list">      
+      <h5>Date: <span class="lightword">{{ account.date }}</span></h5>
+      <h5>Description: <span class="lightword">{{ account.description }}</span></h5>
+      <h5>Loan: <span class="lightword">{{ account.loan|floatformat:2 }}</span></h5>
+      <h5>Deposit: <span class="lightword">{{ account.deposit|floatformat:2 }}</span></h5>
+      <h5>Credit Balance: <span class="lightword">{{ account.balance|floatformat:2 }}</span></h5>
+      <h5>Status: <span class="lightword">{% if account.status %} Paid {% else %} Due {% endif %}</span></h5>                
+  </div>
+  {% endfor %}
+</div>
 
-          <div class="image-upload">
-            <form id="ImgForm" action="{% url 'debtorprofile' profile.id %}" method="post" enctype="multipart/form-data">
-                  {% csrf_token %}          
-                  <label for="file-input">
-                      <img src="{{ profile.img.url }}" />
-                  </label>
-                
-                  <input style="display: none;" id="file-input" type="file" accept="image/*" name="img" onchange="uploadimage(this)"/>
-            </form>            
-          </div>
-                      
-            <div class="userprofile">
-                <h4>{{ profile }}</h4>
-                <h2>{{ profile.debtorName }}</h2>
-                <p>{{ profile.phone }}</p>
-                <p>{{ profile.address }}</p>
-                <p></p>
-            </div>
-        </div>
-        <div class="totaldebitdeposit">
-            <table id="totalid">
-                <tr>
-                    <td><h4 class="lalign">Total Loan:</h4></td>
-                    <td class="ralign"><h4>{{ total_loan|floatformat:2 }}</h4></td>
-                </tr>
-                <tr>
-                    <td><h4 class="lalign">Total Deposit:</h4></td>
-                    <td class="ralign"><h4> {{ total_deposit|floatformat:2 }} </h4></td>
-                </tr>
-                <tr>
-                    <td><h4 class="lalign">Balance:</h4></td>
-                    <td class="ralign"><h4>{{ Due|floatformat:2 }}</h4></td>
-                </tr>
-            </table>
-        </div>
-        <div class="buttons">
-            <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Loan</button>
-            <button type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">Deposit</button>
-        </div>
-    </div>
-
-    <div class="tablecontainer" style="margin: 0 0">
-        <h2>Loan Status</h2>
-
-        <table>            
-            <tr>                
-                <th>Date</th>
-                <th>Name & Description</th>
-                <th class="ralign">Loan</th>
-                <th class="ralign">Deposit</th>
-                <th class="ralign">Balance</th>
-                <th>Status</th>
-            </tr>           
-            {% for account in accounts %}
-              <tr>
-                <td>{{ account.date }}</td>
-                <td>{{ account.description }}</td>
-                <td class="ralign">{{ account.loan|floatformat:2 }}</td>
-                <td class="ralign">{{ account.deposit|floatformat:2 }}</td>
-                <td class="ralign">{{ account.balance|floatformat:2 }}</td>
-                {% if account.status %}
-                  <td>Paid</td>                  
-                {% else %}  
-                <td>Due</td>
-                {% endif %}
-                  
-              </tr>
-            {% endfor %}
-        </table>
-    </div>
-
-    <div class="restablecontainer">
-      {% for account in accounts %}
-        <div class="tblrow">
-            <h3>{{ account.date }}</h3> {{ account.description }} | {% if account.status %} <td>Paid</td> {% else %} <td>Due</td> {% endif %}<br />
-            <h5>Balance: {{ account.balance|floatformat:2 }} <br />
-              Loan: {{ account.loan|floatformat:2 }}, Deposit: {{ account.deposit|floatformat:2 }}</h5>
-        </div>
-      {% endfor %}
-    </div>
-</main>
 <div id="Loan" class="modal">
     
-    <div class="modal-content">
-      <div class="modal-body">
-        <span class="close"></span>
-        <h4>Loan</h4>
-        <form action="{% url 'accounts' profile.id 'loan' %}" method="post">
-          {% csrf_token %}            
-            <input type="date" name="date" ><br>
-            <input type="text" name="description" placeholder="Description"><br>            
-            <input type="number" step="0.001"  name="loan" placeholder="Loan Amount"><br>                        
-            <input type="submit" value="submit">
-        </form>        
-      </div>
+  <div class="modal-content">
+    <div class="modal-body">
+      <span class="close"></span>
+      <h3>Loan</h3>
+      <div class="formContainer">
+      <form action="{% url 'accounts' profile.id 'loan' %}" method="post">  
+          {% csrf_token %}                      
+          <label for="">Date<span style="color: red;">*</span></label><br>
+          <input type="date" name="date">
+          <label for="">Description<span style="color: red;">*</span></label><br>
+          <input type="text" name="description">
+          <label for="">loan Amount<span style="color: red;">*</span></label><br>
+          <input type="number" step="0.001"  name="loan"><br>                        
+          <input type="submit" value="Submit">
+      </form>        
+  </div>
     </div>
   </div>
+</div>
 
-  <div id="Deposit" class="modal">
-    <div class="modal-content">
-      <div class="modal-body">
-        <span class="close"></span>
-        <h4>Deposit</h4>
-        <form action="{% url 'accounts' profile.id 'deposit' %}" method="post">
-          {% csrf_token %}            
-            <input type="date" name="date"><br>
-            <input type="text" name="description" placeholder="Description"><br>            
-            <input type="number" step="0.001"  name="deposit" placeholder="Deposit Amount"><br>                        
-            <input type="submit" value="submit">
-        </form>
-      </div>
+<div id="Deposit" class="modal">
+  <div class="modal-content">
+    <div class="modal-body">
+      <span class="close"></span>
+      <h3>Deposit</h3>
+      <div class="formContainer">
+      <form action="{% url 'accounts' profile.id 'deposit' %}" method="post">
+        {% csrf_token %}                           
+          <label for="">Date<span style="color: red;">*</span></label><br>
+          <input type="date" name="date">
+          <label for="">Description<span style="color: red;">*</span></label><br>
+          <input type="text" name="description">
+          <label for="">Deposit Amount<span style="color: red;">*</span></label><br>
+          <input type="number" step="0.001"  name="deposit"><br>                        
+          <input type="submit" value="Submit">
+      </form>
+  </div>
     </div>
   </div>
+</div>
+
+
+
+
   <script>
-
         
-
     function ModalFunc(btn) {
         if (btn.id == "loanbtn") {
             var modal = document.getElementById("Loan");
@@ -170,6 +125,6 @@ Profile
         };
     }    
 
-</script>
+  </script>
 {% endblock %}
 

@@ -1,0 +1,40 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Loan
+{% endblock %}
+
+{% block body %}
+<header>
+    <h2>Your Loans</h2>
+    <div class="name-logout">                
+    </div>
+</header>
+<div class="menuCards">
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            See your all loan status here.
+        </div>
+        <a href="{% url 'loan' %}"><button>Loan Book</button></a>
+
+    </div>
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            See your all debtor details here.
+        </div>
+        <a href="{% url 'debtor' %}"><button>Debtors</button></a>
+
+    </div>
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            Create your new debtor.
+        </div>
+        <a href="{% url 'newdebtor' %}"><button>New Debtor</button></a>
+    </div>            
+    
+</div>
+
+{% endblock %}

@@ -5,46 +5,29 @@ Loan
 {% endblock %}
 
 {% block body %}
-<main>       
-    <div class="tablecontainer">
-        <h2>Loan Status</h2>
-
-        <table>
-            <tr>
-                <th>Debtor ID</th>
-                <th>Date</th>
-                <th>Name & Description</th>
-                <th class="ralign">Loan</th>
-                <th class="ralign">Deposit</th>
-                <th class="ralign">Credit Balance</th>
-                <th>Status</th>
-            </tr>
-            {% for account in accounts %}
-            <tr>
-                <td>{{ account.debtor }}</td>
-                <td>{{ account.date }}</td>
-                <td>{{ account.description }}</td>
-                <td class="ralign">{{ account.loan }}</td>                
-                <td class="ralign">{{ account.deposit }}</td>                                      
-                <td class="ralign">{{ account.balance }}</td>                                      
-                {% if account.status %}
-                  <td>Paid</td>                  
-                {% else %}  
-                <td>Due</td>
-                {% endif %}                                     
-            </tr>
-            {% endfor %}
-        </table>
+<header style="text-align: center;">
+    <h2>Loan Status</h2>
+    <div class="name-logout">                
     </div>
-
-    <div class="restablecontainer ">
-        {% for account in accounts %}
-        <div class="tblrow">
-            <h3>{{ account.date }}</h3> {{ account.description }} | {% if account.status %} <td>Paid</td> {% else %} <td>Due</td> {% endif %}<br />
-            <h5>Balance: {{ account.balance|floatformat:2 }} <br />
-              Loan: {{ account.loan|floatformat:2 }}, Deposit: {{ account.deposit|floatformat:2 }}</h5>
-        </div>
-        {% endfor %}
+    <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    
+</header>
+<div class="list-cards">
+    {% for account in accounts %}
+    <div class="card list">
+        <h5>Debtor ID: <span class="lightword">{{ account.debtor }}</span></h5>
+        <h5>Date: <span class="lightword">{{ account.date }}</span></h5>
+        <h5>Description: <span class="lightword">{{ account.description }}</span></h5>
+        <h5>Loan: <span class="lightword">{{ account.loan }}</span></h5>
+        <h5>Deposit: <span class="lightword">{{ account.deposit }}</span></h5>
+        <h5>Credit Balance: <span class="lightword">{{ account.balance }}</span></h5>
+        <h5>Status: <span class="lightword">{% if account.status %} Paid {% else %} Due {% endif %}</span></h5>                
     </div>
-</main>
+    {% endfor %}
+</div>
 {% endblock %}

@@ -5,39 +5,31 @@ Loan
 {% endblock %}
 
 {% block body %}
-<main>       
-    <div class="tablecontainer">
-        <h2>All Debtors</h2>
-
-        <table>
-            <tr>
-                <th>Debtor ID</th>
-                <th>Name</th>
-                <th>Phone</th>                                
-                <th>Balance</th>
-                <th>Status</th>
-            </tr>
-            {% for debtor, balance in debtors.items %}
-                <tr>
-                    <td>{{ debtor }}</td>
-                    <td> <a style="color: black;" href="{% url 'debtorprofile' debtor.id %}"> {{ debtor.debtorName }}</a> </td>
-                    <td>{{ debtor.phone }}</td>
-                    <td class="ralign">{{ balance.0|floatformat:2 }}</td>                                      
-                    <a href=""><td>{{ balance.1 }}</td></a>                    
-                </tr>            
-            {% endfor %}
-        </table>
+<header style="text-align: center;">
+    <h2>All Debtors</h2>
+    <div class="name-logout">                
     </div>
-    <div class="restablecontainer">
-        {% for debtor in debtors %}
-        <a style="color: black;" href="{% url 'debtorprofile' debtor.id %}">
-            <div class="tblrow">
-                <h3>{{ debtor }} |  {{ debtor.debtorName }}</h3>
-                <h5>{{ debtor.phone }}</h5>
-            </div>
-        </a>
-        {% endfor %}
-
+    <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    
+</header>
+<div class="list-cards">
+    {% for debtor, balance in debtors.items %}
+    <div class="card list">
+        <h5>Debtor ID: <span class="lightword">{{ debtor }}</span></h5>
+        <h5>Name: <span class="lightword">{{ debtor.debtorName }}</span></h5>                
+        <h5>Phone: <span class="lightword">{{ debtor.phone }}</span></h5>                
+        <h5>Balance: <span class="lightword">{{ balance.0|floatformat:2 }}</span></h5>
+        <h5>Status: <span class="lightword">{{ balance.1 }}</span></h5>  
+        <div class="buttondiv"> 
+            <a href="{% url 'debtorprofile' debtor.id %}"><button class="samebuttons">See Profile</button></a>
+        </div> 
     </div>
-</main>
+    {% endfor %}
+</div>
+
 {% endblock %}

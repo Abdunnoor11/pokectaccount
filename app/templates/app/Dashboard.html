@@ -5,59 +5,68 @@ Dashboard
 {% endblock %}
 
 {% block body %}
-<main>       
-    <div class="section">          
-        <!-- Loan -->
-        <div class="subsection">
-            <span class="cardtitle">Total Loan</span><br>
-            <span class="cardbalance">&#2547; {{ total_loan|floatformat:2 }}</span> 
-        </div>  
+<header>
+    <h2>Welcome Back!</h2>
+    <div class="name-logout">
+        <h3><i class="fa fa-user" aria-hidden="true"></i> {{ user }}</h3>
+        <a href="{% url 'logout' %}"><button><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</button></a>
+    </div>
+</header>
 
-        <div class="subsection investsecton">
-            <span class="cardtitle">Total Loan Deposit</span><br>
-            <span class="cardbalance">&#2547; {{ total_deposit|floatformat:2 }}</span> 
-        </div>  
-        
+<div class="dashcards">
+    
+    <!-- Loan -->
 
-        <div class="subsection landsection">
-            <span class="cardtitle">Total Loan Balance</span><br>
-            <span class="cardbalance">&#2547; {{ total_due_loan|floatformat:2 }}</span> 
-        </div>  
-
-        <!-- Invest -->
-
-        <div class="subsection">
-            <span class="cardtitle">Total Invest</span><br>
-            <span class="cardbalance">&#2547; {{ total_invest|floatformat:2 }}</span> 
-        </div>  
-
-        <div class="subsection investsecton">
-            <span class="cardtitle">Total Return</span><br>
-            <span class="cardbalance">&#2547; {{ total_return|floatformat:2 }}</span> 
-        </div>  
-        
-        <div class="subsection landsection">
-            <span class="cardtitle">Total Invast Due</span><br>
-            <span class="cardbalance">&#2547; {{ total_due_invest|floatformat:2 }}</span> 
-        </div>  
-
-        <!-- Land -->
-
-        <div class="subsection">
-            <span class="cardtitle">Total Land</span><br>
-            <span class="cardbalance">&#2547; {{ total_loan|floatformat:2 }}</span> 
-        </div>  
-
-        <div class="subsection investsecton">
-            <span class="cardtitle">Total Advance</span><br>
-            <span class="cardbalance">&#2547; {{ total_return|floatformat:2 }}</span> 
-        </div>  
-        
-        <div class="subsection landsection">
-            <span class="cardtitle">Total Land Due</span><br>
-            <span class="cardbalance">&#2547; {{ total_due_invest|floatformat:2 }}</span> 
-        </div>  
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Loan</h5>
+            <h3>&#2547; {{ total_loan|floatformat:2 }}</h3>
+        </div>
     </div>
 
-</main>
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Loan Deposit</h5>
+            <h3>&#2547; {{ total_deposit|floatformat:2 }}</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Loan Balance</h5>
+            <h3>&#2547; {{ total_due_loan|floatformat:2 }}</h3>
+        </div>
+    </div>
+
+    <!-- Invest -->
+
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Invest</h5>
+            <h3>&#2547; {{ total_invest|floatformat:2 }}</h3>
+        </div>
+    </div>
+    
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Return</h5>
+            <h3>&#2547; {{ total_return|floatformat:2 }}</h3>
+        </div>
+    </div>
+
+    <div class="card">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="count-total">
+            <h5>Total Invast Due</h5>
+            <h3>&#2547; {{ total_due_invest|floatformat:2 }}</h3>
+        </div>
+    </div>
+
+</div>
+
 {% endblock %}

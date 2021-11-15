@@ -1,0 +1,33 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Your Land Records
+{% endblock %}
+
+{% block body %}
+<header>
+    <h2>Your Invests</h2>
+    <div class="name-logout">                
+    </div>
+</header>
+<div class="menuCards">
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            See your all land details here.
+        </div>
+        <a href="{% url 'land' %}"><button>Land Details</button></a>
+
+    </div>
+
+    <div class="menuCard">
+        <i class="fa fa-usd" aria-hidden="true"></i>
+        <div class="destitle">
+            Create your new land ownership.
+        </div>
+        <a href="{% url 'newlandowner' %}"><button>New Land Owner</button></a>
+
+    </div>        
+</div>
+
+{% endblock %}

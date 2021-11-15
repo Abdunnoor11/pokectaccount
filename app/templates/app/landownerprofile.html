@@ -1,110 +1,82 @@
-{% extends "app/layout.html" %}
+{% extends "app/layout.html" %} 
 <!-- {% load static %} -->
 
-{% block title %} Profile {% endblock %} {% block head %}
-<style>
-    /* The Modal (background) */
-    .landcontainer{
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
+{% block title %} 
+Profile 
+{% endblock %} 
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<header class="profile" style="text-align: center; height: 250px;">              
+  <div class="image-upload">
+    <form id="ImgForm" action="{% url 'landownerprofile' profile.id %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}          
+          <label for="file-input">
+              <img src="{{ profile.img.url }}" />
+          </label>
         
-        /* flex-shrink: 1; */
-    }
-
-
-    /* Add Animation */
-
-    /* The Close Button */
-    .close {
-        color: rgb(0, 0, 0);
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    @media (max-width: 700px) {
-        .modal-content {
-            width: 100%;
-        }
-
-        .tablecontainer{
-            display: block;
-        }
-    }
-</style>
-{% endblock %} {% block body %}
-<main>
-    <div class="profile">
-        <div class="mainprofile">
-            <img src="{% static 'app/img/avatar.png' %}" alt="Avatar" class="avatar" />
-            <div class="userprofile">
-                <h4>{{ profile }}</h4>
-                <h2>{{ profile.Landownername }}</h2>
-                <p>{{ profile.phone }}</p>
-                <p>{{ profile.address }}</p>
-                <p></p>
-            </div>
-        </div>
-
-        <div class="buttons">
-            <button type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">
-                New Land
-            </button>
-        </div>
+          <input style="display: none;" id="file-input" type="file" accept="image/*" name="img" onchange="uploadimage(this)"/>
+    </form>  
+  </div>
+  <div class="info">
+      <h5>ID: <span class="lightword">{{ profile }}</span></h5>
+      <h5>Name: <span class="lightword">{{ profile.Landownername }}</span></h5>                
+      <h5>Phone: <span class="lightword">{{ profile.phone }}</span></h5>  
+      <h5>Address: <span class="lightword">{{ profile.address }}</span></h5>  
+      <br>
+      <hr>
+      <br>            
+      <div class="buttondiv">                     
+          <button class="samebuttons" type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">New Land</button>          
+      </div> 
+  </div>
+</header>
+<div class="list-cards">
+  {% for landdetail, advance in landdetails.items %}
+    <div class="card list">      
+        <h5>Mouja: <span class="lightword">{{ landdetail.mouja }}</span></h5>
+        <h5>R/S Dag: <span class="lightword">{{ landdetail.rsdag }}</span></h5>
+        <h5>Land Qty: <span class="lightword">{{ landdetail.landQTY }}</span></h5>
+        <h5>P.D. Price: <span class="lightword">{{ landdetail.perDprice|floatformat:2 }}</span></h5>
+        <h5>Total Price: <span class="lightword">{{ landdetail.totalprice|floatformat:2 }}</span></h5>
+        <h5>Advance: <span class="lightword">{{ advance.0|floatformat:2 }}</span></h5>
+        <h5>Balance: <span class="lightword">{{ advance.1|floatformat:2 }}</span></h5>      
+        <div class="buttondiv"> 
+            <a href="{% url 'advancepage' profile.id landdetail.id %}"><button class="samebuttons">See Land</button></a>
+        </div> 
     </div>
-
-    <div class="tablecontainer" style="margin: 0 0; color: black">
-        <h2>Land Status</h2>
-    <div class="landcontainer">
-        {% for landdetail, advance in landdetails.items %}
-            <a style="color: black" href="{% url 'advancepage' profile.id landdetail.id %}"> 
-                <div class="landcard">
-                    <div class="card">Mouja: {{ landdetail.mouja }}</div>
-                    <div class="card">R/S Dag: {{landdetail.rsdag }}</div>
-                    <div class="card">Land Qty:{{ landdetail.landQTY }}</div>
-                    <div class="card">P.D. Price{{ landdetail.perDprice }}</div>
-                    <div class="card">Total Price:{{ landdetail.totalprice }}</div>
-                    <div class="card">Advance:{{ advance.0 }}</div>
-                    <div class="card">Blalance:{{ advance.1 }}</div>
-                </div>
-            </a>
-            {% endfor %}
-    </div>
-        
-    </div>
-</main>
-<div id="Loan" class="modal">
-    <div class="modal-content">
-        <div class="modal-body">
-            <span class="close">&times;</span>
-            <h3>New Land</h3>
-
-            <div class="image-upload">
-                <form id="ImgForm" action="{% url 'landownerprofile' profile.id %}" method="post" enctype="multipart/form-data">
-                      {% csrf_token %}          
-                      <label for="file-input">
-                          <img src="{{ profile.img.url }}" />
-                      </label>
-                    
-                      <input style="display: none;" id="file-input" type="file" accept="image/*" name="img" onchange="uploadimage(this)"/>
-                </form>            
-              </div>
-            
-                {% csrf_token %}                
-                <input type="text" name="mouja" placeholder="Mouja"/><br />                
-                <input type="text" name="rsdag" placeholder="R/S Dag"/><br />                
-                <input type="number" name="landQTY" placeholder="Land QTY"/><br />                
-                <input type="number" step="0.001" name="perDprice" placeholder="Per Decimal Price"/><br />
-
-                <input type="submit" value="submit" />
-            </form>
-        </div>
-    </div>
+  {% endfor %}
 </div>
 
-<script>
+<div id="Loan" class="modal">
+    
+  <div class="modal-content" style="height: 500px;">
+    <div class="modal-body">
+      <span class="close"></span>
+      <h3>Invest</h3>
+      <div class="formContainer">
+      <form action="{% url 'newland' profile.id %}" method="post">  
+          {% csrf_token %}                      
+          <label for="">Mouja<span style="color: red;">*</span></label><br>
+          <input type="text" name="mouja">
+          <label for="">R/S Dag<span style="color: red;">*</span></label><br>
+          <input type="text" name="rsdag">
+          <label for="">Land QTY<span style="color: red;">*</span></label><br>
+          <input type="number" name="landQTY"><br> 
+          <label for="">Per Decimal Price<span style="color: red;">*</span></label><br>
+          <input type="number" step="0.001" name="perDprice"><br>                        
+          <input type="submit" value="Submit">
+      </form>        
+  </div>
+    </div>
+  </div>
+</div>
+
+  <script>
+        
     function ModalFunc(btn) {
         if (btn.id == "loanbtn") {
             var modal = document.getElementById("Loan");
@@ -128,6 +100,8 @@
                 modal.style.display = "none";
             }
         };
-    }
-</script>
+    }    
+
+  </script>
 {% endblock %}
+

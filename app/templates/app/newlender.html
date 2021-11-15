@@ -1,18 +1,24 @@
 {% extends "app/layout.html" %}
 
 {% block title %}
-New Lender
+New Deptor
 {% endblock %}
 
 {% block body %}
 <main>    
     <form class="login" action="{% url 'newlender' %}" method="POST">
         {% csrf_token %}
-        <h3>New Lender</h3>
-        <input type="text" name="name" id="" placeholder="Lender Name"><br>
-        <input type="text" name="phone" id="" placeholder="Phone"><br>
-        <input type="text" name="address" id="" placeholder="Address"><br>                
-        <input type="submit" value="Create">
+        <h2>New Lender</h2>
+        <div class="formContainer">
+            <label for="">Lender Name<span style="color: red;">*</span></label><br>
+            <input type="text" name="name" ><br>
+            <label for="">Phone<span style="color: red;">*</span></label><br>
+            <input type="text" name="phone"><br>
+            <label for="">Address<span style="color: red;">*</span></label><br>
+            <input type="text" name="address"><br>                
+            <input type="submit" value="Create">
+        </div>
     </form>
 </main>
+
 {% endblock %}

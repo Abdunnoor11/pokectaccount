@@ -51,6 +51,10 @@ def loan(request):
     })
 
 @login_required(login_url='login')
+def loanmenu(request):
+    return render(request, "app/loanmenu.html")
+
+@login_required(login_url='login')
 def debtor(request):
     debtors = Debtor.objects.filter(lender_id=request.user.id)
 
@@ -176,6 +180,10 @@ def invest(request):
     })
 
 @login_required(login_url='login')
+def investmenu(request):
+    return render(request, "app/investmenu.html")
+
+@login_required(login_url='login')
 def newlender(request):
     if request.method == "POST":
         name = request.POST['name']
@@ -295,6 +303,9 @@ def land(request):
     return render(request, "app/landdetails.html",{
         "landowners": landowners,
     })
+
+def landmenu(request):    
+    return render(request, "app/landmenu.html")
 
 @login_required(login_url='login')
 def newland(request, id):

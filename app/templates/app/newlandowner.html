@@ -1,17 +1,22 @@
 {% extends "app/layout.html" %}
 
 {% block title %}
-New Land Owner
+New Deptor
 {% endblock %}
 
 {% block body %}
 <main>    
     <form class="login" action="{% url 'newlandowner' %}" method="POST">
         {% csrf_token %}
-        <h3>New Land Owner</h3>
-        <input type="text" name="name" placeholder="Owner Name"><br>
-        <input type="text" name="phone" placeholder="Phone"><br>
-        <input type="submit" value="Create">
+        <h2>New land ownership</h2>
+        <div class="formContainer">
+            <label for="">Owner Name<span style="color: red;">*</span></label><br>
+            <input type="text" name="name" ><br>
+            <label for="">Phone<span style="color: red;">*</span></label><br>
+            <input type="text" name="phone"><br>            
+            <input type="submit" value="Create">
+        </div>
     </form>
 </main>
+
 {% endblock %}

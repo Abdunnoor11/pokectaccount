@@ -2,371 +2,308 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-html {
-  background-color: #d3d3d3;
-  height: 100%;
-}
-
-body {
-  max-width: 1400px;
+html,
+body {  
+  height: 100%;  
+  max-width: 700px;
   margin: auto;
-  background-color: #fefeff;
-  /* font-family: Arial, Helvetica, sans-serif; */
-  height: 100%;
 }
 
-nav {
-  background-color: #020f14;
-  color: #f1f1f1;
-  display: flex;
-  position: sticky;
-  top: 0;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 50px;
-  z-index: 1;
-}
-
-.n {
-  /* display: flex; */
-  justify-content: left;
-  /* align-items: center; */
-  padding: 10px 40px;
-}
-
-.n h4 {
-  margin-right: 15px;
-}
-
-.n .welcome {
-  color: #0057ff;
-}
-
-.had {
-  font-weight: bolder;
-  font-size: 20px;
-}
-
-h3 {
-  font-weight: 900;
-}
-
-.fa {
-  height: 0px;
-}
-
-main {
+main{  
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  background-color: #fefeff;
-}
-
-.login {
-  background-color: #000000b7;
-  color: white;
-  box-shadow: 0px 0px 25px 1px #000000;
-  margin: 14%;
-  text-align: center;
-  border-radius: 5px;
-  transition: 2s;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-}
-
-.login:hover {
-  border: 2px solid transparent;
-}
-.login h3 {
-  font-size: 25px;
-  margin: 10% 0;
-}
-
-.login input[type="text"],
-[type="password"] {
-  margin: 25px 35px;
-  padding: 5px 15px;
-  border: none;
-  background-color: #d1d1d100;
-  color: rgb(255, 255, 255);
-  font-size: 15px;
-  border-bottom: 2px solid #5bccf6;
-}
-
-.login input[type="submit"] {
-  padding: 3% 15%;
-  margin: 10% 0 10% 0;
-  font-size: 15px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: width 2s, height 2s, transform 1s;
-}
-
-.login input[type="submit"]:hover {
-  background-color: #5bccf6;
-}
-
-.menu {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sub {
-  margin-left: 25px;
-}
-ul {
-  margin-left: 5%;
-}
-
-.menu a {
-  visibility: visible;
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #ffffff;
-  display: block;
-}
-
-.menu a:hover {
-  color: #d3d3d3;
-}
-
-.menu .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-/* section css */
-.section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  align-items: center;  
+  height: 100%;  
   flex-wrap: wrap;
 }
 
-.subsection {
-  width: 300px;
-  height: 150px;
-  color: white;
-  background: linear-gradient(
-    112.68deg,
-    rgba(81, 45, 109, 0.65) -19.16%,
-    #512d6d 57.19%
-  );
-  box-shadow: 0px 0px 25px 1px rgba(0, 112, 174, 0.25);
-  margin: 2%;
-  padding: 25px;
-  text-align: right;
-  border-radius: 10px;
-}
-
-.investsecton {
-  background: linear-gradient(308.11deg, #0070ae -19.16%, #00a3ff9c 103.46%);
-}
-
-.landsection {
-  background: linear-gradient(
-    308.11deg,
-    #fd5e53 -19.16%,
-    #fd5e53 43.79%,
-    rgba(253, 94, 83, 0.44) 105.39%
-  );
-}
-
-.landsection .Due {
-  color: #f2ff42;
-}
-
-.cardtitle {
-  font-size: 13px;
-}
-
-.cardbalance {
-  font-size: 23px;
-  font-weight: bolder;
-}
-
-/* section css end */
-
-.tablecontainer {
+.login{
+  /* background-color: red; */
+  width: 330px;
   text-align: center;
-  margin: 10%;
-  width: 80%;
+  Color: #313030;  
 }
 
-.tablecontainer h2 {
-  margin: 25px;
+.login h3{
+  font-weight: normal;  
+  color: #7A7B85;
+  font-size: 14px;
 }
 
-.tablecontainer table {
-  border-collapse: collapse;
-  width: 100%;
-  background-color: #dfdfdf;
-}
-
-th,
-td {
-  text-align: center;
-  padding: 8px;
-  border: 1px solid #d1d1d1;
-  background-color: #fcfcfc;
-}
-
-th {
-  background-color: #020f14;
-  color: white;
-}
-
-.restablecontainer {
-  display: none;
-}
-
-/* Debtor Profile page */
-.profile {
-  background-color: #000000d2;
-  color: #f1f1f1;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 35px 0;
-  max-width: 80%;
-}
-
-.mainprofile {
-  display: flex;
-  align-items: center;
-}
-
-.mainprofile img {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  transform: translateX(-50%);
-}
-
-.userprofile {
-  padding: 25px;
-}
-
-.totaldebitdeposit {
-  padding: 25px;
-  border-collapse: collapse;
-}
-
-.totaldebitdeposit table{
-  border-collapse: collapse;
-}
-
-.totaldebitdeposit td,
-tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.24);
-}
-
-.lalign {
+.formContainer{
+  margin-top: 25px;
   text-align: left;
 }
 
-.ralign {
-  text-align: right;
+.formContainer label{
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;  
+  color: #302D45;
 }
-
-.buttons {
-  padding: 25px;
-}
-
-.ad {
-  background-color: #ffef0f;
-  width: 20%;
-  padding: 5px 15px;
-  min-width: 100px;
-  border-radius: 25px;
-  justify-content: center;
-  border-radius: 25px;
-  border: none;
-  margin: 5px;
-  font-weight: 800;
-  font-size: 15px;
-}
-
-.buttons button {
+.modal-body form input[type="date"],input[type="text"], input[type="number"],
+.formContainer input[type="text"], input[type="password"], input[type="submit"]{
   width: 100%;
-  padding: 5px 15px;
-  justify-content: center;
-  border-radius: 25px;
-  border: none;
-  margin: 5px;
-  font-weight: 800;
-  font-size: 15px;
-  background-color: #ffef0f;
-}
-.ad:hover,
-.buttons button:hover {
-  background-color: #5bccf6;
-  cursor: pointer;
-  transition: 0.5s;
+  height: 40px;
+  margin: 5px 0 20px 0;
+  padding-left: 15px;
+  border-radius: 5px;
+  border: 1px solid #E1E1E1;   
 }
 
-.landcard {
-  background-color: #fcfcfc;
-  box-shadow: 0px 0px 15px 1px rgba(71, 71, 71, 0.219);
+.modal-body form input[type="submit"],
+.formContainer input[type="submit"]{
+  background-color:#313030; 
+  color: white;
+  font-size: 20px;  
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+/* Login css */
+
+/* Dashboard css */
+header{
+  margin: 50px 20px 0 20px;
+  /* background-color: red;   */
+  color: #313030;
+}
+
+.name-logout{
+  margin: 5px 0 30px 0;
+  display: flex;
+  justify-content: space-between;    
+}
+
+.name-logout h3{
+  font-style: normal;
+  font-weight: 500;
+}
+
+.name-logout button{
+  width: 75px;
+  height: 24px;
+  background: #313030;
+  border-radius: 5px;
+  color: #E1E1E1;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;  
+  border: none;
+  cursor: pointer;
+}
+
+.list-cards,
+.menuCards,
+.dashcards{
+  /* background-color: burlywood; */
   display: flex;  
-  justify-content: space-between;
-  flex-wrap: wrap;  
-  width: 265px; 
-  font-size: 13px;
-  color: Black;    
-  padding: 5px;  
+  flex-flow: row wrap;
+  gap: 12px;
+  padding-bottom: 50px;
+}
+
+.card{    
+  width: 320px;
+  height: 117px;
+  /* background-color: #ffb0b0; */
+  margin: 16px 10px;
+  box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+}
+
+.card i{    
+  font-size: 30px;
+  margin: 25px 0 0 25px;
+}
+
+.count-total{
+  text-align: right;
+  margin-right: 12px;
+}
+
+.count-total h5{
+  color: #7A7B85;  
+}
+
+footer{  
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 700px;
+  height: 60px;    
+  display: flex;        
+  background: #FFFFFF;  
+  box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.08);
+  border-radius: 10px 10px 0px 0px;
+  
+}
+
+.menu{
+  text-align: center;
+  width: 25%; 
+  margin: 15px 0 0 0;   
+}
+
+.menu a{
+  text-decoration: none;
+  color: #302D45;
+}
+
+.menu h6{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+/* Loan css */
+.menuCards{
+  margin: 0 22px;  
+}
+
+.menuCard{  
+  width: 159px;
+  height: 182px;
+  /* margin: 20px 16px;   */
+  padding: 12px;
+  border: 1px solid #939DA9;
+  box-sizing: border-box;
   border-radius: 10px;
 }
 
-.card {
-  padding: 10px;
+.menuCard i{  
+  background: #CACACE;
+  /* opacity: 0.4; */
+  padding: 8px 13px;
+  margin: 8px 0 0 0;
+  color: #313030;
+  border-radius: 10px;
+}
+
+.destitle{
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #313030;
+  margin: 28px 0 12px 0;
+}
+
+.samebuttons,
+.menuCard button{
+  width: 130px;
+  height: 36px;
+  background: #313030;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;  
+  font-weight: 600;
+  font-size: 12px;
+}
+
+/* Loan Status css */
+
+.search-container input[type=text]{
+  width: 250px;  
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: 1px solid #313030;  
+}
+
+.search-container button {  
+  padding: 6px 10px;
+  margin-top: 8px;  
+  background: #313030;
+  font-size: 16px;
+  color: white;  
+  cursor: pointer;
+  margin-left: 0;
+}
+
+.list{
+  padding: 12px;
+  height: 186px;
+}
+
+.list h5{
+  margin-bottom: 6px;
+  line-height: 18px;
+}
+
+.lightword{
+  font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+/* color: blue; */
+}
+
+.buttondiv{
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* Debtor Profile css */
+.profile{
+  background: #ffffff;
+  box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  margin-top: 100px;   
+  height: 300px;
+}
+
+.profile img{
+  width: 100px;
+  height: 100px;
+  background: url(.jpg), #C4C4C4;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #313030;
+  box-sizing: border-box;
+  transform: translatey(-50%);
+}
+
+.info{
+  transform: translatey(-20%);
+  margin: 0 15px;
+  text-align: left;
+}
+
+.info hr{
+  border-top: 1px solid #F2F2F2;
 }
 
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 10%;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.664);
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  position: relative;
   background-color: #fefefe;
   margin: auto;
-  padding: 0;
+  padding: 20px;
   border: 1px solid #888;
-  width: 20%;
+  width: 331px;
+  height: 420px;
+  border-radius: 10px;
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
@@ -375,32 +312,10 @@ tr:nth-child(even) {
   animation-duration: 0.4s;
 }
 
-.modal-body form input[type="text"],
-[type="number"],
-[type="date"] {
-  width: 80%;
-  margin: 20px 0;
-  padding: 5px 15px;
-  border: none;
-  background-color: #d1d1d100;
-  outline: none;
-  color: rgb(0, 0, 0);
-  font-size: 15px;
-  border-bottom: 2px solid #5bccf6;
+.modal-body h3{
+  margin-bottom: 20px;
 }
 
-.modal-body form input[type="submit"] {
-  padding: 3% 15%;
-  margin: 10% 0 10% 0;
-  font-size: 15px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  background-color: #000000;
-  color: white;
-  transition: width 2s, height 2s, transform 1s;
-}
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
@@ -431,103 +346,10 @@ tr:nth-child(even) {
   padding: 30px 16px;
 }
 
-@media (max-width: 700px) {
-  nav {
-    padding: 10px 15px;
-  }
-  .login {
-    margin: 50% 15%;
-  }
 
-  .login input[type="text"],
-  [type="password"] {
-    padding: 5px 15px;
-    border: none;
-    background-color: #d1d1d100;
-    color: white;
-    font-size: 15px;
-    border-bottom: 2px solid #5bccf6;
-  }
-
-  .menu {
-    height: 100%;
-    margin-top: 0%;
-    overflow-x: hidden;
-    transition: 0.5s;
-  }
-
-  .profile {
-    margin: 70px 5% 0 5%;
-    width: 100%;
-    display: block;
-    text-align: center;
-  }
-
-  .mainprofile {
-    display: block;
-  }
-
-  .mainprofile img {
-    width: 120px;
-    height: 120px;
-
-    transform: translateY(-50%);
-  }
-  .userprofile {
-    transform: translateY(-40%);
-    padding: 0;
-  }
-
-  .totaldebitdeposit {
-    display: flex;
+@media (max-width: 800px){
+  .list-cards{
     justify-content: center;
-    padding: 0;
   }
 
-  .buttons {
-    margin: 25px;
-    padding: 0;
-  }
-
-  .buttons button {
-    width: 70%;
-    margin-bottom: 10px;
-    padding: 3px 0;
-  }
-  ol {
-    margin: 15% 0 0 25%;
-  }
-
-  .menu .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 0px;
-  }
-
-  .tablecontainer {
-    display: none;
-  }
-
-  .restablecontainer {
-    display: block;
-    /* width: 80%; */
-  }
-
-  .tblrow {
-    width: 265px;
-    height: 140px;
-    color: Black;
-    background-color: #fcfcfc;
-    box-shadow: 0px 0px 15px 1px rgba(71, 71, 71, 0.219);
-    margin: 2%;
-    padding: 25px;
-    text-align: left;
-    border-radius: 10px;
-  }
-
-  .tblrow h5{
-    font-weight:normal;
-  }
 }

@@ -1,17 +1,48 @@
-{% extends "app/layout.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-Log In
-{% endblock %}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/main.css' %}">
 
-{% block body %}
-<main>
-    <form class="login" action="{% url 'login' %}" method="POST">
-        {% csrf_token %}        
-        <h3>Log In</h3>
-        <input type="text" name="name" placeholder="Enter Username"><br>
-        <input type="password" name="password" placeholder="Enter Password"><br>
-        <input type="submit" value="log in">
-    </form>    
-</main>
-{% endblock %}
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css" /> -->
+    <title>Log In</title>
+</head>
+
+<body>
+    {% if messages %}
+        {% for message in messages %}
+                <div id="message_container" style="text-align: center; color: red;"><h3>{{ message }}</h3></div>
+        {% endfor %}
+    {% endif %}
+    <main>
+        <form class="login" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <h2>Welcome to Pocket</h2>
+            <h3>Login to continue</h3>
+            <div class="formContainer">
+                <label for="">User Names<span style="color: red;">*</span></label><br>
+                <input type="text" name="name"><br>
+                <label for="">Password<span style="color: red;">*</span></label><br>
+                <input type="password" name="password"><br>
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </main>
+
+</body>
+
+<script>
+    var message_ele = document.getElementById("message_container");
+
+    setTimeout(function(){ 
+    message_ele.style.display = "none"; 
+    }, 3000);
+
+
+</script>
+
+</html>

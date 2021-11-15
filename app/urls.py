@@ -8,17 +8,20 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('logout/', views.logout, name='logout'),    
 
-    path('loan/', views.loan, name='loan'),    
+    path('loan/', views.loan, name='loan'),   
+    path('loanmenu/', views.loanmenu, name='loanmenu'),   
     path('newdebtor/', views.newdebtor, name='newdebtor'),    
     path('debtor/', views.debtor, name='debtor'),
     path('debtorprofile/<int:id>', views.debtorprofile, name='debtorprofile'),
 
     path('invest/', views.invest, name='invest'),    
+    path('investmenu/', views.investmenu, name='investmenu'),    
     path('newlender/', views.newlender, name='newlender'),    
     path('lender/', views.lender, name='lender'),
     path('lenderprofile/<int:id>', views.lenderprofile, name='lenderprofile'),
 
     path('land/', views.land, name='land'),
+    path('landmenu/', views.landmenu, name='landmenu'),    
     path('newlandowner/', views.newlandowner, name='newlandowner'),
     path('landownerprofile/<int:id>', views.landownerprofile, name='landownerprofile'),
     path('newland/<int:id>', views.newland, name='newland'),
