@@ -31,7 +31,7 @@ Profile
 </header>
 <div class="list-cards">
   {% for landdetail, advance in landdetails.items %}
-    <div class="card list">      
+    <div class="card list" style="height: 240px;">      
         <h5>Mouja: <span class="lightword">{{ landdetail.mouja }}</span></h5>
         <h5>R/S Dag: <span class="lightword">{{ landdetail.rsdag }}</span></h5>
         <h5>Land Qty: <span class="lightword">{{ landdetail.landQTY }}</span></h5>
@@ -76,7 +76,7 @@ Profile
        
         
       <img src="{{ profile.img.url }}" />
-      <form id="ImgForm" action="{% url 'debtorprofile' profile.id %}" method="post" enctype="multipart/form-data">
+      <form id="ImgForm" action="{% url 'landownerprofile' profile.id %}" method="post" enctype="multipart/form-data">
               {% csrf_token %}           
         <label for="file-input" class="samebuttons" style="padding: 10px 30px;">Update Imgae</label>            
         

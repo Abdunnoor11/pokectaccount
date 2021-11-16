@@ -96,7 +96,7 @@ Profile
        
         
       <img src="{{ profile.img.url }}" />
-      <form id="ImgForm" action="{% url 'debtorprofile' profile.id %}" method="post" enctype="multipart/form-data">
+      <form id="ImgForm" action="{% url 'lenderprofile' profile.id %}" method="post" enctype="multipart/form-data">
               {% csrf_token %}           
         <label for="file-input" class="samebuttons" style="padding: 10px 30px;">Update Imgae</label>            
         

@@ -159,6 +159,11 @@ footer{
   opacity: 0.65;
 }
 
+.menu a{
+  text-decoration: none;
+  color: black;  
+}
+
 .menu h6{
   font-style: normal;
   font-weight: normal;
@@ -268,7 +273,7 @@ font-weight: 500;
 .profile img{
   width: 100px;
   height: 100px;
-  background: #C4C4C4;
+  background: url(.jpg), #C4C4C4;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #313030;
@@ -299,7 +304,6 @@ font-weight: 500;
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
-
 
 /* Modal Content */
 .modal-content {
@@ -352,20 +356,6 @@ font-weight: 500;
   padding: 30px 16px;
 }
 
-.imgshow{
-  background-color: #fefefe00;
-  padding: 0;
-}
-
-.imgbody{
-  padding: 0;
-}
-
-.modal-body img{
-  height: 100%;
-  width: 100%;
-  margin-bottom: 25px;
-}
 
 @media (max-width: 800px){
   .dashcards,    

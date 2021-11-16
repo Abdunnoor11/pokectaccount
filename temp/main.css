@@ -157,6 +157,12 @@ footer{
   width: 25%; 
   margin: 15px 0 0 0;   
   opacity: 0.65;
+  text-decoration: none;
+}
+
+.menu a{
+  text-decoration: none;
+  color: black;  
 }
 
 .menu h6{
