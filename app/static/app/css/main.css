@@ -114,6 +114,7 @@ header{
   grid-gap: 12px;
   justify-content: center;
   margin-top: 20px;
+  padding-bottom: 70px;
 }
 
 .menuCards{
@@ -121,6 +122,7 @@ header{
   grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
   grid-gap: 12px;
   justify-content: center;
+  padding-bottom: 70px;
 }
 
 .card{    
@@ -296,7 +298,7 @@ font-weight: 500;
 }
 
 .info hr{
-  border-top: 1px solid #F2F2F2;
+  border-top: 1px solid #313030;
 }
 
 .modal {
@@ -331,7 +333,7 @@ font-weight: 500;
 }
 
 .imgshow{
-  background-color: #fefefe00;
+  background-color: #fefefe;
   padding: 0;
 }
 

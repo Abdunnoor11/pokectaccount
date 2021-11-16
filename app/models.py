@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 import datetime
+from PIL import Image
+from django.conf import settings
+import os
 
 # loan
 class Debtor(models.Model):
@@ -11,6 +14,14 @@ class Debtor(models.Model):
     img = models.ImageField(default='avatar.png', upload_to='pics')    
     lender = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     totalbalance = models.FloatField(default=0, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        pic = Image.open(self.img.path)	
+        size = 250, 250
+        pic.thumbnail(size, Image.LANCZOS)
+        pic.save(self.img.path) 
+
 
     def __str__(self):
         return "PA00" +str(self.id)
@@ -31,7 +42,15 @@ class Lender(models.Model):
     address = models.TextField(blank=True, null= True)
     img = models.ImageField(default='avatar.png', upload_to='pics')
     investor = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    totalbalance = models.FloatField(default=0, null=True, blank=True)    
+    totalbalance = models.FloatField(default=0, null=True, blank=True)   
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        pic = Image.open(self.img.path)	
+        
+        size = 250, 250
+        pic.thumbnail(size, Image.LANCZOS)
+        pic.save(self.img.path) 
     
     def __str__(self):
         return "IV00" +str(self.id)
@@ -50,7 +69,16 @@ class Landowner(models.Model):
     phone = models.CharField(max_length=15, blank=True, null= True)
     img = models.ImageField(default='avatar.png', upload_to='pics')
     landbuyer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
-    status = models.BooleanField(default=None, null=True, blank=False)        
+    status = models.BooleanField(default=None, null=True, blank=False)   
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        pic = Image.open(self.img.path)	
+        
+        size = 250, 250
+        pic.thumbnail(size, Image.LANCZOS)
+        pic.save(self.img.path) 
+
     def __str__(self):
         return "LD00" + str(self.id)
 
