@@ -1,4 +1,5 @@
 {% extends "app/layout.html" %}
+{% load static %}
 
 {% block title %}
 Invest
@@ -20,7 +21,7 @@ Invest
 </header>
 <div class="menuCards">
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/invest_book.png' %}" alt="">
         <div class="destitle">
             See your all invest status here.
         </div>
@@ -28,7 +29,7 @@ Invest
 
     </div>
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/all_lenders.png' %}" alt="">
         <div class="destitle">
             See your all lender details here.
         </div>
@@ -36,7 +37,7 @@ Invest
 
     </div>
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/new_lender.png' %}" alt="">
         <div class="destitle">
             Create your new lender.            
         </div>

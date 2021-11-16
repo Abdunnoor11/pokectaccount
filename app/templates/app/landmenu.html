@@ -1,4 +1,5 @@
 {% extends "app/layout.html" %}
+{% load static %}
 
 {% block title %}
 Land Records
@@ -20,7 +21,7 @@ Land Records
 </header>
 <div class="menuCards">
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/land_details.png' %}" alt="">
         <div class="destitle">
             See your all land details here.
         </div>
@@ -29,7 +30,7 @@ Land Records
     </div>
 
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/new_land.png' %}" alt="">
         <div class="destitle">
             Create your new land ownership.
         </div>

@@ -1,4 +1,5 @@
 {% extends "app/layout.html" %}
+{% load static %}
 
 {% block title %}
 Loan
@@ -20,7 +21,7 @@ Loan
 </header>
 <div class="menuCards">
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/loan_book.png' %}" alt="">
         <div class="destitle">
             See your all loan status here.
         </div>
@@ -28,7 +29,7 @@ Loan
 
     </div>
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/all_debtors.png' %}" alt="">
         <div class="destitle">
             See your all debtor details here.
         </div>
@@ -36,7 +37,7 @@ Loan
 
     </div>
     <div class="menuCard">
-        <i class="fa fa-usd" aria-hidden="true"></i>
+        <img  src="{% static 'app/img/icon/new_debtor.png' %}" alt="">
         <div class="destitle">
             Create your new debtor.
         </div>

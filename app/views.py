@@ -30,8 +30,7 @@ def index(request):
         total_land_price = sum([i.totalprice() for i in land])
         
         advanced = Advance.objects.filter(land__id__in = land.all())
-        total_advanced = sum([i.advance for i in advanced])
-        print(total_advanced)
+        total_advanced = sum([i.advance for i in advanced])        
         
         return render(request, "app/Dashboard.html",{
             # loan

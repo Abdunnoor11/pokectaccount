@@ -105,6 +105,7 @@ header{
   grid-template-columns: repeat(auto-fit, minmax(320px, max-content));
   grid-gap: 12px;
   justify-content: center;
+  padding-bottom: 70px;
 }
 
 .list-cards{
