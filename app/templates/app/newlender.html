@@ -4,6 +4,14 @@
 New Deptor
 {% endblock %}
 
+{% block head %}
+<style>
+    .investicon{
+        opacity: 1;
+    }
+</style>
+{% endblock %}
+
 {% block body %}
 <main>    
     <form class="login" action="{% url 'newlender' %}" method="POST">

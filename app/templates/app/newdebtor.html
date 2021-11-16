@@ -4,6 +4,14 @@
 New Deptor
 {% endblock %}
 
+{% block head %}
+<style>
+    .loanicon{
+        opacity: 1;
+    }
+</style>
+{% endblock %}
+
 {% block body %}
 <main>    
     <form class="login" action="{% url 'newdebtor' %}" method="POST">

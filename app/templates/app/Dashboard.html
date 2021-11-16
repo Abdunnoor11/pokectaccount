@@ -1,7 +1,16 @@
 {% extends "app/layout.html" %}
+{% load static %}
 
 {% block title %}
 Dashboard
+{% endblock %}
+
+{% block head %}
+<style>
+    .dashboardicon{
+        opacity: 1;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
@@ -17,8 +26,8 @@ Dashboard
 
     <!-- Loan -->
 
-    <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+    <div class="card">          
+        <img src="{% static 'app/img/icon/total_loan.png' %}" alt="">        
         <div class="count-total">
             <h5>Total Loan</h5>
             <h3>&#2547; {{ total_loan|floatformat:2 }}</h3>
@@ -26,7 +35,7 @@ Dashboard
     </div>
 
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/total_loan_deposit.png' %}" alt="">        
         <div class="count-total">
             <h5>Total Loan Deposit</h5>
             <h3>&#2547; {{ total_deposit|floatformat:2 }}</h3>
@@ -34,7 +43,7 @@ Dashboard
     </div>
 
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/totalloan_balance.png' %}" alt="">
         <div class="count-total">
             <h5>Total Loan Balance</h5>
             <h3>&#2547; {{ total_due_loan|floatformat:2 }}</h3>
@@ -44,7 +53,7 @@ Dashboard
     <!-- Invest -->
 
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/total_invest.png' %}" alt="">
         <div class="count-total">
             <h5>Total Invest</h5>
             <h3>&#2547; {{ total_invest|floatformat:2 }}</h3>
@@ -52,7 +61,7 @@ Dashboard
     </div>
     
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/total_invest_return.png' %}" alt="">
         <div class="count-total">
             <h5>Total Return</h5>
             <h3>&#2547; {{ total_return|floatformat:2 }}</h3>
@@ -60,7 +69,7 @@ Dashboard
     </div>
 
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/total_invest_due.png' %}" alt="">
         <div class="count-total">
             <h5>Total Invast Due</h5>
             <h3>&#2547; {{ total_due_invest|floatformat:2 }}</h3>
@@ -69,7 +78,7 @@ Dashboard
 
     <!-- Land -->    
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/total_land_amount.png' %}" alt="">
         <div class="count-total">
             <h5>Total Land Price</h5>
             <h3>&#2547; {% if total_land_price %}{{ total_land_price|floatformat:2 }} {% else %} 0.00 {% endif %} </h3>
@@ -77,7 +86,7 @@ Dashboard
     </div>
 
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/total_advance.png' %}" alt="">
         <div class="count-total">
             <h5>Total Land Advanced</h5>
             <h3>&#2547; {{ total_advanced|floatformat:2 }}</h3>
@@ -85,7 +94,7 @@ Dashboard
     </div>
 
     <div class="card">
-        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <img src="{% static 'app/img/icon/total_land_due.png' %}" alt="">
         <div class="count-total">
             <h5>Total Land Due</h5>
             <h3>&#2547; {{ total_due|floatformat:2 }}</h3>

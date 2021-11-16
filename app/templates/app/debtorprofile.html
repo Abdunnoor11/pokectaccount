@@ -6,7 +6,11 @@ Profile
 {% endblock %} 
 
 {% block head %}
-
+<style>
+    .loanicon{
+        opacity: 1;
+    }
+</style>
 {% endblock %}
 
 {% block body %}
@@ -92,9 +96,7 @@ Profile
 
 <div id="Image" class="modal">
   <div class="modal-content imgshow">
-    <div class="modal-body imgbody">
-       
-        
+    <div class="modal-body imgbody">             
       <img src="{{ profile.img.url }}" />
       <form id="ImgForm" action="{% url 'debtorprofile' profile.id %}" method="post" enctype="multipart/form-data">
               {% csrf_token %}           

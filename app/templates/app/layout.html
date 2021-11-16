@@ -24,27 +24,27 @@
     
     {% block body %}{% endblock %}
     <footer>
-        <div class="menu">
+        <div class="menu dashboardicon">
             <a href="{% url 'index' %}">
-                <i class="fa fa-tasks" aria-hidden="true"></i>               
+                <img  src="{% static 'app/img/icon/dashboard.png' %}" alt="">           
                 <h6>Dashboard</h6>
             </a>
         </div>
-        <div class="menu">
+        <div class="menu landicon">
             <a href="{% url 'landmenu' %}">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <img src="{% static 'app/img/icon/land_record.png' %}" alt="">    
             <h6>Land Record</h6>
             </a>
         </div>
-        <div class="menu">
+        <div class="menu loanicon">
             <a href="{% url 'loanmenu' %}">
-            <i class="fa fa-tasks" aria-hidden="true"></i>
+                <img src="{% static 'app/img/icon/loan.png' %}" alt="">    
             <h6>Loan</h6>
         </a>
         </div>
-        <div class="menu">
+        <div class="menu investicon">
             <a href="{% url 'investmenu' %}">
-            <i class="fa fa-tasks" aria-hidden="true"></i>
+                <img src="{% static 'app/img/icon/invest.png' %}" alt="">    
             <h6>Invest</h6>
             </a>
         </div>
