@@ -51,6 +51,7 @@ main{
   height: 40px;
   margin: 5px 0 20px 0;
   border-radius: 5px;
+  padding-left: 15px;
   border: 1px solid #E1E1E1;   
 }
 
@@ -99,13 +100,20 @@ header{
 }
 
 .list-cards,
-.menuCards,
-.dashcards{
-  /* background-color: burlywood; */
+.dashcards{         
   display: flex;  
   flex-flow: row wrap;
   gap: 12px;
+  margin: 0 auto;
   padding-bottom: 50px;
+}
+
+.menuCards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+  grid-gap: 12px;
+  /* padding: initial; */
+  justify-content: center;
 }
 
 .card{    
@@ -345,8 +353,10 @@ font-weight: 500;
 
 
 @media (max-width: 800px){
+  .dashcards,    
   .list-cards{
-    justify-content: center;
+    justify-content: center;        
   }
+
 
 }

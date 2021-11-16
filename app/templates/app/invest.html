@@ -6,7 +6,7 @@ Invest
 
 {% block body %}
 <header style="text-align: center;">
-    <h2>Loan Status</h2>
+    <h2>Invest Status</h2>
     <div class="name-logout">                
     </div>
     <div class="search-container">
@@ -20,7 +20,7 @@ Invest
 <div class="list-cards">
     {% for account in accounts %}
     <div class="card list">
-        <h5>Debtor ID: <span class="lightword">{{ account.debtor }}</span></h5>
+        <h5>Lender ID: <span class="lightword">{{ account.lender }}</span></h5>
         <h5>Date: <span class="lightword">{{ account.date }}</span></h5>
         <h5>Description: <span class="lightword">{{ account.description }}</span></h5>
         <h5>Loan: <span class="lightword">{{ account.loan }}</span></h5>

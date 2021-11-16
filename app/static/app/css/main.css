@@ -28,13 +28,13 @@ main{
 }
 
 .login h3{
-  font-weight: normal;  
+  font-weight: normal;
+  margin-bottom: 25px;
   color: #7A7B85;
   font-size: 14px;
 }
 
 .formContainer{
-  margin-top: 25px;
   text-align: left;
 }
 
@@ -50,8 +50,8 @@ main{
   width: 100%;
   height: 40px;
   margin: 5px 0 20px 0;
-  padding-left: 15px;
   border-radius: 5px;
+  padding-left: 15px;
   border: 1px solid #E1E1E1;   
 }
 
@@ -100,13 +100,20 @@ header{
 }
 
 .list-cards,
-.menuCards,
-.dashcards{
-  /* background-color: burlywood; */
+.dashcards{         
   display: flex;  
   flex-flow: row wrap;
   gap: 12px;
+  margin: 0 auto;
   padding-bottom: 50px;
+}
+
+.menuCards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, max-content));
+  grid-gap: 12px;
+  /* padding: initial; */
+  justify-content: center;
 }
 
 .card{    
@@ -149,11 +156,7 @@ footer{
   text-align: center;
   width: 25%; 
   margin: 15px 0 0 0;   
-}
-
-.menu a{
-  text-decoration: none;
-  color: #302D45;
+  opacity: 0.65;
 }
 
 .menu h6{
@@ -195,6 +198,8 @@ footer{
   color: #313030;
   margin: 28px 0 12px 0;
 }
+
+
 
 .samebuttons,
 .menuCard button{
@@ -263,7 +268,7 @@ font-weight: 500;
 .profile img{
   width: 100px;
   height: 100px;
-  background: url(.jpg), #C4C4C4;
+  background: #C4C4C4;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #313030;
@@ -294,6 +299,7 @@ font-weight: 500;
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
 
 /* Modal Content */
 .modal-content {
@@ -346,10 +352,26 @@ font-weight: 500;
   padding: 30px 16px;
 }
 
+.imgshow{
+  background-color: #fefefe00;
+  padding: 0;
+}
+
+.imgbody{
+  padding: 0;
+}
+
+.modal-body img{
+  height: 100%;
+  width: 100%;
+  margin-bottom: 25px;
+}
 
 @media (max-width: 800px){
+  .dashcards,    
   .list-cards{
-    justify-content: center;
+    justify-content: center;        
   }
+
 
 }

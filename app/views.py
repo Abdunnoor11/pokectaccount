@@ -34,6 +34,7 @@ def index(request):
         print(total_advanced)
         
         return render(request, "app/Dashboard.html",{
+            # loan
             "total_loan": total_loan,
             "total_deposit": total_deposit,
             "total_due_loan": total_due_loan,
