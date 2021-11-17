@@ -40,7 +40,7 @@ Dashboard
           <h5>Advance: <span class="lightword">{{ a.advance|floatformat:2 }}</span></h5>                    
       </div>
     {% endfor %}
-    <div class="buttondiv"> 
+    <div class="buttondiv" style="grid-column: span;"> 
         <button class="samebuttons" onclick="ModalFunc(loanbtn)" id="loanbtn">New Advance</button>
     </div>
   </div>
@@ -48,9 +48,8 @@ Dashboard
   <div id="Loan" class="modal">
     
     <div class="modal-content" style="height: 500px;">
-      <div class="modal-body">
-        <span class="close"></span>
-        <h3>Invest</h3>
+      <div class="modal-body">        
+        <h3>Advance</h3>
         <div class="formContainer">
         <form action="{% url 'advance' id land.id %}" method="post">  
             {% csrf_token %}                      
@@ -60,7 +59,8 @@ Dashboard
             <input type="number" step="0.001" name="amount"><br> 
             <label for="">Date<span style="color: red;">*</span></label><br>
             <input type="date" name="date"><br>                        
-            <input type="submit" value="Submit">
+            <button class="samebuttons" type="submit">Submit</button>
+            <span class="close">Cancel</span>
         </form>        
     </div>
       </div>

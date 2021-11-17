@@ -17,12 +17,13 @@ Loan
     <h2>All Debtors</h2>
     <div class="name-logout">                
     </div>
-    <div class="search-container">
-        <form action="/action_page.php">
+    <div class="search-container">        
+        <form action="{% url 'anysearch' 'debtors' %}" method="POST">
+            {% csrf_token %}
           <input type="text" placeholder="Search.." name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
-      </div>
+    </div>
     
 </header>
 <div class="list-cards">

@@ -54,8 +54,7 @@ Profile
 <div id="Loan" class="modal">
     
   <div class="modal-content">
-    <div class="modal-body">
-      <span class="close"></span>
+    <div class="modal-body">      
       <h3>Loan</h3>
       <div class="formContainer">
       <form action="{% url 'accounts' profile.id 'loan' %}" method="post">  
@@ -66,7 +65,8 @@ Profile
           <input type="text" name="description">
           <label for="">loan Amount<span style="color: red;">*</span></label><br>
           <input type="number" step="0.001"  name="loan"><br>                        
-          <input type="submit" value="Submit">
+          <button class="samebuttons" type="submit">Submit</button>
+          <span class="close">Cancel</span>
       </form>        
   </div>
     </div>
@@ -76,7 +76,7 @@ Profile
 <div id="Deposit" class="modal">
   <div class="modal-content">
     <div class="modal-body">
-      <span class="close"></span>
+      <!-- <span class="close"></span> -->
       <h3>Deposit</h3>
       <div class="formContainer">
       <form action="{% url 'accounts' profile.id 'deposit' %}" method="post">
@@ -87,7 +87,9 @@ Profile
           <input type="text" name="description">
           <label for="">Deposit Amount<span style="color: red;">*</span></label><br>
           <input type="number" step="0.001"  name="deposit"><br>                        
-          <input type="submit" value="Submit">
+          <!-- <input class="samebuttons" type="submit" value="Submit"> -->
+          <button class="samebuttons" type="submit">Submit</button>
+          <span class="close">Cancel</span>
       </form>
   </div>
     </div>

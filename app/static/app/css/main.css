@@ -214,8 +214,7 @@ footer{
   margin: 28px 0 12px 0;
 }
 
-
-
+.close,
 .samebuttons,
 .menuCard button{
   width: 120px;
@@ -227,6 +226,13 @@ footer{
   cursor: pointer;  
   font-weight: 600;
   font-size: 12px;
+}
+
+.close{
+  background: white;
+  color:  #313030; 
+  padding: 10.3px 40px;
+  border: 1px solid #313030;
 }
 
 /* Loan Status css */

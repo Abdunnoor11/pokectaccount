@@ -1,0 +1,40 @@
+{% extends "app/layout.html" %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block head %}
+<!-- <style>
+    .investicon{
+        opacity: 1;
+    }
+</style> -->
+{% endblock %}
+
+{% block body %}
+<header style="text-align: center;">
+    <h2>You searce result... </h2>
+    <div class="name-logout">                
+    </div>
+       
+</header>
+<div class="list-cards">
+    {% for debtor in searches %}
+    <div class="card list" style="height: 140px;">    
+        <h5>Lender ID: <span class="lightword">{{ debtor }}</span></h5>        
+        {% if string == 'lenders' %}
+            <h5>Name: <span class="lightword">{{ debtor.lenderName }}</span></h5>                
+        {% elif string == 'debtors' %}
+            <h5>Name: <span class="lightword">{{ debtor.debtorName }}</span></h5>                
+        {% elif string == 'landowner' %}
+            <h5>Name: <span class="lightword">{{ debtor.Landownername }}</span></h5>                
+        {% endif %}
+        <h5>Phone: <span class="lightword">{{ debtor.phone }}</span></h5>                                
+        <div class="buttondiv"> 
+            <a href="{% url urllink debtor.id %}"><button class="samebuttons">See Profile</button></a>
+        </div> 
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

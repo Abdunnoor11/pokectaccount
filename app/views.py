@@ -426,12 +426,44 @@ def landCencellation(request, id, landid):
 
     return redirect('landownerprofile', id)
 
+def anysearch(request, string):
+    if request.method == 'POST' and string == "lenders":
+        search = request.POST['search']        
+        try:
+            searches = Lender.objects.filter(lenderName__icontains=search) | Lender.objects.filter(phone__contains=search) | Lender.objects.filter(id__contains=int(search[4:]))
+        except:
+            searches = Lender.objects.filter(lenderName__icontains=search) | Lender.objects.filter(phone__contains=search)
+        urllink = "lenderprofile"
+    elif request.method == 'POST' and string == "debtors":
+        search = request.POST['search']
+        try:
+            searches = Debtor.objects.filter(debtorName__contains=search) | Debtor.objects.filter(phone__contains=search) | Debtor.objects.filter(id__contains=int(search[4:]))        
+        except:
+            searches = Debtor.objects.filter(debtorName__contains=search) | Debtor.objects.filter(phone__contains=search)
+        urllink = "debtorprofile"
+    elif request.method == 'POST' and string == "landowner":
+        search = request.POST['search']
+        try:
+            searches = Landowner.objects.filter(Landownername__icontains=str(search)) | Landowner.objects.filter(phone__contains=search) | Landowner.objects.filter(id__contains=int(search[4:]))
+        except:
+            searches = Landowner.objects.filter(Landownername__icontains=str(search)) | Landowner.objects.filter(phone__contains=search)
+        urllink = "landownerprofile"
+    else:
+        searches = []
+    return render(request, "app/anysearch.html",{
+        "searches":searches,
+        "string":string,
+        "urllink":urllink,
+    })
+
+
+
 def login(request):
     if request.method == 'POST':
         name = request.POST['name']
         password = request.POST['password']
 
-        user = auth.authenticate(username=name, password = password)        
+        user = auth.authenticate(username=name, password = password)
         if user is not None:
             auth.login(request, user)
             return redirect('index')

@@ -14,11 +14,12 @@ Invest
 
 {% block body %}
 <header style="text-align: center;">
-    <h2>Invest Status</h2>
+    <h2>Invest Book</h2>
     <div class="name-logout">                
     </div>
-    <div class="search-container">
-        <form action="/action_page.php">
+    <div class="search-container">        
+        <form action="{% url 'anysearch' 'investbook' %}" method="POST">
+            {% csrf_token %}
           <input type="text" placeholder="Search.." name="search">
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
