@@ -32,6 +32,8 @@ urlpatterns = [
     path('lenderaccounts/<int:id>/<str:string>', views.lenderaccounts, name='lenderaccounts'),    
     path('advance/<int:id>/<int:landid>', views.advance, name='advance'),    
 
-    path('anysearch/<str:string>', views.anysearch, name='anysearch'),    
+    path('anysearch/<str:string>', views.anysearch, name='anysearch'),   
+    path('edit/<int:id>/<str:edit>/<str:profileid>', views.edit, name='edit'),   
+
 
 ]

@@ -166,9 +166,6 @@ footer{
   opacity: 0.5;
 }
 
-.menu img{  
-}
-
 .menu a{
   text-decoration: none;
   color: black;  
@@ -258,11 +255,18 @@ footer{
 .list{
   padding: 12px;
   height: 186px;
+  position: relative;
 }
 
 .list h5{
   margin-bottom: 6px;
   line-height: 18px;
+}
+
+.list img{
+  position: absolute; 
+  top: 0px;
+  right: 12px;
 }
 
 .lightword{
@@ -283,13 +287,14 @@ font-weight: 500;
   box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-top: 100px;   
-  height: 300px;
+  /* height: 300px; */
+  /* padding-bottom: 50px; */
 }
 
 .profile img{
   width: 100px;
   height: 100px;
-  background: url(.jpg), #C4C4C4;
+  background: #C4C4C4;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #313030;
@@ -300,7 +305,7 @@ font-weight: 500;
 .info{
   transform: translatey(-20%);
   margin: 0 15px;
-  text-align: left;
+  text-align: left;  
 }
 
 .info hr{
@@ -336,6 +341,10 @@ font-weight: 500;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
+}
+
+.editfor{
+  height: 500px;
 }
 
 .imgshow{

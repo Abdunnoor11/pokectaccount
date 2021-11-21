@@ -6,6 +6,7 @@ from .models import *
 import datetime
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
+from PIL import Image
 
 # Create your views here.
 def index(request):
@@ -109,7 +110,7 @@ def debtorprofile(request, id):
     
     else:
         profile = Debtor.objects.get(id=id)        
-        accounts = Account.objects.filter(debtor=profile).order_by('date')    
+        accounts = Account.objects.filter(debtor=profile).order_by('-id')    
         
         total_loan, total_depost, b = total_count_debtor(accounts)
 
@@ -120,6 +121,7 @@ def debtorprofile(request, id):
             "total_deposit": total_depost,
             "Due": b,      
         })
+
 
 def total_count_debtor(accounts):
     total_loan = 0
@@ -426,6 +428,7 @@ def landCencellation(request, id, landid):
 
     return redirect('landownerprofile', id)
 
+@login_required(login_url='login')
 def anysearch(request, string):
     if request.method == 'POST' and string == "lenders":
         search = request.POST['search']        
@@ -456,6 +459,61 @@ def anysearch(request, string):
         "urllink":urllink,
     })
 
+def edit(request, id, edit, profileid):                    
+    if edit == "loanedit" and not request.method == 'POST':
+        data = Account.objects.get(id=id)     
+        # print(data.debtor)
+    elif edit == "investedit" and not request.method == 'POST':
+        data = Invest.objects.get(id=id)
+        # print(data)
+    elif request.method == 'POST' and edit == "loanedit":
+        print("Method work")
+        date = request.POST['date']
+
+        if len(date) == 0:
+            d = datetime.datetime.now()
+        else:
+            d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+
+        description = request.POST['description']        
+        loan = request.POST['loan']        
+        deposit = request.POST['deposit']     
+
+        data = Account.objects.get(id=id)
+        data.loan = loan
+        data.deposit = deposit
+        data.description = description
+        data.date = d
+        data.save(update_fields=['description', 'loan', 'deposit', 'date'])
+        return redirect("debtorprofile", int(profileid[4:]))
+    elif request.method == 'POST' and edit == "investedit":
+        date = request.POST['date']
+
+        if len(date) == 0:
+            d = datetime.datetime.now()
+        else:
+            d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+
+        description = request.POST['description']        
+        invest = request.POST['loan']        
+        retern = request.POST['deposit']     
+
+        data = Invest.objects.get(id=id)
+        data.invest = invest
+        data.retern = retern
+        data.description = description
+        data.date = d
+        data.save(update_fields=['description', 'invest', 'retern', 'date'])
+        return redirect("lenderprofile", int(profileid[4:]))
+    else:
+        return redirect("index")
+
+    return render(request, "app/edit.html",{
+        "data":data,
+        "edit":edit,
+        "id":id,
+        "profileid": profileid,
+    })
 
 
 def login(request):

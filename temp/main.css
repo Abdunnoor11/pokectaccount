@@ -243,11 +243,19 @@ footer{
 .list{
   padding: 12px;
   height: 186px;
+  background-color: red;
+  position: relative;
 }
 
 .list h5{
   margin-bottom: 6px;
   line-height: 18px;
+}
+
+.list img{
+  position: absolute; 
+  top: 12px;
+  right: 12px;
 }
 
 .lightword{
