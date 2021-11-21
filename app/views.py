@@ -461,13 +461,13 @@ def anysearch(request, string):
 
 def edit(request, id, edit, profileid):                    
     if edit == "loanedit" and not request.method == 'POST':
-        data = Account.objects.get(id=id)     
-        # print(data.debtor)
+        data = Account.objects.get(id=id)             
     elif edit == "investedit" and not request.method == 'POST':
-        data = Invest.objects.get(id=id)
-        # print(data)
-    elif request.method == 'POST' and edit == "loanedit":
-        print("Method work")
+        data = Invest.objects.get(id=id)        
+    elif edit == "landedit" and not request.method == 'POST':
+        data = Land.objects.get(id=id)
+        return HttpResponse("Worked") 
+    elif request.method == 'POST' and edit == "loanedit":        
         date = request.POST['date']
 
         if len(date) == 0:
@@ -485,7 +485,9 @@ def edit(request, id, edit, profileid):
         data.description = description
         data.date = d
         data.save(update_fields=['description', 'loan', 'deposit', 'date'])
+
         return redirect("debtorprofile", int(profileid[4:]))
+
     elif request.method == 'POST' and edit == "investedit":
         date = request.POST['date']
 
@@ -504,7 +506,11 @@ def edit(request, id, edit, profileid):
         data.description = description
         data.date = d
         data.save(update_fields=['description', 'invest', 'retern', 'date'])
+
         return redirect("lenderprofile", int(profileid[4:]))
+    
+    elif request.method == 'POST' and edit == "landedit":
+        return HttpResponse("Worked")
     else:
         return redirect("index")
 
