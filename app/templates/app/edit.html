@@ -7,13 +7,54 @@ Edit
 {% block head %}
 <style>
     .investicon{
-        opacity: 1;
+        opacity: .5;
     }
 </style>
 {% endblock %}
 
 {% block body %}
 <main>    
+    {% if edit == 'landedit' %}    
+      <div class="modal-content editfor" style="height: 500px;">
+        <div class="modal-body">      
+          <h3>Land Update</h3>
+          <div class="formContainer">
+          <form action="{% url 'edit' id edit profileid %}" method="post">  
+              {% csrf_token %}                      
+              <label for="">Mouja<span style="color: red;">*</span></label><br>
+              <input type="text" name="mouja" value="{{ data.mouja }}">
+              <label for="">R/S Dag<span style="color: red;">*</span></label><br>
+              <input type="text" name="rsdag" value="{{ data.rsdag }}">
+              <label for="">Land QTY<span style="color: red;">*</span></label><br>
+              <input type="number" name="landQTY" value="{{ data.landQTY }}"><br> 
+              <label for="">Per Decimal Price<span style="color: red;">*</span></label><br>
+              <input type="number" step="0.001" name="perDprice" value="{{ data.perDprice }}"><br>                        
+              <button class="samebuttons" type="submit">Submit</button>
+              <span class="close">Cancel</span>
+          </form>        
+      </div>
+        </div>
+      </div>    
+    {% elif edit == 'LandAdvanceedit' %}    
+    <div class="modal-content" style="height: 400px;">
+      <div class="modal-body">        
+        <h3>Advance Update</h3>
+        <div class="formContainer">
+        <form action="{% url 'edit' id 'LandAdvanceedit' profileid  %}" method="post">  
+            {% csrf_token %}                      
+            <label for="">Description<span style="color: red;">*</span></label><br>
+            <input type="text" name="description" value="{{ data.description }}">            
+            <label for="">Amount<span style="color: red;">*</span></label><br>
+            <input type="number" step="0.001" name="amount" value="{{ data.advance }}"><br> 
+            <label for="">Date<span style="color: red;">*</span></label><br>
+            <input type="date" name="date"><br>                        
+            <button class="samebuttons" type="submit">Submit</button>
+            <span class="close">Cancel</span>
+        </form>        
+    </div>
+      </div>
+    </div>
+    {% else %}
     <div class="modal-content editfor">
         <div class="modal-body">      
           <h3>Update</h3>
@@ -39,12 +80,17 @@ Edit
                 <label for="">Return Amount<span style="color: red;">*</span></label><br>
                 <input type="number" step="0.001"  name="deposit" value="{{ data.retern }}"><br> 
             {% endif %}
-              <button class="samebuttons" type="submit">Submit</button>
+
+              <label for="">Creadit Balance<span style="color: red;">*</span></label><br>
+              <input type="number" step="0.001"  name="balance" value="{{ data.balance }}"><br> 
+              
+            <button class="samebuttons" type="submit">Submit</button>
               <span class="close">Cancel</span>
           </form>        
       </div>
         </div>
       </div>
+      {% endif %}
 </main>
 
 {% endblock %}

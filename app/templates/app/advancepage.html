@@ -1,4 +1,5 @@
 {% extends "app/layout.html" %}
+{% load static %}
 
 {% block title %}
 Dashboard
@@ -38,6 +39,9 @@ Dashboard
           <h5>Date: <span class="lightword">{{ a.date }}</span></h5>
           <h5>Description: <span class="lightword">{{ a.description }}</span></h5>
           <h5>Advance: <span class="lightword">{{ a.advance|floatformat:2 }}</span></h5>                    
+          {% if forloop.counter == 1 %}
+        <a href="{% url 'edit' a.id 'LandAdvanceedit' id %}"><img src="{% static 'app/img/icon/edit.png' %}" alt=""></a>               
+      {% endif %}
       </div>
     {% endfor %}
     <div class="buttondiv" style="grid-column: span;"> 

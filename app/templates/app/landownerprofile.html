@@ -1,5 +1,5 @@
 {% extends "app/layout.html" %} 
-<!-- {% load static %} -->
+{% load static %}
 
 {% block title %} 
 Profile 
@@ -35,7 +35,7 @@ Profile
 </header>
 <div class="list-cards">
   {% for landdetail, advance in landdetails.items %}
-    <div class="card list" style="height: 240px;">      
+    <div class="card list" style="height: 240px;">            
         <h5>Mouja: <span class="lightword">{{ landdetail.mouja }}</span></h5>
         <h5>R/S Dag: <span class="lightword">{{ landdetail.rsdag }}</span></h5>
         <h5>Land Qty: <span class="lightword">{{ landdetail.landQTY }}</span></h5>
@@ -46,7 +46,7 @@ Profile
         <div class="buttondiv"> 
             <a href="{% url 'advancepage' profile.id landdetail.id %}"><button class="samebuttons">See Land</button></a>
         </div> 
-        <a href="{% url 'edit' landdetail.id 'landedit' landdetail.landowner %}"><img src="{% static 'app/img/icon/edit.png' %}" alt=""></a>               
+        <a href="{% url 'edit' landdetail.id 'landedit' landdetail.landowner %}"><img src="{% static 'app/img/icon/edit.png' %}" alt=""></a>
     </div>
   {% endfor %}
 </div>

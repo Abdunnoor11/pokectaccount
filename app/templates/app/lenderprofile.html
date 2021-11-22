@@ -40,14 +40,16 @@ Profile
 </header>
 <div class="list-cards">
   {% for account in accounts %}
-  <div class="card list">      
+  <div class="card list">          
       <h5>Date: <span class="lightword">{{ account.date }}</span></h5>
       <h5>Description: <span class="lightword">{{ account.description }}</span></h5>
       <h5>Invest: <span class="lightword">{{ account.invest|floatformat:2 }}</span></h5>
       <h5>Return: <span class="lightword">{{ account.retern|floatformat:2 }}</span></h5>
       <h5>Credit Balance: <span class="lightword">{{ account.balance|floatformat:2 }}</span></h5>
       <h5>Status: <span class="lightword">{% if account.status %} Paid {% else %} Due {% endif %}</span></h5> 
-      <a href="{% url 'edit' account.id 'investedit' account.lender %}"><img src="{% static 'app/img/icon/edit.png' %}" alt=""></a>               
+      {% if forloop.counter == 1 %}
+        <a href="{% url 'edit' account.id 'investedit' account.lender %}"><img src="{% static 'app/img/icon/edit.png' %}" alt=""></a>               
+      {% endif %}
   </div>
   {% endfor %}
 </div>

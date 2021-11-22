@@ -208,7 +208,7 @@ def newlender(request):
 
 @login_required(login_url='login')
 def lender(request):
-    lenders = Lender.objects.filter(investor_id=request.user.id) 
+    lenders = Lender.objects.filter(investor_id=request.user.id).order_by('-id')
 
     d = {}
     for lender in lenders:
@@ -240,7 +240,7 @@ def lenderprofile(request, id):
 
     else:
         profile = Lender.objects.get(id=id)
-        accounts = Invest.objects.filter(lender=profile).order_by('date')
+        accounts = Invest.objects.filter(lender=profile).order_by('-id')
 
         total_invest, total_return, b = total_count_lender(accounts)
 
@@ -393,8 +393,9 @@ def advance(request, id, landid):
         balance = land.totalprice() - total
 
         if balance >= float(advance):
-            advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=d)
+            advance = Advance.objects.create(land_id=landid, description=description, advance=advance, date=d)            
             advance.save()
+            
             return redirect('landownerprofile', id)
         else:
             messages.add_message(request, messages.WARNING, 'insufficient balance.')
@@ -410,7 +411,7 @@ def advancepage(request, id, landid):
     total = sum([a.advance for a in advance])
     balance = land.totalprice() - total       
     
-    advances = Advance.objects.filter(land_id=landid)       
+    advances = Advance.objects.filter(land_id=landid).order_by('-id')      
 
 
     return render(request, "app/advancepage.html",{
@@ -465,8 +466,45 @@ def edit(request, id, edit, profileid):
     elif edit == "investedit" and not request.method == 'POST':
         data = Invest.objects.get(id=id)        
     elif edit == "landedit" and not request.method == 'POST':
-        data = Land.objects.get(id=id)
-        return HttpResponse("Worked") 
+        data = Land.objects.get(id=id)  
+    elif edit == "LandAdvanceedit" and not request.method == 'POST':
+        data = Advance.objects.get(id=id)              
+
+    elif edit == "landedit" and request.method == 'POST':
+        mouja = request.POST['mouja']
+        rsdag = request.POST['rsdag']
+        landQTY = request.POST['landQTY']
+        perDprice = request.POST['perDprice']
+
+
+        data = Land.objects.get(id=id) 
+        data.mouja = mouja
+        data.rsdag = rsdag
+        data.landQTY = landQTY
+        data.perDprice = perDprice
+
+        data.save(update_fields=['mouja', 'rsdag', 'landQTY', 'perDprice'])                         
+        
+        return redirect("landownerprofile", int(profileid[4:]))
+
+    elif edit == "LandAdvanceedit" and request.method == 'POST':
+        amount = request.POST['amount']
+        description = request.POST['description']        
+        date = request.POST['date']
+            
+        if len(date) == 0:
+            d = datetime.datetime.now()
+        else:
+            d = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+        
+        advance = Advance.objects.get(id=id)  
+
+        advance.description = description
+        advance.advance = float(amount)
+        advance.date = d    
+        advance.save(update_fields=['land', 'description', 'advance', 'date'])                    
+        return redirect("advancepage", profileid, advance.land_id)
+
     elif request.method == 'POST' and edit == "loanedit":        
         date = request.POST['date']
 
@@ -478,13 +516,16 @@ def edit(request, id, edit, profileid):
         description = request.POST['description']        
         loan = request.POST['loan']        
         deposit = request.POST['deposit']     
+        balance = request.POST['balance']     
 
         data = Account.objects.get(id=id)
-        data.loan = loan
+                
+        data.balance = balance        
+        data.loan = float(loan)
         data.deposit = deposit
         data.description = description
         data.date = d
-        data.save(update_fields=['description', 'loan', 'deposit', 'date'])
+        data.save(update_fields=['description', 'loan', 'deposit', 'balance' ,'date'])
 
         return redirect("debtorprofile", int(profileid[4:]))
 
@@ -499,13 +540,16 @@ def edit(request, id, edit, profileid):
         description = request.POST['description']        
         invest = request.POST['loan']        
         retern = request.POST['deposit']     
+        balance = request.POST['balance']     
 
         data = Invest.objects.get(id=id)
-        data.invest = invest
+
+        data.balance = balance        
+        data.invest = float(invest)
         data.retern = retern
         data.description = description
         data.date = d
-        data.save(update_fields=['description', 'invest', 'retern', 'date'])
+        data.save(update_fields=['description', 'invest', 'retern', 'balance', 'date'])
 
         return redirect("lenderprofile", int(profileid[4:]))
     
