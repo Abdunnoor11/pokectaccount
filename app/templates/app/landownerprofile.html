@@ -38,7 +38,7 @@ Profile
     <div class="card list" style="height: 240px;">            
         <h5>Mouja: <span class="lightword">{{ landdetail.mouja }}</span></h5>
         <h5>R/S Dag: <span class="lightword">{{ landdetail.rsdag }}</span></h5>
-        <h5>Land Qty: <span class="lightword">{{ landdetail.landQTY }}</span></h5>
+        <h5>Land Qty: <span class="lightword">{{ landdetail.landQTY|floatformat:2 }}</span></h5>
         <h5>P.D. Price: <span class="lightword">{{ landdetail.perDprice|floatformat:2 }}</span></h5>
         <h5>Total Price: <span class="lightword">{{ landdetail.totalprice|floatformat:2 }}</span></h5>
         <h5>Advance: <span class="lightword">{{ advance.0|floatformat:2 }}</span></h5>

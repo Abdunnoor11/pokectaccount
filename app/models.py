@@ -69,6 +69,7 @@ class Landowner(models.Model):
     phone = models.CharField(max_length=15, blank=True, null= True)
     img = models.ImageField(default='avatar.png', upload_to='pics')
     landbuyer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+    address = models.TextField(blank=True, null= True)
     status = models.BooleanField(default=None, null=True, blank=False)   
 
     def save(self, *args, **kwargs):

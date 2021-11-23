@@ -45,7 +45,7 @@ Profile
       <h5>Description: <span class="lightword">{{ account.description }}</span></h5>
       <h5>Loan: <span class="lightword">{{ account.loan|floatformat:2 }}</span></h5>
       <h5>Deposit: <span class="lightword">{{ account.deposit|floatformat:2 }}</span></h5>
-      <h5>Credit Balance: <span class="lightword">{{ account.balance|floatformat:2 }}</span></h5>
+      <h5>Balance: <span class="lightword">{{ account.balance|floatformat:2 }}</span></h5>
       <h5>Status: <span class="lightword">{% if account.status %} Paid {% else %} Due {% endif %}</span></h5>      
       {% if forloop.counter == 1 %}
         <a href="{% url 'edit' account.id 'loanedit' account.debtor  %}"><img src="{% static 'app/img/icon/edit.png' %}" alt=""></a>

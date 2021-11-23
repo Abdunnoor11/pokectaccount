@@ -308,7 +308,7 @@ def lenderaccounts(request, id, string):
 
 @login_required(login_url='login')
 def land(request):
-    landowners = Landowner.objects.filter(landbuyer_id=request.user.id)    
+    landowners = Landowner.objects.filter(landbuyer_id=request.user.id).order_by('-id')  
     
     return render(request, "app/landdetails.html",{
         "landowners": landowners,
@@ -335,8 +335,9 @@ def newlandowner(request):
     if request.method == "POST":
         name = request.POST['name']
         phone = request.POST['phone']
+        address = request.POST['address']
 
-        new_Landowner = Landowner.objects.create(Landownername=name, phone=phone, landbuyer=request.user)
+        new_Landowner = Landowner.objects.create(Landownername=name, phone=phone, landbuyer=request.user, address=address)
         new_Landowner.save()
 
         return redirect("land")
@@ -422,6 +423,7 @@ def advancepage(request, id, landid):
         "id":id,   
     })
 
+@login_required(login_url='login')
 def landCencellation(request, id, landid):
     land = Land.objects.get(id=landid)      
     land.delete()

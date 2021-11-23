@@ -28,12 +28,12 @@ Loan
 <div class="list-cards">
     {% for account in accounts %}
     <div class="card list">
-        <h5>Debtor ID: <span class="lightword">{{ account.debtor }}</span></h5>
+        <h5>Name: <span class="lightword">{{ account.debtor.debtorName }}</span></h5>
         <h5>Date: <span class="lightword">{{ account.date }}</span></h5>
         <h5>Description: <span class="lightword">{{ account.description }}</span></h5>
-        <h5>Loan: <span class="lightword">{{ account.loan }}</span></h5>
-        <h5>Deposit: <span class="lightword">{{ account.deposit }}</span></h5>
-        <h5>Credit Balance: <span class="lightword">{{ account.balance }}</span></h5>
+        <h5>Loan: <span class="lightword">{{ account.loan|floatformat:2 }}</span></h5>
+        <h5>Deposit: <span class="lightword">{{ account.deposit|floatformat:2 }}</span></h5>
+        <h5>Balance: <span class="lightword">{{ account.balance|floatformat:2 }}</span></h5>
         <h5>Status: <span class="lightword">{% if account.status %} Paid {% else %} Due {% endif %}</span></h5>                
     </div>
     {% endfor %}

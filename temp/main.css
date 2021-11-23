@@ -243,7 +243,7 @@ footer{
 .list{
   padding: 12px;
   height: 186px;
-  background-color: red;
+  /* background-color: red; */
   position: relative;
 }
 
@@ -262,7 +262,8 @@ footer{
   font-family: Poppins;
 font-style: normal;
 font-weight: 500;
-/* color: blue; */
+position: absolute;
+  left: 120px;
 }
 
 .buttondiv{
