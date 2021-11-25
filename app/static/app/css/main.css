@@ -279,6 +279,7 @@ position: absolute;
 }
 table, tr{
   font-weight: bold;
+  vertical-align: text-top;
 }
 
 .column_left{
