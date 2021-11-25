@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+
+.profile{
+  background: #ffbaba;
+  box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  margin-top: 100px;   
+  position: relative;  
+  /* word-wrap: break-word; */
+  /* height: 600px;   */
+  width: 80%;
+}
+
+.profile img{
+  width: 100px;
+  height: 100px;
+  background: url(.jpg), #C4C4C4;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #313030;
+  box-sizing: border-box;
+  /* transform: translatey(-50%); */
+}
+
+.info{
+  /* transform: translatey(-20%); */
+  background-color: #bbbbff;
+  /* margin: 0 12px; */
+  text-align: left;  
+  
+}
+
+.lightword{
+  font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+position: absolute;
+  left: 110px;
+}
+
+.profileinfo{
+  /* height: 100%; */
+  /* margin-bottom: 1%; */
+  word-wrap: break-word;
+}
+.infototal{
+  /* margin-top: 1%; */
+  word-wrap: break-word;
+}
+
+table, tr{
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+    <header class="profile" style="text-align: center;">            
+        <img src="avater.jpg" alt="">   
+        <div class="info">
+            <div class="profileinfo">
+                <table>
+                    <tr><td>Debtor ID:</td><td style="padding-left: 25px;"> PA0002</td></tr>                    
+                    <tr><td>Debtor ID:</td><td> PA0002</td></tr>                    
+                    <tr><td>Debtor ID:</td><td> PA0002</td></tr>                    
+                    <tr><td>Address:</td><td> Uttara, Dhaka Uttara, DhakaUttara Uttara, Dhaka Uttara, DhakaUttara Uttara, Dhaka Uttara, DhakaUttara</td></tr>                    
+                </table>
+            <h5>Debtor ID: <span class="lightword">PA0002</span></h5>
+            <h5>Name: <span class="lightword">John Doe</span></h5>                
+            <h5>Phone: <span class="lightword">0125879654</span></h5>  
+            <h5>Address: <span class="lightword">Uttara, Dhaka Uttara, DhakaUttara Uttara, Dhaka Uttara, DhakaUttara Uttara, Dhaka Uttara, DhakaUttara</span></h5>                  
+            </div>            
+            <div class="infototal">
+                <h5>Total Loan: <span class="lightword">2000000.00</span></h5>  
+            <h5>Total Deposit: <span class="lightword">100000.00</span></h5>  
+            <h5>Balance: <span class="lightword">190000.00</span></h5>  
+            </div>            
+            <div class="buttondiv">                     
+                <button class="samebuttons" type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Loan</button>
+                <button class="samebuttons" type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">Deposit</button>                    
+            </div> 
+        </div>
+    </header>
+
+</body>
+</html>

@@ -20,23 +20,31 @@ Profile
         <img src="{{ profile.img.url }}" />
     </label>
 </div>
-  <div class="info">
-      <h5>Lender ID: <span class="lightword">{{ profile }}</span></h5>
-      <h5>Name: <span class="lightword">{{ profile.lenderName }}</span></h5>                
-      <h5>Phone: <span class="lightword">{{ profile.phone }}</span></h5>  
-      <h5>Address: <span class="lightword">{{ profile.address }}</span></h5>  
-      <br>
-      <hr>
-      <br>
-      <h5>Total Invest: <span class="lightword">{{ total_invest|floatformat:2 }}</span></h5>  
-      <h5>Total Return: <span class="lightword">{{ total_return|floatformat:2 }}</span></h5>  
-      <h5>Balance: <span class="lightword">{{ Due|floatformat:2 }}</span></h5>  
-      <br>
-      <div class="buttondiv">                     
-          <button class="samebuttons" type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Invest</button>
-          <button class="samebuttons" type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">Return</button>
-      </div> 
-  </div>
+<div class="info">
+  <div class="profileinfo">
+    <table>
+      <tr><td class="column_left">Lender ID: </td><td class="column_right" >{{ profile }}</td></tr>
+    <tr><td class="column_left">Name: </td><td class="column_right">{{ profile.lenderName }}</td></tr>
+    <tr><td class="column_left">Phone: </td><td class="column_right">{{ profile.phone }}</td></tr>
+    <tr><td class="column_left">Address: </td><td class="column_right">{{ profile.address }}</td></tr>
+    </table>      
+  </div>    
+  <br>        
+  <hr> 
+  <br>     
+  <div class="infototal">
+    <table>
+      <tr><td class="column_left">Total Invest: </td><td class="column_right">{{ total_invest|floatformat:2 }}</td></tr>
+    <tr><td class="column_left">Total Return: </td><td class="column_right">{{ total_return|floatformat:2 }}</td></tr>
+    <tr><td class="column_left">Balance: </td><td class="column_right">{{ Due|floatformat:2 }}</td></tr>
+    </table>      
+    <br>
+  </div>      
+    <div class="buttondiv">                     
+        <button class="samebuttons" type="button" onclick="ModalFunc(loanbtn)" id="loanbtn">Loan</button>
+        <button class="samebuttons" type="button" onclick="ModalFunc(depositbtn)" id="depositbtn">Deposit</button>
+    </div> 
+</div>
 </header>
 <div class="list-cards">
   {% for account in accounts %}

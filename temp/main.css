@@ -262,9 +262,11 @@ footer{
   font-family: Poppins;
 font-style: normal;
 font-weight: 500;
-position: absolute;
-  left: 120px;
+/* position: absolute; */
+  left: 110px;
 }
+
+
 
 .buttondiv{
   text-align: center;
@@ -273,11 +275,13 @@ position: absolute;
 
 /* Debtor Profile css */
 .profile{
-  background: #ffffff;
+  background: #ffbaba;
   box-shadow: 0px 6px 32px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
   margin-top: 100px;   
-  height: 300px;
+  position: relative;  
+  /* word-wrap: break-word; */
+  /* height: 600px;   */
 }
 
 .profile img{
@@ -288,15 +292,26 @@ position: absolute;
   object-fit: cover;
   border: 2px solid #313030;
   box-sizing: border-box;
-  transform: translatey(-50%);
+  /* transform: translatey(-50%); */
 }
 
 .info{
-  transform: translatey(-20%);
-  margin: 0 15px;
-  text-align: left;
+  /* transform: translatey(-20%); */
+  background-color: #bbbbff;
+  margin: 0 12px;
+  text-align: left;  
+  
 }
 
+.profileinfo{
+  /* height: 100%; */
+  margin-bottom: 1%;
+  word-wrap: break-word;
+}
+.infototal{
+  /* margin-top: 1%; */
+  word-wrap: break-word;
+}
 .info hr{
   border-top: 1px solid #F2F2F2;
 }
