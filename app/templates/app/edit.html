@@ -30,7 +30,7 @@ Edit
               <label for="">Per Decimal Price<span style="color: red;">*</span></label><br>
               <input type="number" step="0.001" name="perDprice" value="{{ data.perDprice }}"><br>                        
               <button class="samebuttons" type="submit">Submit</button>
-              <span class="close">Cancel</span>
+              <span onClick="history.go(-1); return false;" class="close">Cancel</span>
           </form>        
       </div>
         </div>
@@ -49,7 +49,7 @@ Edit
             <label for="">Date<span style="color: red;">*</span></label><br>
             <input type="date" name="date"><br>                        
             <button class="samebuttons" type="submit">Submit</button>
-            <span class="close">Cancel</span>
+            <span onClick="history.go(-1); return false;" class="close">Cancel</span>
         </form>        
     </div>
       </div>
@@ -85,7 +85,7 @@ Edit
               <input type="number" step="0.001"  name="balance" value="{{ data.balance }}"><br> 
               
             <button class="samebuttons" type="submit">Submit</button>
-              <span class="close">Cancel</span>
+              <span onClick="history.go(-1); return false;" class="close">Cancel</span>
           </form>        
       </div>
         </div>
